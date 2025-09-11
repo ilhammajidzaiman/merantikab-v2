@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="400"
+   height="200"
+   viewBox="0 0 160 80"
+   version="1.1"
+   id="svg818"
+   sodipodi:docname="repeating-triangles.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs822" />
+  <sodipodi:namedview
+     id="namedview820"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="3.37"
+     inkscape:cx="193.62018"
+     inkscape:cy="100.74184"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g816" />
+  <g
+     fill="#B0A090"
+     fill-opacity="1"
+     id="g816"
+     style="fill:#000000;fill-opacity:0.05">
+    <polygon
+       points="0,10 0,0 10,0 "
+       id="polygon714"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="0,40 0,30 10,30 "
+       id="polygon716"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="0,30 0,20 10,20 "
+       id="polygon718"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="0,70 0,60 10,60 "
+       id="polygon720"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="0,80 0,70 10,70 "
+       id="polygon722"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="50,80 50,70 60,70 "
+       id="polygon724"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="10,20 10,10 20,10 "
+       id="polygon726"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="10,40 10,30 20,30 "
+       id="polygon728"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="20,10 20,0 30,0 "
+       id="polygon730"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="10,10 10,0 20,0 "
+       id="polygon732"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="30,20 30,10 40,10 "
+       id="polygon734"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="20,20 20,40 40,20 "
+       id="polygon736"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="40,10 40,0 50,0 "
+       id="polygon738"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="40,20 40,10 50,10 "
+       id="polygon740"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="40,40 40,30 50,30 "
+       id="polygon742"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="30,40 30,30 40,30 "
+       id="polygon744"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="40,60 40,50 50,50 "
+       id="polygon746"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="50,30 50,20 60,20 "
+       id="polygon748"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="40,60 40,80 60,60 "
+       id="polygon750"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="50,40 50,60 70,40 "
+       id="polygon752"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="60,0 60,20 80,0 "
+       id="polygon754"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="70,30 70,20 80,20 "
+       id="polygon756"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="70,40 70,30 80,30 "
+       id="polygon758"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="60,60 60,80 80,60 "
+       id="polygon760"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="80,10 80,0 90,0 "
+       id="polygon762"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="70,40 70,60 90,40 "
+       id="polygon764"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="80,60 80,50 90,50 "
+       id="polygon766"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="60,30 60,20 70,20 "
+       id="polygon768"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="100,70 80,70 80,80 90,80 "
+       id="polygon770"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="80,10 80,40 110,10 "
+       id="polygon772"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="110,40 110,30 120,30 "
+       id="polygon774"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="90,40 90,70 120,40 "
+       id="polygon776"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="10,50 10,80 40,50 "
+       id="polygon778"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="110,60 110,50 120,50 "
+       id="polygon780"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="100,60 100,80 120,60 "
+       id="polygon782"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="110,0 110,20 130,0 "
+       id="polygon784"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="120,30 120,20 130,20 "
+       id="polygon786"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="130,10 130,0 140,0 "
+       id="polygon788"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="130,30 130,20 140,20 "
+       id="polygon790"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="120,40 120,30 130,30 "
+       id="polygon792"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="130,50 130,40 140,40 "
+       id="polygon794"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="120,50 120,70 140,50 "
+       id="polygon796"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="140,70 110,70 110,80 130,80 "
+       id="polygon798"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="140,10 140,0 150,0 "
+       id="polygon800"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="140,20 140,10 150,10 "
+       id="polygon802"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="140,40 140,30 150,30 "
+       id="polygon804"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="140,50 140,40 150,40 "
+       id="polygon806"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="140,70 140,60 150,60 "
+       id="polygon808"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="160,20 150,20 150,40 160,30 "
+       id="polygon810"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="150,60 150,50 160,50 "
+       id="polygon812"
+       style="fill:#000000;fill-opacity:0.02" />
+    <polygon
+       points="160,70 140,70 140,80 150,80 "
+       id="polygon814"
+       style="fill:#000000;fill-opacity:0.02" />
+  </g>
+</svg>

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="100%"
+   version="1.1"
+   id="svg2380"
+   sodipodi:docname="subtle-prism.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview2382"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="4.4933333"
+     inkscape:cx="150.11128"
+     inkscape:cy="75.55638"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2380" />
+  <defs
+     id="defs2374">
+    <linearGradient
+       id="a"
+       gradientUnits="userSpaceOnUse"
+       x1="0"
+       x2="0"
+       y1="0"
+       y2="100%"
+       gradientTransform="rotate(240)">
+      <stop
+         offset="0"
+         stop-color="#ffffff"
+         id="stop2228" />
+      <stop
+         offset="1"
+         stop-color="#4FE"
+         id="stop2230" />
+    </linearGradient>
+    <pattern
+       patternUnits="userSpaceOnUse"
+       id="b"
+       width="540"
+       height="450"
+       x="0"
+       y="0"
+       viewBox="0 0 1080 900">
+      <g
+         fill-opacity="0.1"
+         id="g2371">
+        <polygon
+           fill="#444"
+           points="90 150 0 300 180 300"
+           id="polygon2233" />
+        <polygon
+           points="90 150 180 0 0 0"
+           id="polygon2235" />
+        <polygon
+           fill="#AAA"
+           points="270 150 360 0 180 0"
+           id="polygon2237" />
+        <polygon
+           fill="#DDD"
+           points="450 150 360 300 540 300"
+           id="polygon2239" />
+        <polygon
+           fill="#999"
+           points="450 150 540 0 360 0"
+           id="polygon2241" />
+        <polygon
+           points="630 150 540 300 720 300"
+           id="polygon2243" />
+        <polygon
+           fill="#DDD"
+           points="630 150 720 0 540 0"
+           id="polygon2245" />
+        <polygon
+           fill="#444"
+           points="810 150 720 300 900 300"
+           id="polygon2247" />
+        <polygon
+           fill="#FFF"
+           points="810 150 900 0 720 0"
+           id="polygon2249" />
+        <polygon
+           fill="#DDD"
+           points="990 150 900 300 1080 300"
+           id="polygon2251" />
+        <polygon
+           fill="#444"
+           points="990 150 1080 0 900 0"
+           id="polygon2253" />
+        <polygon
+           fill="#DDD"
+           points="90 450 0 600 180 600"
+           id="polygon2255" />
+        <polygon
+           points="90 450 180 300 0 300"
+           id="polygon2257" />
+        <polygon
+           fill="#666"
+           points="270 450 180 600 360 600"
+           id="polygon2259" />
+        <polygon
+           fill="#AAA"
+           points="270 450 360 300 180 300"
+           id="polygon2261" />
+        <polygon
+           fill="#DDD"
+           points="450 450 360 600 540 600"
+           id="polygon2263" />
+        <polygon
+           fill="#999"
+           points="450 450 540 300 360 300"
+           id="polygon2265" />
+        <polygon
+           fill="#999"
+           points="630 450 540 600 720 600"
+           id="polygon2267" />
+        <polygon
+           fill="#FFF"
+           points="630 450 720 300 540 300"
+           id="polygon2269" />
+        <polygon
+           points="810 450 720 600 900 600"
+           id="polygon2271" />
+        <polygon
+           fill="#DDD"
+           points="810 450 900 300 720 300"
+           id="polygon2273" />
+        <polygon
+           fill="#AAA"
+           points="990 450 900 600 1080 600"
+           id="polygon2275" />
+        <polygon
+           fill="#444"
+           points="990 450 1080 300 900 300"
+           id="polygon2277" />
+        <polygon
+           fill="#222"
+           points="90 750 0 900 180 900"
+           id="polygon2279" />
+        <polygon
+           points="270 750 180 900 360 900"
+           id="polygon2281" />
+        <polygon
+           fill="#DDD"
+           points="270 750 360 600 180 600"
+           id="polygon2283" />
+        <polygon
+           points="450 750 540 600 360 600"
+           id="polygon2285" />
+        <polygon
+           points="630 750 540 900 720 900"
+           id="polygon2287" />
+        <polygon
+           fill="#444"
+           points="630 750 720 600 540 600"
+           id="polygon2289" />
+        <polygon
+           fill="#AAA"
+           points="810 750 720 900 900 900"
+           id="polygon2291" />
+        <polygon
+           fill="#666"
+           points="810 750 900 600 720 600"
+           id="polygon2293" />
+        <polygon
+           fill="#999"
+           points="990 750 900 900 1080 900"
+           id="polygon2295" />
+        <polygon
+           fill="#999"
+           points="180 0 90 150 270 150"
+           id="polygon2297" />
+        <polygon
+           fill="#444"
+           points="360 0 270 150 450 150"
+           id="polygon2299" />
+        <polygon
+           fill="#FFF"
+           points="540 0 450 150 630 150"
+           id="polygon2301" />
+        <polygon
+           points="900 0 810 150 990 150"
+           id="polygon2303" />
+        <polygon
+           fill="#222"
+           points="0 300 -90 450 90 450"
+           id="polygon2305" />
+        <polygon
+           fill="#FFF"
+           points="0 300 90 150 -90 150"
+           id="polygon2307" />
+        <polygon
+           fill="#FFF"
+           points="180 300 90 450 270 450"
+           id="polygon2309" />
+        <polygon
+           fill="#666"
+           points="180 300 270 150 90 150"
+           id="polygon2311" />
+        <polygon
+           fill="#222"
+           points="360 300 270 450 450 450"
+           id="polygon2313" />
+        <polygon
+           fill="#FFF"
+           points="360 300 450 150 270 150"
+           id="polygon2315" />
+        <polygon
+           fill="#444"
+           points="540 300 450 450 630 450"
+           id="polygon2317" />
+        <polygon
+           fill="#222"
+           points="540 300 630 150 450 150"
+           id="polygon2319" />
+        <polygon
+           fill="#AAA"
+           points="720 300 630 450 810 450"
+           id="polygon2321" />
+        <polygon
+           fill="#666"
+           points="720 300 810 150 630 150"
+           id="polygon2323" />
+        <polygon
+           fill="#FFF"
+           points="900 300 810 450 990 450"
+           id="polygon2325" />
+        <polygon
+           fill="#999"
+           points="900 300 990 150 810 150"
+           id="polygon2327" />
+        <polygon
+           points="0 600 -90 750 90 750"
+           id="polygon2329" />
+        <polygon
+           fill="#666"
+           points="0 600 90 450 -90 450"
+           id="polygon2331" />
+        <polygon
+           fill="#AAA"
+           points="180 600 90 750 270 750"
+           id="polygon2333" />
+        <polygon
+           fill="#444"
+           points="180 600 270 450 90 450"
+           id="polygon2335" />
+        <polygon
+           fill="#444"
+           points="360 600 270 750 450 750"
+           id="polygon2337" />
+        <polygon
+           fill="#999"
+           points="360 600 450 450 270 450"
+           id="polygon2339" />
+        <polygon
+           fill="#666"
+           points="540 600 630 450 450 450"
+           id="polygon2341" />
+        <polygon
+           fill="#222"
+           points="720 600 630 750 810 750"
+           id="polygon2343" />
+        <polygon
+           fill="#FFF"
+           points="900 600 810 750 990 750"
+           id="polygon2345" />
+        <polygon
+           fill="#222"
+           points="900 600 990 450 810 450"
+           id="polygon2347" />
+        <polygon
+           fill="#DDD"
+           points="0 900 90 750 -90 750"
+           id="polygon2349" />
+        <polygon
+           fill="#444"
+           points="180 900 270 750 90 750"
+           id="polygon2351" />
+        <polygon
+           fill="#FFF"
+           points="360 900 450 750 270 750"
+           id="polygon2353" />
+        <polygon
+           fill="#AAA"
+           points="540 900 630 750 450 750"
+           id="polygon2355" />
+        <polygon
+           fill="#FFF"
+           points="720 900 810 750 630 750"
+           id="polygon2357" />
+        <polygon
+           fill="#222"
+           points="900 900 990 750 810 750"
+           id="polygon2359" />
+        <polygon
+           fill="#222"
+           points="1080 300 990 450 1170 450"
+           id="polygon2361" />
+        <polygon
+           fill="#FFF"
+           points="1080 300 1170 150 990 150"
+           id="polygon2363" />
+        <polygon
+           points="1080 600 990 750 1170 750"
+           id="polygon2365" />
+        <polygon
+           fill="#666"
+           points="1080 600 1170 450 990 450"
+           id="polygon2367" />
+        <polygon
+           fill="#DDD"
+           points="1080 900 1170 750 990 750"
+           id="polygon2369" />
+      </g>
+    </pattern>
+  </defs>
+  <rect
+     x="0"
+     y="0"
+     fill="url(#b)"
+     width="100%"
+     height="100%"
+     id="rect2378"
+     style="opacity:0.3" />
+</svg>
