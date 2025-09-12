@@ -1,14 +1,14 @@
 @php
     use Carbon\Carbon;
 @endphp
-<div wire:poll.5s="next" class="relative w-full max-w-6xl mx-auto h-100">
+<div wire:poll.5s="next" class="relative w-full max-w-6xl mx-auto aspect-square">
     @foreach ($carouselNews as $index => $item)
         <div
             @if ($active === $index) class="absolute inset-0 opacity-100 transition-opacity duration-1000"
             @else 
                 class="absolute inset-0 opacity-0 transition-opacity duration-1000" @endif>
             <div class="overflow-hidden rounded-xl relative">
-                <img src="{{ env('API_SIPB') . $item->image ?? null }}" class="h-100 object-cover w-full">
+                <img src="{{ env('API_SIPB') . $item->image ?? null }}" class="aspect-square object-cover w-full">
                 <div
                     class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-6 flex flex-col justify-end">
                     <p class="text-sm text-gray-200">

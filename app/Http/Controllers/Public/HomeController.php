@@ -60,7 +60,7 @@ class HomeController extends Controller
                 ];
             });
 
-        $data['documents'] = collect(Http::get(env('API_DOCUMENT'))->object()->data ?? [])
+        $data['documents'] = collect(Http::get(env('API_PUBLIKASIDOKUMEN'))->object() ?? [])
             ->take(6)
             ->map(function ($item) {
                 return (object) [
@@ -85,37 +85,33 @@ class HomeController extends Controller
                 ];
             });
 
-        $data['heroShortcut'] = [
-            (object) [
-                'image' => asset('image/apps/dashboard.png'),
-                'title' => 'Smart City',
-                'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus repudiandae quo nemo.',
-                'link' => 'https://smartcity.merantikab.go.id/',
-            ],
-            (object) [
-                'image' => asset('image/apps/compliant.png'),
-                'title' => 'JDIH',
-                'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias aspernatur doloremque facilis magni, velit porro.',
-                'link' => 'https://jdih.merantikab.go.id/',
-            ],
-            (object) [
-                'image' => asset('image/apps/book.png'),
-                'title' => 'PPID',
-                'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium harum expedita exercitationem facere.',
-                'link' => 'https://smartcity.merantikab.go.id/',
-            ],
-            (object) [
-                'image' => asset('image/apps/data.png'),
-                'title' => 'Statistik',
-                'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem ex recusandae voluptates excepturi natus ratione. Aliquam, inventore?',
-                'link' => 'https://statistik.merantikab.go.id/',
-            ],
-            (object) [
-                'image' => asset('image/apps/lapor.png'),
-                'title' => 'Lapor',
-                'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, harum placeat.',
-                'link' => 'https://www.lapor.go.id/',
-            ],
+        $data['heroShortcut'] = collect(Http::get(env('API_LINK'))->object()->data ?? [])
+            ->take(5)
+            ->map(function ($item) {
+                return (object) [
+                    'title' => $item->title,
+                    'link' => $item->link,
+                    'image' => $item->image,
+                ];
+            });
+
+        $data['foto'] = collect(Http::get(env('API_FOTO'))->object() ?? [])
+            ->map(function ($item) {
+                return (object) [
+                    'title' => $item->title ?? null,
+                    'description' => $item->description ?? null,
+                    'image' => $item->image ?? null,
+                    'date' => $item->created_at ?? null,
+                ];
+            });
+
+        $item = Http::get(env('API_VIDEO'))->object();
+        $data['videos'] = (object) [
+            'title' => $item->title ?? null,
+            'url' => $item->url ?? null,
+            'embed' => $item->embed ?? null,
+            'is_active' => $item->is_active ?? null,
+            'date' => $item->created_at ?? null,
         ];
 
         return view('public.home', $data);
