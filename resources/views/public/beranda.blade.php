@@ -1,8 +1,332 @@
 @php
     use Carbon\Carbon;
 @endphp
+<!DOCTYPE html>
+<html lang="en">
 
-<x-public.layout.app-layout title="{{ Str::headline(__('beranda')) }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kepulauan Meranti</title>
+    <link rel="shortcut icon" href="{{ asset('/image/logo-meranti.png') }}" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
+</head>
+
+<body class="bg-slate-50">
+
+    <nav id="navbar">
+        <div class="fixed top-0 left-0 w-full z-50">
+            <div class="w-full ">
+                <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3">
+                    <div class="rounded-xl shadow-md  bg-white/50 backdrop-blur-sm">
+                        <nav aria-label="Global" class="mx-auto flex w-full items-center justify-between px-4 py-3  ">
+                            <div class="flex lg:flex-1">
+                                <a href="" class="-m-1.5 p-1.5">
+                                    <div class="flex items-center justify-center md:justify-start w-full">
+                                        <img src="{{ asset('image/logo-meranti.png') }}" alt="Logo"
+                                            class="w-12 h-12 object-contain" />
+                                        <div
+                                            class="flex flex-col leading-tight text-shadow-xs text-shadow-slate-50 text-slate-800">
+                                            <h1 class="text-xs font-bold">
+                                                Website Resmi Kabupaten
+                                            </h1>
+                                            <h1 class="text-lg md:text-xl font-extrabold">
+                                                KEPULAUAN MERANTI
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="flex lg:hidden">
+                                <button type="button" command="show-modal" commandfor="mobile-menu"
+                                    class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                                    <span class="sr-only">Open main menu</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                        data-slot="icon" aria-hidden="true" class="size-6">
+                                        <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <el-popover-group class="hidden lg:flex lg:gap-x-5">
+                                <a href=""
+                                    class="relative text-normal font-medium text-emerald-700 rounded-xl transition duration-200 ease-in-out hover:text-emerald-700 group">
+                                    Beranda
+                                    <span
+                                        class="absolute left-1/2 -bottom-1 w-10 h-1 bg-emerald-700 rounded-full -translate-x-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
+                                </a>
+                                <a href=""
+                                    class="relative text-normal font-medium text-slate-900 rounded-xl transition duration-200 ease-in-out hover:text-emerald-700 group">
+                                    Berita
+                                    <span
+                                        class="absolute left-1/2 -bottom-1 w-10 h-1 bg-emerald-700 rounded-full -translate-x-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
+                                </a>
+                                <a href=""
+                                    class="relative text-normal font-medium text-slate-900 rounded-xl transition duration-200 ease-in-out hover:text-emerald-700 group">
+                                    Selayang Pandang
+                                    <span
+                                        class="absolute left-1/2 -bottom-1 w-10 h-1 bg-emerald-700 rounded-full -translate-x-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
+                                </a>
+                                <a href=""
+                                    class="relative text-normal font-medium text-slate-900 rounded-xl transition duration-200 ease-in-out hover:text-emerald-700 group">
+                                    Tautan Aplikasi
+                                    <span
+                                        class="absolute left-1/2 -bottom-1 w-10 h-1 bg-emerald-700 rounded-full -translate-x-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
+                                </a>
+                                <div class="relative">
+                                    <button popovertarget="desktop-menu-product"
+                                        class="group flex items-center gap-x-1 text-normal font-medium text-slate-900 hover:text-emerald-700 transition duration-200 ease-in-out rounded-xl">
+                                        <span class="relative">
+                                            Informasi
+                                            <span
+                                                class="absolute left-1/2 -bottom-1 w-10 h-1 bg-emerald-700 rounded-full -translate-x-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center">
+                                            </span>
+                                        </span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor"
+                                            class="size-4 flex-none text-slate-900 group-hover:text-emerald-700 transition duration-200 ease-in-out">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </button>
+                                    <el-popover id="desktop-menu-product" anchor="bottom" popover
+                                        class="w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg outline-1 outline-gray-900/5 transition transition-discrete [--anchor-gap:--spacing(3)] backdrop:bg-transparent open:block data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-150 data-leave:ease-in">
+                                        <div class="p-4">
+                                            <div
+                                                class="group relative flex items-center gap-x-6 rounded-xl p-4 text-sm/6 hover:bg-gray-50">
+                                                <div
+                                                    class="flex size-11 flex-none items-center justify-center rounded-xl bg-gray-50 group-hover:bg-white">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="1.5" data-slot="icon" aria-hidden="true"
+                                                        class="size-6 text-gray-600 group-hover:text-indigo-600">
+                                                        <path d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-auto">
+                                                    <a href="" class="block font-semibold text-gray-900">
+                                                        Analytics
+                                                        <span class="absolute inset-0"></span>
+                                                    </a>
+                                                    <p class="mt-1 text-gray-600">Get a better understanding of your
+                                                        traffic
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="group relative flex items-center gap-x-6 rounded-xl p-4 text-sm/6 hover:bg-gray-50">
+                                                <div
+                                                    class="flex size-11 flex-none items-center justify-center rounded-xl bg-gray-50 group-hover:bg-white">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="1.5" data-slot="icon" aria-hidden="true"
+                                                        class="size-6 text-gray-600 group-hover:text-indigo-600">
+                                                        <path
+                                                            d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-auto">
+                                                    <a href="" class="block font-semibold text-gray-900">
+                                                        Engagement
+                                                        <span class="absolute inset-0"></span>
+                                                    </a>
+                                                    <p class="mt-1 text-gray-600">Speak directly to your customers</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="group relative flex items-center gap-x-6 rounded-xl p-4 text-sm/6 hover:bg-gray-50">
+                                                <div
+                                                    class="flex size-11 flex-none items-center justify-center rounded-xl bg-gray-50 group-hover:bg-white">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="1.5" data-slot="icon" aria-hidden="true"
+                                                        class="size-6 text-gray-600 group-hover:text-indigo-600">
+                                                        <path
+                                                            d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-auto">
+                                                    <a href="" class="block font-semibold text-gray-900">
+                                                        Security
+                                                        <span class="absolute inset-0"></span>
+                                                    </a>
+                                                    <p class="mt-1 text-gray-600">Your customers’ data will be safe and
+                                                        secure</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="group relative flex items-center gap-x-6 rounded-xl p-4 text-sm/6 hover:bg-gray-50">
+                                                <div
+                                                    class="flex size-11 flex-none items-center justify-center rounded-xl bg-gray-50 group-hover:bg-white">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="1.5" data-slot="icon" aria-hidden="true"
+                                                        class="size-6 text-gray-600 group-hover:text-indigo-600">
+                                                        <path
+                                                            d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-auto">
+                                                    <a href="" class="block font-semibold text-gray-900">
+                                                        Integrations
+                                                        <span class="absolute inset-0"></span>
+                                                    </a>
+                                                    <p class="mt-1 text-gray-600">Connect with third-party tools</p>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="group relative flex items-center gap-x-6 rounded-xl p-4 text-sm/6 hover:bg-gray-50">
+                                                <div
+                                                    class="flex size-11 flex-none items-center justify-center rounded-xl bg-gray-50 group-hover:bg-white">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="1.5" data-slot="icon" aria-hidden="true"
+                                                        class="size-6 text-gray-600 group-hover:text-indigo-600">
+                                                        <path
+                                                            d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-auto">
+                                                    <a href="" class="block font-semibold text-gray-900">
+                                                        Automations
+                                                        <span class="absolute inset-0"></span>
+                                                    </a>
+                                                    <p class="mt-1 text-gray-600">Build strategic funnels that will
+                                                        convert
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+                                            <a href=""
+                                                class="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100">
+                                                <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon"
+                                                    aria-hidden="true" class="size-5 flex-none text-gray-400">
+                                                    <path
+                                                        d="M2 10a8 8 0 1 1 16 0 8 8 0 0 1-16 0Zm6.39-2.908a.75.75 0 0 1 .766.027l3.5 2.25a.75.75 0 0 1 0 1.262l-3.5 2.25A.75.75 0 0 1 8 12.25v-4.5a.75.75 0 0 1 .39-.658Z"
+                                                        clip-rule="evenodd" fill-rule="evenodd" />
+                                                </svg>
+                                                Watch demo
+                                            </a>
+                                            <a href=""
+                                                class="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100">
+                                                <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon"
+                                                    aria-hidden="true" class="size-5 flex-none text-gray-400">
+                                                    <path
+                                                        d="M2 3.5A1.5 1.5 0 0 1 3.5 2h1.148a1.5 1.5 0 0 1 1.465 1.175l.716 3.223a1.5 1.5 0 0 1-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 0 0 6.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 0 1 1.767-1.052l3.223.716A1.5 1.5 0 0 1 18 15.352V16.5a1.5 1.5 0 0 1-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 0 1 2.43 8.326 13.019 13.019 0 0 1 2 5V3.5Z"
+                                                        clip-rule="evenodd" fill-rule="evenodd" />
+                                                </svg>
+                                                Contact sales
+                                            </a>
+                                        </div>
+                                    </el-popover>
+                                </div>
+
+                            </el-popover-group>
+                        </nav>
+                        <el-dialog>
+                            <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
+                                <div tabindex="0" class="fixed inset-0 focus:outline-none">
+                                    <el-dialog-panel
+                                        class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                                        <div class="flex items-center justify-between">
+                                            <a href="" class="-m-1.5 p-1.5">
+                                                <div class="flex items-center justify-center md:justify-start w-full">
+                                                    <img src="{{ asset('image/logo-meranti.png') }}" alt="Logo"
+                                                        class="w-12 h-12 object-contain" />
+                                                    <div class="flex flex-col leading-tight">
+                                                        <h1
+                                                            class="text-xs font-bold text-slate-800 text-shadow-xs text-shadow-slate-50">
+                                                            Website Resmi Kabupaten
+                                                        </h1>
+                                                        <h1
+                                                            class="text-lg md:text-xl font-extrabold text-slate-800 text-shadow-xs text-shadow-slate-50">
+                                                            KEPULAUAN MERANTI
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <button type="button" command="close" commandfor="mobile-menu"
+                                                class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                                                <span class="sr-only">Close menu</span>
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="1.5" data-slot="icon" aria-hidden="true"
+                                                    class="size-6">
+                                                    <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="mt-6 flow-root">
+                                            <div class="-my-6 divide-y divide-gray-500/10">
+                                                <div class="space-y-2 py-6">
+                                                    <div class="-mx-3">
+                                                        <button type="button" command="--toggle"
+                                                            commandfor="products"
+                                                            class="flex w-full items-center justify-between rounded-xl py-2 pr-3.5 pl-3 text-normal/7 font-semibold text-gray-900 hover:bg-gray-50">
+                                                            Product
+                                                            <svg viewBox="0 0 20 20" fill="currentColor"
+                                                                data-slot="icon" aria-hidden="true"
+                                                                class="size-5 flex-none in-aria-expanded:rotate-180">
+                                                                <path
+                                                                    d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                                                                    clip-rule="evenodd" fill-rule="evenodd" />
+                                                            </svg>
+                                                        </button>
+                                                        <el-disclosure id="products" hidden
+                                                            class="mt-2 block space-y-2">
+                                                            <a href=""
+                                                                class="block rounded-xl py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50">Analytics</a>
+                                                            <a href=""
+                                                                class="block rounded-xl py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50">Engagement</a>
+                                                            <a href=""
+                                                                class="block rounded-xl py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50">Security</a>
+                                                            <a href=""
+                                                                class="block rounded-xl py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50">Integrations</a>
+                                                            <a href=""
+                                                                class="block rounded-xl py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50">Automations</a>
+                                                            <a href=""
+                                                                class="block rounded-xl py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50">Watch
+                                                                demo</a>
+                                                            <a href=""
+                                                                class="block rounded-xl py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50">Contact
+                                                                sales</a>
+                                                        </el-disclosure>
+                                                    </div>
+                                                    <a href=""
+                                                        class="-mx-3 block rounded-xl px-3 py-2 text-normal/7 font-semibold text-gray-900 hover:bg-gray-50">Berita</a>
+                                                    <a href=""
+                                                        class="-mx-3 block rounded-xl px-3 py-2 text-normal/7 font-semibold text-gray-900 hover:bg-gray-50">Selayang
+                                                        Pandang</a>
+                                                    <a href=""
+                                                        class="-mx-3 block rounded-xl px-3 py-2 text-normal/7 font-semibold text-gray-900 hover:bg-gray-50">Company</a>
+                                                </div>
+                                                {{-- <div class="py-6">
+                                                    <a href=""
+                                                        class="-mx-3 block rounded-xl px-3 py-2.5 text-normal/7 font-semibold text-gray-900 hover:bg-gray-50">Log
+                                                        in</a>
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                    </el-dialog-panel>
+                                </div>
+                            </dialog>
+                        </el-dialog>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <section id="hero">
         <div class="relative w-full h-screen">
             @livewire('carousel-full', ['carouselFull' => $carouselFull])
@@ -32,8 +356,9 @@
                                             class="w-full border border-white rounded-lg pl-10 pr-3 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-500 bg-white/20 backdrop-blur-sm text-white placeholder-white/80">
                                         <button type="submit"
                                             class="absolute inset-y-0 left-0 flex items-center pl-3 text-emerald-300 hover:text-emerald-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                                             </svg>
@@ -70,7 +395,8 @@
 
                                                     @if ($item->image === null)
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            viewBox="0 0 24 24" stroke-width="1.5"
+                                                            stroke="currentColor"
                                                             class="size-10 text-emerald-500 w-full h-16">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
@@ -302,9 +628,8 @@
                                             {{ $item->category ?? null }}
                                         </h3>
                                         <h1 class="text-slate-700 text-lg font-medium line-clamp-2">
-                                            <a href="{{ route('news.show', $item->slug ?? null) }}"
-                                                class="hover:underline">
-                                                {{ $item->title ?? null }}
+                                            <a href="" class="hover:underline">
+                                                {{ $item->title ?? null }} ok
                                             </a>
                                         </h1>
                                         <h6 class=" text-slate-500 text-sm line-clamp-1">
@@ -318,7 +643,7 @@
                 </div>
                 <footer class="flex items-center gap-4">
                     <div class="flex-grow border-b border-emerald-500"></div>
-                    <a href="{{ route('news.index') }}"
+                    <a href=""
                         class="inline-flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition">
                         Selengkapnya
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -586,61 +911,315 @@
         </div>
     </section>
 
+    {{-- <footer id="footer"
+        class="bg-emerald-500 bg-[url(/public/image/background/alternating-arrowhead.svg)] bg-center bg-fixed bg-repeat p-4 py-12">
+        <div class="w-full">
+            <div class="w-full sm:max-w-6xl md:max-w-6xl  mx-auto p-5">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                    <div class="md:col-span-6 lg:col-span-4">
+                        <div class="flex items-center justify-center md:justify-start gap-3 w-full">
+                            <img src="{{ asset('image/logo-meranti.png') }}" alt="Logo"
+                                class="w-14 h-14 object-contain" />
+                            <h1 class="text-2xl font-bold text-white leading-tight">
+                                KEPULAUAN <br> MERANTI
+                            </h1>
+                        </div>
+                        <div class="mt-4 flex items-start space-x-2">
+                            <div class="w-fit p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="size-6 fill-white">
+                                    <path fill-rule="evenodd" d=" m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975
+        16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0
+        3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6
+        3 3 0 0 0 0 6Z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 class="text-white">Jalan Dorak, Kec. Tebing Tinggi, Selatpanjang - 24753</h3>
+                        </div>
+                        <div class="mt-4 flex items-start space-x-2">
+                            <div class="w-fit p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="size-6 fill-white">
+                                    <path fill-rule="evenodd"
+                                        d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 class="text-white">+62 854 293849</h3>
+                        </div>
+                        <div class="mt-4 flex items-start space-x-2">
+                            <div class="w-fit p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="size-6 fill-white">
+                                    <path
+                                        d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                                    <path
+                                        d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-white">diskominfotik@merantikab.go.id</h3>
+                        </div>
+                    </div>
 
+                    <div class="md:col-span-6 lg:col-span-4">
+                        <div>
+                            <div class="w-full flex items-center">
+                                <h3 class="text-xl font-semibold text-white whitespace-nowrap">
+                                    Kecamatan
+                                </h3>
+                                <div class="flex-1 border-t border-white/50 ml-4"></div>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Tasik Putri Puyu
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Rangsang
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Rangsang Barat
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Rangsang Pesisir
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Merbau
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Pulau Merbau
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Tebing Tinggi
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Tebing Tinggi Barat
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Tebing Tinggi Timur
+                                    </a>
+                                </h3>
+                            </div>
 
-    @push('metaTag')
-        <meta property="og:url" content="{{ env('APP_URL') }}">
-        <meta property="og:type" content="Website">
-        <meta property="og:title" content="Website Resmi Kabupaten KEPULAUAN MERANTI">
-        <meta property="og:description" content="Website Resmi Kabupaten KEPULAUAN MERANTI">
-        <meta property="og:image" content="{{ asset('/image/logo-meranti.png') }}">
-        <meta name="twitter:card" content="summary_large_image">
-        <meta property="twitter:domain" content="{{ env('APP_URL') }}">
-        <meta property="twitter:url" content="{{ env('APP_URL') }}">
-        <meta name="twitter:title" content="Website Resmi Kabupaten KEPULAUAN MERANTI">
-        <meta name="twitter:image" content="{{ asset('/image/logo-meranti.png') }}">
-    @endpush
+                        </div>
+                    </div>
 
-    @push('scripts')
-        <script>
-            const url = "{{ env('APP_URL') }}";
-            const message = "Website Resmi Kabupaten KEPULAUAN MERANTI";
+                    <div class="md:col-span-6 lg:col-span-4">
+                        <div>
+                            <div class="w-full flex items-center">
+                                <h3 class="text-xl font-semibold text-white whitespace-nowrap">
+                                    Lainnya
+                                </h3>
+                                <div class="flex-1 border-t border-white/50 ml-4"></div>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Smart City
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Lapor
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Statistik
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        PPID
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Statistik
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="mt-4 flex items-start space-x-2">
+                                <div class="w-fit p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="size-4 fill-white">
+                                        <path fill-rule="evenodd"
+                                            d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-white">
+                                    <a href="" class="hover:underline">
+                                        Desa Sialang Pasung
+                                    </a>
+                                </h3>
+                            </div>
 
-            document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
-                new bootstrap.Tooltip(el);
-            });
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="mt-16 flex w-full flex-col items-center justify-center space-x-2 border-t border-slate-100 py-2 md:flex-row text-white">
+                    <p class="text-sm font-medium">Diskominfotik &copy; {{ date('Y') }}</p>
+                    <p class="text-sm font-medium">Kabupaten Kepulauan Meranti</p>
+                </div>
+            </div>
+        </div>
+    </footer> --}}
 
-            function whatsapp() {
-                const api = `https://wa.me/?text=${encodeURIComponent(url + "\n\n" + message)}`;
-                window.open(api, "_blank");
-            }
+    @livewireScripts
+</body>
 
-            function facebook() {
-                const api = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-                window.open(api, "_blank");
-            }
-
-            function twitter() {
-                const api =
-                    `https://twitter.com/intent/tweet?text=${encodeURIComponent(message + "\n\n" + url)}`;
-                window.open(api, "_blank");
-            }
-
-            function telegram() {
-                const api =
-                    `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent("\n" + message)}`;
-                window.open(api, "_blank");
-            }
-
-            function copyLink() {
-                const textarea = document.createElement('textarea');
-                textarea.value = url;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                alert(`${message}\n\nTautan berhasil disalin.`);
-            }
-        </script>
-    @endpush
-</x-public.layout.app-layout>
+</html>

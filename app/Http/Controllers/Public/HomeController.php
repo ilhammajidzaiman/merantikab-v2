@@ -21,7 +21,7 @@ class HomeController extends Controller
         $data['news'] = collect(Http::get(env('API_NEWS'))->object()->data ?? [])
             ->map(function ($item) {
                 return (object) [
-                    'slug' => 'https://sipb.merantikab.go.id/' . $item->slug ?? null,
+                    'slug' => $item->slug ?? null,
                     'title' => $item->title ?? null,
                     'category' => $item->category ?? null,
                     'categorySlug' => $item->categorySlug ?? null,
@@ -37,7 +37,7 @@ class HomeController extends Controller
             ->take(5)
             ->map(function ($item) {
                 return (object) [
-                    'slug' => 'https://sipb.merantikab.go.id/' . $item->slug ?? null,
+                    'slug' => $item->slug ?? null,
                     'title' => $item->title ?? null,
                     'image' => $item->thumbnail ?? null,
                     'thumbnail_alt' => $item->thumbnail_alt ?? null,
