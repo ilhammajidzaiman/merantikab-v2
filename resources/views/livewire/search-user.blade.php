@@ -1,8 +1,13 @@
 <div>
     <input wire:model.live="search">
+    <div wire:loading>
+        mencari berita...
+    </div>
     <ol>
-        @foreach ($users as $user)
+        @forelse ($users as $user)
             <li>{{ $user->name }}</li>
-        @endforeach
+        @empty
+            <li>Tidak ada hasil</li>
+        @endforelse
     </ol>
 </div>
