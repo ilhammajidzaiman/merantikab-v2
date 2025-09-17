@@ -1,0 +1,8 @@
+<div>
+    <input wire:model.live="search">
+    <ol>
+        @foreach ($users as $user)
+            <li>{{ $user->name }}</li>
+        @endforeach
+    </ol>
+</div>

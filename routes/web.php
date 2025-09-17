@@ -15,3 +15,7 @@ Route::prefix('/news')->controller(Public\NewsController::class)->group(function
     Route::get('/', 'index')->name('news.index');
     Route::get('/{id}', 'show')->name('news.show');
 });
+
+Route::prefix('/user')->controller(Public\UserController::class)->group(function () {
+    Route::get('/', 'index')->name('user.index');
+});
