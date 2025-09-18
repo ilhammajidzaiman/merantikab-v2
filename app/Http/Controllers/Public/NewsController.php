@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Public;
 
-use Illuminate\Http\Request;
+use Exception;
 use App\Traits\ReadTimeTrait;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
@@ -13,61 +14,36 @@ class NewsController extends Controller
 
     public function index()
     {
-        // $data['news'] = collect(Http::get(env('API_NEWS'))->object()->data ?? [])
-        //     ->map(function ($item) {
-        //         return (object) [
-        //             'slug' => $item->slug ?? null,
-        //             'title' => $item->title ?? null,
-        //             'category' => $item->category ?? null,
-        //             'categorySlug' => $item->categorySlug ?? null,
-        //             'date' => $item->date ?? null,
-        //             'institute' => $item->institute ?? null,
-        //             'user' => $item->user ?? null,
-        //             'thumbnail_alt' => $item->thumbnail_alt ?? null,
-        //             'image' => $item->thumbnail ?? null,
-        //         ];
-        //     });
-        // return view('public.news.index', $data);
-
-        $data['news'] = collect(Http::get(env('API_NEWS'))->object()->data ?? [])
-            ->map(function ($item) {
-                return (object) [
-                    'slug' => $item->slug ?? null,
-                    'title' => $item->title ?? null,
-                    'category' => $item->category ?? null,
-                    'categorySlug' => $item->categorySlug ?? null,
-                    'date' => $item->date ?? null,
-                    'institute' => $item->institute ?? null,
-                    'user' => $item->user ?? null,
-                    'thumbnail_alt' => $item->thumbnail_alt ?? null,
-                    'image' => $item->thumbnail ?? null,
-                ];
-            });
-
-        return view('public.news.index', $data);
+        return view('public.news.index');
     }
 
     public function show(string $id)
     {
         $item = Http::get(env('API_NEWS') . $id)->object()->data;
-        $data['record'] = (object) [
-            'slug' => $item->slug ?? null,
-            'title' => $item->title ?? null,
-            'category' => $item->category ?? null,
-            'categorySlug' => $item->categorySlug ?? null,
-            'date' => $item->date ?? null,
-            'institute' => $item->institute ?? null,
-            'user' => $item->user ?? null,
-            'thumbnail_alt' => $item->thumbnail_alt ?? null,
-            'image' => $item->thumbnail ?? null,
-            'content' => $item->content ?? null,
-            'read_time' => $this->ReadTimeFormatted($item->content ?? null),
-            'images' => $item->images ?? [],
-            'tag' => $item->tag ?? [],
-        ];
-        $data['newsOther'] = collect(Http::get(env('API_NEWS_CATEGORY') . $item->categorySlug)->object()->data ?? [])
-            ->map(function ($item) {
-                return (object) [
+        $newsOther = Http::get(env('API_NEWS_CATEGORY') . $item->categorySlug)->object()->data ?? [];
+
+        $data['record'] = $this->getRecord($item);
+        $data['newsOther'] = $this->getRecordOther($newsOther);
+
+        return view('public.news.show', $data);
+    }
+
+    public function getNews(?string $search = null): array
+    {
+        try {
+            $url = $search === null || $search === ''
+                ? env('API_NEWS')
+                : rtrim(env('API_NEWS_SEARCH'), '/') . '/' . rawurlencode($search);
+            $response = Http::get($url);
+            if ($response->failed()) :
+                return [
+                    'error' => true,
+                    'data' => collect(),
+                ];
+            endif;
+            return [
+                'error' => false,
+                'data' => collect($response->object()->data ?? [])->map(fn($item) => (object) [
                     'slug' => $item->slug ?? null,
                     'title' => $item->title ?? null,
                     'category' => $item->category ?? null,
@@ -77,8 +53,50 @@ class NewsController extends Controller
                     'user' => $item->user ?? null,
                     'thumbnail_alt' => $item->thumbnail_alt ?? null,
                     'image' => $item->thumbnail ?? null,
-                ];
-            });
-        return view('public.news.show', $data);
+                ]),
+            ];
+        } catch (Exception $e) {
+            Log::error('API_NEWS error: ' . $e->getMessage());
+            return [
+                'error' => true,
+                'data' => collect(),
+            ];
+        }
+    }
+
+    private function getRecord(object $item): object
+    {
+        return (object) [
+            'slug'          => $item->slug ?? null,
+            'title'         => $item->title ?? null,
+            'category'      => $item->category ?? null,
+            'categorySlug'  => $item->categorySlug ?? null,
+            'date'          => $item->date ?? null,
+            'institute'     => $item->institute ?? null,
+            'user'          => $item->user ?? null,
+            'thumbnail_alt' => $item->thumbnail_alt ?? null,
+            'image'         => $item->thumbnail ?? null,
+            'content'       => $item->content ?? null,
+            'read_time'     => $this->ReadTimeFormatted($item->content ?? null),
+            'images'        => $item->images ?? [],
+            'tag'           => $item->tag ?? [],
+        ];
+    }
+
+    private function getRecordOther(array $items): \Illuminate\Support\Collection
+    {
+        return collect($items)->map(function ($item) {
+            return (object) [
+                'slug'          => $item->slug ?? null,
+                'title'         => $item->title ?? null,
+                'category'      => $item->category ?? null,
+                'categorySlug'  => $item->categorySlug ?? null,
+                'date'          => $item->date ?? null,
+                'institute'     => $item->institute ?? null,
+                'user'          => $item->user ?? null,
+                'thumbnail_alt' => $item->thumbnail_alt ?? null,
+                'image'         => $item->thumbnail ?? null,
+            ];
+        });
     }
 }

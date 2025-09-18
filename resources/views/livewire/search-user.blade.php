@@ -1,13 +1,19 @@
 <div>
     <input wire:model.live="search">
-    <div wire:loading>
+    <span wire:loading>
         mencari berita...
-    </div>
-    <ol>
-        @forelse ($users as $user)
-            <li>{{ $user->name }}</li>
-        @empty
-            <li>Tidak ada hasil</li>
-        @endforelse
-    </ol>
+    </span>
+    @if ($error)
+        <p>
+            gagal mengambil data dari server.
+        </p>
+    @else
+        <ol>
+            @forelse ($data as $item)
+                <li>{{ $item->name }}</li>
+            @empty
+                <li>data tidak ditemukan</li>
+            @endforelse
+        </ol>
+    @endif
 </div>

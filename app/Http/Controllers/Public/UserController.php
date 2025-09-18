@@ -2,44 +2,59 @@
 
 namespace App\Http\Controllers\Public;
 
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
-    // public function index()
+    public function index()
+    {
+        return view('user');
+    }
+
+    // public function getUsers(?string $search = null): Collection
     // {
-    //     // Ambil data dari API
-    //     $users = collect(Http::get(env('API_NEWS'))->object()->data ?? [])
+    //     $url = $search === null || $search === ''
+    //         ? env('API_NEWS')
+    //         : rtrim(env('API_NEWS_SEARCH'), '/') . '/' . rawurlencode($search);
+    //     $response = Http::get($url)->object();
+    //     return collect($response->data ?? [])
     //         ->map(function ($item) {
     //             return (object) [
     //                 'name' => $item->title ?? null,
     //             ];
     //         });
-
-    //     // Kirim ke view
-    //     return view('user', compact('users'));
     // }
 
-
-    public function index()
+    public function getUsers(?string $search = null): array
     {
-        $data['users'] = collect(Http::get(env('API_NEWS'))->object()->data ?? [])
-            ->map(function ($item) {
-                return (object) [
-                    'slug' => $item->slug ?? null,
-                    'name' => $item->title ?? null,
-                    'category' => $item->category ?? null,
-                    'categorySlug' => $item->categorySlug ?? null,
-                    'date' => $item->date ?? null,
-                    'institute' => $item->institute ?? null,
-                    'user' => $item->user ?? null,
-                    'thumbnail_alt' => $item->thumbnail_alt ?? null,
-                    'image' => $item->thumbnail ?? null,
+        try {
+            $url = $search === null || $search === ''
+                ? env('API_NEWS')
+                : rtrim(env('API_NEWS_SEARCH'), '/') . '/' . rawurlencode($search);
+            $response = Http::get($url);
+            if ($response->failed()) :
+                return [
+                    'error' => true,
+                    'data' => collect(),
                 ];
-            });
-
-        return view('user', $data);
+            endif;
+            return [
+                'error' => false,
+                'data' => collect($response->object()->data ?? [])->map(fn($item) => (object) [
+                    'name' => $item->title ?? null,
+                ]),
+            ];
+        } catch (Exception $e) {
+            Log::error('API_NEWS error: ' . $e->getMessage());
+            return [
+                'error' => true,
+                'data' => collect(),
+            ];
+        }
     }
 }
