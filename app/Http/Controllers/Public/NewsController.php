@@ -28,41 +28,69 @@ class NewsController extends Controller
         return view('public.news.show', $data);
     }
 
-    public function getNews(?string $search = null): array
+    public function getNews($search = null, $page = 1)
     {
         try {
-            $url = $search === null || $search === ''
+            $url = ($search === null || $search === '')
                 ? env('API_NEWS')
                 : rtrim(env('API_NEWS_SEARCH'), '/') . '/' . rawurlencode($search);
-            $response = Http::get($url);
+
+            $response = Http::get($url, [
+                'page' => $page,
+            ]);
+
             if ($response->failed()) :
-                return [
-                    'error' => true,
-                    'data' => collect(),
-                ];
+                return ['data' => [], 'error' => 'Gagal ambil data berita'];
             endif;
+
+            $json = $response->json();
+
             return [
-                'error' => false,
-                'data' => collect($response->object()->data ?? [])->map(fn($item) => (object) [
-                    'slug' => $item->slug ?? null,
-                    'title' => $item->title ?? null,
-                    'category' => $item->category ?? null,
-                    'categorySlug' => $item->categorySlug ?? null,
-                    'date' => $item->date ?? null,
-                    'institute' => $item->institute ?? null,
-                    'user' => $item->user ?? null,
-                    'thumbnail_alt' => $item->thumbnail_alt ?? null,
-                    'image' => $item->thumbnail ?? null,
-                ]),
+                'data'      => $json['data'] ?? [],
+                'error'     => null,
+                'last_page' => $json['last_page'] ?? 1,
             ];
-        } catch (Exception $e) {
-            Log::error('API_NEWS error: ' . $e->getMessage());
-            return [
-                'error' => true,
-                'data' => collect(),
-            ];
+        } catch (\Exception $e) {
+            return ['data' => [], 'error' => $e->getMessage()];
         }
     }
+
+
+    // public function getNews(?string $search = null): array
+    // {
+    //     try {
+    //         $url = $search === null || $search === ''
+    //             ? env('API_NEWS')
+    //             : rtrim(env('API_NEWS_SEARCH'), '/') . '/' . rawurlencode($search);
+    //         $response = Http::get($url);
+    //         if ($response->failed()) :
+    //             return [
+    //                 'error' => true,
+    //                 'data' => collect(),
+    //             ];
+    //         endif;
+    //         return [
+    //             'error' => false,
+    //             'data' => collect($response->object()->data ?? [])->map(fn($item) => (object) [
+    //                 'slug' => $item->slug ?? null,
+    //                 'title' => $item->title ?? null,
+    //                 'category' => $item->category ?? null,
+    //                 'categorySlug' => $item->categorySlug ?? null,
+    //                 'date' => $item->date ?? null,
+    //                 'institute' => $item->institute ?? null,
+    //                 'user' => $item->user ?? null,
+    //                 'thumbnail_alt' => $item->thumbnail_alt ?? null,
+    //                 'image' => $item->thumbnail ?? null,
+    //             ]),
+    //         ];
+    //     } catch (Exception $e) {
+    //         Log::error('API_NEWS error: ' . $e->getMessage());
+    //         return [
+    //             'error' => true,
+    //             'data' => collect(),
+    //         ];
+    //     }
+    // }
 
     private function getRecord(object $item): object
     {
