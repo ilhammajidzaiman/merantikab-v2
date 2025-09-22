@@ -66,8 +66,6 @@
                                                 class="flex-none w-28 md:w-56 rounded-xl overflow-hidden bg-white/20 backdrop-blur-sm hover:bg-slate-300 transition duration-300 ease-in-out snap-center">
                                                 <div
                                                     class="flex flex-col items-center justify-center gap-2 rounded-xl p-4 ">
-
-
                                                     @if ($item->image === null)
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -79,7 +77,6 @@
                                                                 alt="Logo"
                                                                 class="w-full h-16 object-contain hover:scale-110 transition duration-300 ease-in-out " />
                                                     @endif
-
                                                     <h1
                                                         class="text-lg font-medium text-white text-shadow-xs text-shadow-slate-500 text-center">
                                                         <a href="{{ $item->link ?? null }}" target="_blank"
@@ -291,34 +288,39 @@
                     <div class="md:col-span-6 lg:col-span-1">
                         <div
                             class="w-full aspect-square overflow-y-auto bg-slate-100 rounded-xl border border-slate-200 hide-scrollbar">
-                            @foreach ($news as $item)
-                                <div class="overflow-hidden flex items-center gap-4 shadow-xs rounded-xl bg-white m-4">
-                                    <div class="w-34 h-34 overflow-hidden rounded-r-full shrink-0 bg-slate-200">
-                                        <img src="{{ env('API_SIPB') . $item->image ?? null }}" alt="image"
-                                            class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
+                            @if ($news->isNotEmpty())
+                                @foreach ($news as $item)
+                                    <div
+                                        class="overflow-hidden flex items-center gap-4 shadow-xs rounded-xl bg-white m-4">
+                                        <div class="w-34 h-34 overflow-hidden rounded-r-full shrink-0 bg-slate-200">
+                                            <img src="{{ env('API_SIPB') . $item->image ?? null }}" alt="image"
+                                                class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
+                                        </div>
+                                        <div class="p-4">
+                                            <h3 class="text-emerald-500 text-normal line-clamp-1">
+                                                {{ $item->category ?? null }}
+                                            </h3>
+                                            <h1 class="text-slate-700 text-lg font-medium line-clamp-2">
+                                                <a wire:navigate href="{{ route('news.show', $item->slug ?? null) }}"
+                                                    class="hover:underline">
+                                                    {{ $item->title ?? null }}
+                                                </a>
+                                            </h1>
+                                            <h6 class=" text-slate-500 text-sm line-clamp-1">
+                                                {{ Carbon::parse($item->date)->translatedFormat('l, j F Y') }}
+                                            </h6>
+                                        </div>
                                     </div>
-                                    <div class="p-4">
-                                        <h3 class="text-emerald-500 text-normal line-clamp-1">
-                                            {{ $item->category ?? null }}
-                                        </h3>
-                                        <h1 class="text-slate-700 text-lg font-medium line-clamp-2">
-                                            <a href="{{ route('news.show', $item->slug ?? null) }}"
-                                                class="hover:underline">
-                                                {{ $item->title ?? null }}
-                                            </a>
-                                        </h1>
-                                        <h6 class=" text-slate-500 text-sm line-clamp-1">
-                                            {{ Carbon::parse($item->date)->translatedFormat('l, j F Y') }}
-                                        </h6>
-                                    </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @else
+                                <x-public.empty />
+                            @endif
                         </div>
                     </div>
                 </div>
                 <footer class="flex items-center gap-4">
                     <div class="flex-grow border-b border-emerald-500"></div>
-                    <a href="{{ route('news.index') }}"
+                    <a wire:navigate href="{{ route('news.index') }}"
                         class="inline-flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition">
                         Selengkapnya
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -349,7 +351,7 @@
                                     Akses informasi terbaru dari pemerintah
                                 </p>
                                 <div class="flex justify-start">
-                                    <a href=""
+                                    <a wire:navigate href=""
                                         class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
                                         Selengkapnya
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -365,14 +367,14 @@
                             <div class="w-full ">
                                 <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto">
                                     <div class="grid grid-cols-1 gap-4">
-                                        @foreach ($infoPengumumans as $item)
+                                        @foreach ($infoPengumuman as $item)
                                             <div class="col-span-full">
                                                 <div
                                                     class="bg-white backdrop-blur-sm rounded-xl border border-slate-300 group relative flex  flex-col overflow-hidden duration-300 hover:shadow-lg p-3">
                                                     <h3 class="text-sm text-slate-500">
                                                         {{ Carbon::parse($item->date)->translatedFormat('l, j F Y') }}
                                                     </h3>
-                                                    <a href="" class="hover:underline">
+                                                    <a wire:navigate href="" class="hover:underline">
                                                         <h1
                                                             class="text-lg font-semibold text-slate-600 line-clamp-1 mt-2">
                                                             {{ $item->title ?? null }}
@@ -434,7 +436,7 @@
                                 </h3>
                             </div>
                             <div class="mt-4 flex justify-start">
-                                <a href=""
+                                <a wire:navigate href=""
                                     class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
                                     Kunjungi
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -449,7 +451,7 @@
                 </section>
                 <footer class="flex items-center gap-4">
                     <div class="flex-grow border-b border-white"></div>
-                    <a href=""
+                    <a wire:navigate href=""
                         class="inline-flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
                         Selengkapnya
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -473,7 +475,7 @@
                     </h1>
                 </section>
                 <section class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                    @foreach ($documents as $item)
+                    @foreach ($document as $item)
                         <div
                             class="overflow-hidden flex items-center gap-4 shadow-md rounded-xl bg-white hover:shadow-md">
 
@@ -501,7 +503,7 @@
                                     {{ $item->title ?? null }}
                                 </h1>
                                 <div class="mt-4 flex justify-start">
-                                    <a href=""
+                                    <a wire:navigate href=""
                                         class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
                                         Selengkapnya
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -517,7 +519,7 @@
                 </section>
                 <footer class="flex items-center gap-4">
                     <div class="flex-grow border-b border-emerald-500"></div>
-                    <a href=""
+                    <a wire:navigate href=""
                         class="inline-flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition">
                         Selengkapnya
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -551,7 +553,7 @@
                     <div class="md:col-span-2 lg:col-span-1">
                         <div class="overflow-hidden rounded-xl">
                             <iframe class="aspect-square object-cover rounded-xl"
-                                src="https://www.youtube.com/embed/{{ $videos->embed ?? null }}"
+                                src="https://www.youtube.com/embed/{{ $video->embed ?? null }}"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -572,7 +574,7 @@
                 </div>
 
                 <footer class="w-full flex justify-center mt-4">
-                    <a href=""
+                    <a wire:navigate href=""
                         class="text-normal text-white flex items-center gap-2 bg-emerald-500  px-4 py-2 rounded-xl hover:bg-emerald-600">
                         Selengkapnya
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

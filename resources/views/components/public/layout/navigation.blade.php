@@ -33,14 +33,14 @@
                             </button>
                         </div>
                         <el-popover-group class="hidden lg:flex lg:gap-x-5">
-                            <a href="{{ route('index') }}"
-                                class="relative text-normal font-medium text-emerald-700 rounded-xl transition duration-200 ease-in-out hover:text-emerald-700 group">
+                            <a wire:navigate href="{{ route('index') }}"
+                                class="{{ request()->routeIs('index') ? 'text-emerald-700' : 'text-slate-700' }} relative text-normal font-medium rounded-xl transition duration-200 ease-in-out hover:text-emerald-700 group">
                                 Beranda
                                 <span
                                     class="absolute left-1/2 -bottom-1 w-10 h-1 bg-emerald-700 rounded-full -translate-x-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
                             </a>
-                            <a href="{{ route('news.index') }}"
-                                class="relative text-normal font-medium text-slate-900 rounded-xl transition duration-200 ease-in-out hover:text-emerald-700 group">
+                            <a wire:navigate href="{{ route('news.index') }}"
+                                class="{{ request()->routeIs('news.*') ? 'text-emerald-700' : 'text-slate-700' }} relative text-normal font-medium rounded-xl transition duration-200 ease-in-out hover:text-emerald-700 group">
                                 Berita
                                 <span
                                     class="absolute left-1/2 -bottom-1 w-10 h-1 bg-emerald-700 rounded-full -translate-x-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>

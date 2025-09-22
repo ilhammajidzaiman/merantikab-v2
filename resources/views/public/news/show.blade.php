@@ -9,14 +9,14 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
                     <div class="md:col-span-full lg:col-span-7">
                         <div class="flex space-x-2 items-center text-lg text-slate-600 mb-4">
-                            <a href="{{ route('news.index') }}"class="hover:underline">
+                            <a wire:navigate href="{{ route('news.index') }}"class="hover:underline">
                                 Berita
                             </a>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="size-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                             </svg>
-                            <a
+                            <a wire:navigate
                                 href="{{ route('news.index') }}"class="hover:underline font-normal text-xl text-emerald-500">
                                 {{ $record->category ?? null }}
                             </a>
@@ -115,7 +115,7 @@
                                                 {{ Carbon::parse($item->date)->translatedFormat('l, j F Y') }}
                                             </h3>
                                             <h1 class="text-slate-700 text-lg font-medium line-clamp-3">
-                                                <a href="{{ route('news.show', $item->slug ?? null) }}"
+                                                <a wire:navigate href="{{ route('news.show', $item->slug ?? null) }}"
                                                     class="hover:underline">
                                                     {{ $item->title ?? null }}
                                                 </a>

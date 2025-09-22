@@ -48,7 +48,7 @@
                                     <h6 class="w-fit rounded-xl bg-emerald-500  text-white my-2 px-2 py-0.5">
                                         {{ $item->category ?? null }}
                                     </h6>
-                                    <a href="{{ route('news.show', $item->slug ?? null) }}"
+                                    <a wire:navigate href="{{ route('news.show', $item->slug ?? null) }}"
                                         class="hover:underline transition">
                                         <h1 class="text-lg font-semibold text-slate-600 line-clamp-3 my-2">
                                             {{ $item->title ?? null }}

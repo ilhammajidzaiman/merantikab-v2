@@ -3,10 +3,11 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Collection;
 
 class CarouselNews extends Component
 {
-    public $carouselNews = [];
+    public Collection $carouselNews;
 
     public $active = 0;
 
@@ -17,12 +18,18 @@ class CarouselNews extends Component
 
     public function next()
     {
-        $this->active = ($this->active + 1) % count($this->carouselNews);
+        if ($this->carouselNews->isEmpty()) :
+            return;
+        endif;
+        $this->active = ($this->active + 1) % $this->carouselNews->count();
     }
 
     public function previous()
     {
-        $this->active = ($this->active - 1 + count($this->carouselNews)) % count($this->carouselNews);
+        if ($this->carouselNews->isEmpty()) :
+            return;
+        endif;
+        $this->active = ($this->active - 1 + $this->carouselNews->count()) % $this->carouselNews->count();
     }
 
     public function render()
