@@ -80,7 +80,7 @@
                                                     <h1
                                                         class="text-lg font-medium text-white text-shadow-xs text-shadow-slate-500 text-center">
                                                         <a href="{{ $item->link ?? null }}" target="_blank"
-                                                            class="hover:underline">
+                                                            class="hover:underline line-clamp-2 md:line-clamp-1">
                                                             {{ $item->title ?? null }}
                                                         </a>
                                                     </h1>
@@ -307,7 +307,7 @@
                                                 </a>
                                             </h1>
                                             <h6 class=" text-slate-500 text-sm line-clamp-1">
-                                                {{ Carbon::parse($item->date)->translatedFormat('l, j F Y') }}
+                                                {{ $item->date ?? null }}
                                             </h6>
                                         </div>
                                     </div>
@@ -372,7 +372,7 @@
                                                 <div
                                                     class="bg-white backdrop-blur-sm rounded-xl border border-slate-300 group relative flex  flex-col overflow-hidden duration-300 hover:shadow-lg p-3">
                                                     <h3 class="text-sm text-slate-500">
-                                                        {{ Carbon::parse($item->date)->translatedFormat('l, j F Y') }}
+                                                        {{ $item->date ?? null }}
                                                     </h3>
                                                     <a wire:navigate href="" class="hover:underline">
                                                         <h1
@@ -497,7 +497,7 @@
                             </div>
                             <div class="p-4">
                                 <h3 class="text-slate-500 text-normal line-clamp-1">
-                                    {{ Carbon::parse($item->date)->translatedFormat('l, j F Y') }}
+                                    {{ $item->date ?? null }}
                                 </h3>
                                 <h1 class="text-slate-500 text-lg font-medium line-clamp-3">
                                     {{ $item->title ?? null }}

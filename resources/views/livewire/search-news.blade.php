@@ -42,20 +42,20 @@
                         <div class="md:col-span-6 lg:col-span-4">
                             <div class="mb-3">
                                 <div class="overflow-hidden rounded-xl">
-                                    <img src="{{ env('API_SIPB') . $item['thumbnail'] ?? null }}"
+                                    <img src="{{ env('API_SIPB') . $item->image ?? null }}"
                                         class="aspect-video object-cover rounded-xl transition duration-300 ease-in-out hover:scale-105">
                                 </div>
                                 <h6 class="w-fit rounded-xl bg-emerald-500  text-white my-2 px-2 py-0.5">
-                                    {{ $item['category'] ?? null }}
+                                    {{ $item->category ?? null }}
                                 </h6>
-                                <a wire:navigate href="{{ route('news.show', $item['slug'] ?? null) }}"
+                                <a wire:navigate href="{{ route('news.show', $item->slug ?? null) }}"
                                     class="hover:underline transition">
-                                    <h1 class="text-lg font-semibold text-slate-600 line-clamp-3 my-2">
-                                        {{ $item['title'] }}
+                                    <h1 class="text-lg font-normal text-slate-600 line-clamp-3 my-2">
+                                        {{ $item->title }}
                                     </h1>
                                 </a>
                                 <h3 class="text-sm text-slate-500">
-                                    {{ Carbon::parse($item['date'])->translatedFormat('l, j F Y') }}
+                                    {{ $item->date ?? null }}
                                 </h3>
                             </div>
                         </div>

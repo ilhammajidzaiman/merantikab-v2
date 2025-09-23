@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Public;
 
 use Illuminate\Support\Collection;
+use App\Traits\FormatDateTimeTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
+    use FormatDateTimeTrait;
+
     public function index()
     {
         $data['carouselFull'] = $this->getCarouselFull();
@@ -45,7 +48,7 @@ class HomeController extends Controller
                     'title' => $item->title ?? null,
                     'category' => $item->category ?? null,
                     'categorySlug' => $item->categorySlug ?? null,
-                    'date' => $item->date ?? null,
+                    'date' => $this->formatDayDate($item->date ?? null),
                     'institute' => $item->institute ?? null,
                     'user' => $item->user ?? null,
                     'thumbnail_alt' => $item->thumbnail_alt ?? null,
@@ -68,7 +71,7 @@ class HomeController extends Controller
                     'thumbnail_alt' => $item->thumbnail_alt ?? null,
                     'category' => $item->category ?? null,
                     'categorySlug' => $item->categorySlug ?? null,
-                    'date' => $item->date ?? null,
+                    'date' => $this->formatDayDate($item->date ?? null),
                     'institute' => $item->institute ?? null,
                     'user' => $item->user ?? null,
                 ];
@@ -89,7 +92,7 @@ class HomeController extends Controller
                     'thumbnail_alt' => $item->thumbnail_alt ?? null,
                     'category' => $item->category ?? null,
                     'categorySlug' => $item->categorySlug ?? null,
-                    'date' => $item->date ?? null,
+                    'date' => $this->formatDayDate($item->date ?? null),
                     'institute' => $item->institute ?? null,
                     'user' => $item->user ?? null,
                 ];
@@ -107,7 +110,7 @@ class HomeController extends Controller
                     'title' => $item->name ?? null,
                     'description' => $item->description ?? null,
                     'file' => $item->file ?? null,
-                    'date' => $item->created_at ?? null,
+                    'date' => $this->formatDayDate($item->created_at ?? null),
                     'slug' => $item->slug ?? null,
                     'image' => $item->cover ?? null,
                 ];
@@ -141,7 +144,7 @@ class HomeController extends Controller
                     'link' => $item->link,
                     'image' => $item->image,
                     'description' => $item->description,
-                    'date' => $item->created_at,
+                    'date' => $this->formatDayDate($item->created_at ?? null),
                 ];
             });
         return $data;
@@ -157,7 +160,7 @@ class HomeController extends Controller
                     'title' => $item->title ?? null,
                     'description' => $item->description ?? null,
                     'image' => $item->image ?? null,
-                    'date' => $item->created_at ?? null,
+                    'date' => $this->formatDayDate($item->created_at ?? null),
                 ];
             });
         return $data;
@@ -171,7 +174,7 @@ class HomeController extends Controller
             'url' => $item->url ?? null,
             'embed' => $item->embed ?? null,
             'is_active' => $item->is_active ?? null,
-            'date' => $item->created_at ?? null,
+            'date' => $this->formatDayDate($item->created_at ?? null),
         ];
         return $data;
     }

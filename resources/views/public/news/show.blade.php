@@ -1,7 +1,3 @@
-@php
-    use Carbon\Carbon;
-@endphp
-
 <x-public.layout.app-layout title="{{ $record->title ?? null }}">
     <section id="news" class="mt-20">
         <div class="w-full py-10">
@@ -25,7 +21,7 @@
                             {{ $record->title ?? null }}
                         </h1>
                         <h6 class="font-normal text-xl text-slate-500 mb-4">
-                            {{ Carbon::parse($record->date)->translatedFormat('l, j F Y') }}
+                            {{ $record->date ?? null }}
                             .
                             {{ $record->read_time ?? null }}
                             Waktu baca
@@ -112,7 +108,7 @@
                                         class="overflow-hidden flex items-center shadow-md rounded-xl bg-white hover:shadow-md">
                                         <div class="p-4">
                                             <h3 class="text-slate-500 text-sm line-clamp-1">
-                                                {{ Carbon::parse($item->date)->translatedFormat('l, j F Y') }}
+                                                {{ $item->date ?? null }}
                                             </h3>
                                             <h1 class="text-slate-700 text-lg font-medium line-clamp-3">
                                                 <a wire:navigate href="{{ route('news.show', $item->slug ?? null) }}"
@@ -136,7 +132,7 @@
         </div>
     </section>
 
-    @push('metaTag')
+    {{-- @push('metaTag')
         @if ($record)
             <meta property="og:url" content="{{ route('news.show', $item->slug ?? null) }}">
             <meta property="og:type" content="Berita">
@@ -149,9 +145,9 @@
             <meta name="twitter:title" content="{{ $record->title ?? null }}">
             <meta name="twitter:image" content="{{ env('API_SIPB') . $record->image ?? null }}">
         @endif
-    @endpush
+    @endpush --}}
 
-    @push('scripts')
+    {{-- @push('scripts')
         <script>
             const url = "{{ route('news.show', $item->slug ?? null) }}";
             const message = "{{ $record->title ?? null }}";
@@ -192,5 +188,5 @@
                 alert(`${message}\n\nTautan berhasil disalin.`);
             }
         </script>
-    @endpush
+    @endpush --}}
 </x-public.layout.app-layout>
