@@ -2,12 +2,12 @@
     <section id="news" class="mt-20">
         <div class="w-full py-10">
             <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3">
-                @if ($record->slug)
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-                        <div class="md:col-span-full lg:col-span-7">
-                            <div class="flex space-x-2 items-center font-normal text-md text-slate-600 mb-4">
-                                <a wire:navigate href="{{ route('news.index') }}"class="hover:underline">
-                                    Berita
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    @if ($record->slug)
+                        <div class="col-span-full md:col-span-7">
+                            <div class="flex space-x-2 items-center text-lg text-slate-600 mb-4">
+                                <a wire:navigate href="{{ route('information.index') }}"class="hover:underline">
+                                    Informasi
                                 </a>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -15,18 +15,15 @@
                                         d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                                 <a wire:navigate
-                                    href="{{ route('news.index') }}"class="hover:underline text-emerald-500 line-clamp-1">
-                                    {{ $record->category ?? null }}
+                                    href="{{ route('information.index') }} "class="hover:underline font-normal text-xl text-emerald-500 line-clamp-1">
+                                    {{ $record->title ?? null }}
                                 </a>
                             </div>
                             <h1 class="font-bold text-3xl text-slate-600 mb-4">
                                 {{ $record->title ?? null }}
                             </h1>
-                            <h6 class="font-normal text-md text-slate-500 mb-4">
+                            <h6 class="font-normal text-xl text-slate-500 mb-4">
                                 {{ $record->date ?? null }}
-                                .
-                                Waktu baca
-                                {{ $record->read_time ?? null }}
                             </h6>
                             <nav class="flex items-center gap-4 mb-4">
                                 <button onclick="whatsapp()" type="button" data-bs-toggle="tooltip" title="Whatsapp"
@@ -70,45 +67,29 @@
                                     </svg>
                                 </button>
                             </nav>
+
                             @if ($record->image)
-                                <div class="aspect-video overflow-hidden bg-slate-200 rounded-xl">
-                                    <img src="{{ env('API_SIPB') . $record->image ?? null }}" alt="image"
-                                        class="aspect-video object-cover transition duration-300 ease-in-out hover:scale-110">
+                                <div class="w-auto h-auto overflow-hidden bg-slate-200 rounded-xl">
+                                    <img src="{{ env('API_ADMIN') . $record->image ?? null }}" alt="image"
+                                        class="w-auto h-auto object-cover transition duration-300 ease-in-out hover:scale-110">
                                 </div>
                             @endif
-                            @if ($record->thumbnail_alt)
-                                <h6 class="font-normal text-base text-slate-500 mb-4">
-                                    {{ $record->thumbnail_alt ?? null }}
-                                </h6>
-                            @endif
-                            @if ($record->images)
-                                <div class="border border-slate-300 bg-slate-200 rounded-xl mb-4">
-                                    <div
-                                        class="flex gap-4 overflow-x-auto mx-4 my-4 hide-scrollbar snap-x scroll-smooth">
-                                        @foreach ($record->images as $img)
-                                            <div class="flex-none w-auto rounded-xl overflow-hidden snap-center">
-                                                <img src="{{ env('API_SIPB') . $img ?? null }}" alt="Logo"
-                                                    class="w-auto h-32 hover:scale-110 transition duration-300 ease-in-out" />
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endif
-                            <div class="content font-normal text-lg text-slate-600 mb-4">
+
+                            <div class="content font-normal text-xl text-slate-600 mt-4 ">
                                 {!! $record->content ?? null !!}
                             </div>
                         </div>
-                        <div class="md:col-span-full lg:col-span-5">
+                        <div class="col-span-full md:col-span-5">
                             <div class="sticky top-[10%]">
                                 <header class="flex items-center gap-4 mb-4">
                                     <h1
                                         class="font-bold text-3xl bg-linear-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
-                                        Berita Lainnya
+                                        Informasi Lainnya
                                     </h1>
                                     <div class="flex-1 border-b border-emerald-500"></div>
                                 </header>
                                 <section class="grid grid-cols-1 gap-4">
-                                    @foreach ($newsOther as $item)
+                                    @foreach ($other as $item)
                                         <div
                                             class="overflow-hidden flex items-center shadow-md rounded-xl bg-white hover:shadow-md">
                                             <div class="p-4">
@@ -117,7 +98,7 @@
                                                 </h3>
                                                 <h1 class="text-slate-700 text-lg font-medium line-clamp-3">
                                                     <a wire:navigate
-                                                        href="{{ route('news.show', $item->slug ?? null) }}"
+                                                        href="{{ route('information.show', $item->slug ?? null) }}"
                                                         class="hover:underline">
                                                         {{ $item->title ?? null }}
                                                     </a>
@@ -125,64 +106,75 @@
                                             </div>
                                             <div
                                                 class="aspect-square w-36  flex items-center justify-center overflow-hidden rounded-xl shrink-0 bg-slate-200">
-                                                <img src="{{ env('API_SIPB') . $item->image ?? null }}"
-                                                    alt="image"
-                                                    class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
+                                                @if ($item->image)
+                                                    <img src="{{ env('API_ADMIN') . $item->image ?? null }}"
+                                                        alt="image"
+                                                        class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
+                                                @else
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="size-10 text-emerald-500">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                                    </svg>
+                                                @endif
                                             </div>
                                         </div>
                                     @endforeach
                                 </section>
                             </div>
                         </div>
-                    </div>
-                @else
-                    <div class="bg-slate-200 rounded-xl p-4">
-                        <div class="w-full h-auto flex flex-col items-center justify-center my-10">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-36 text-emerald-500">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Zm3.75 11.625a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-                            </svg>
-                            <p class="text-center text-slate-500 text-xl font-normal">
-                                Data tidak ditemukan
-                            </p>
-                            <div class="mt-4 flex justify-start">
-                                <a wire:navigate href="{{ route('news.index') }}"
-                                    class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-white bg-emerald-500 hover:bg-emerald-600 transition duration-300 ease-in-out">
-                                    Kembali ke berita
+                    @else
+                        <div class="col-span-full">
+                            <div class="bg-slate-200 rounded-xl p-4">
+                                <div class="w-full h-auto flex flex-col items-center justify-center my-10">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="size-4">
+                                        stroke-width="1.5" stroke="currentColor" class="size-36 text-emerald-500">
                                         <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"></path>
+                                            d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Zm3.75 11.625a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
                                     </svg>
-                                </a>
+                                    <p class="text-center text-slate-500 text-xl font-normal">
+                                        Data tidak ditemukan
+                                    </p>
+                                    <div class="mt-4 flex justify-start">
+                                        <a wire:navigate href="{{ route('information.index') }}"
+                                            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-white bg-emerald-500 hover:bg-emerald-600 transition duration-300 ease-in-out">
+                                            Kembali ke Info Pemngumuman
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                class="size-4">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endif
+                    @endif
+                </div>
             </div>
         </div>
     </section>
-
     @if ($record->slug)
         @push('metaTag')
             @if ($record)
-                <meta property="og:url" content="{{ route('news.show', $item->slug ?? null) }}">
-                <meta property="og:type" content="Berita">
+                <meta property="og:url" content="{{ route('information.show', $item->slug ?? null) }}">
+                <meta property="og:type" content="Info Pengummuman">
                 <meta property="og:title" content="{{ $record->title ?? null }}">
                 <meta property="og:description" content="{{ $record->title ?? null }}">
-                <meta property="og:image" content="{{ env('API_SIPB') . $record->image ?? null }}">
+                <meta property="og:image" content="{{ env('API_ADMIN') . $record->image ?? null }}">
                 <meta name="twitter:card" content="summary_large_image">
-                <meta property="twitter:domain" content="{{ route('news.show', $item->slug ?? null) }}">
-                <meta property="twitter:url" content="{{ route('news.show', $item->slug ?? null) }}">
+                <meta property="twitter:domain" content="{{ route('information.show', $item->slug ?? null) }}">
+                <meta property="twitter:url" content="{{ route('information.show', $item->slug ?? null) }}">
                 <meta name="twitter:title" content="{{ $record->title ?? null }}">
-                <meta name="twitter:image" content="{{ env('API_SIPB') . $record->image ?? null }}">
+                <meta name="twitter:image" content="{{ env('API_ADMIN') . $record->image ?? null }}">
             @endif
         @endpush
 
         @push('scripts')
             <script>
-                const url = "{{ route('news.show', $item->slug ?? null) }}";
+                const url = "{{ route('information.show', $item->slug ?? null) }}";
                 const message = "{{ $record->title ?? null }}";
 
                 document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {

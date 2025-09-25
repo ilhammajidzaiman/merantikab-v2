@@ -351,7 +351,7 @@
                                     Akses informasi terbaru dari pemerintah
                                 </p>
                                 <div class="flex justify-start">
-                                    <a wire:navigate href=""
+                                    <a wire:navigate href="{{ route('information.index') }}"
                                         class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
                                         Selengkapnya
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -369,17 +369,19 @@
                                     <div class="grid grid-cols-1 gap-4">
                                         @foreach ($infoPengumuman as $item)
                                             <div class="col-span-full">
-                                                <div
-                                                    class="bg-white backdrop-blur-sm rounded-xl border border-slate-300 group relative flex  flex-col overflow-hidden duration-300 hover:shadow-lg p-3">
-                                                    <h3 class="text-sm text-slate-500">
-                                                        {{ $item->date ?? null }}
-                                                    </h3>
-                                                    <a wire:navigate href="" class="hover:underline">
-                                                        <h1
-                                                            class="text-lg font-semibold text-slate-600 line-clamp-1 mt-2">
-                                                            {{ $item->title ?? null }}
+                                                <div class="flex items-center gap-4 shadow-xs rounded-xl bg-white">
+                                                    <div class="p-4">
+                                                        <h6 class=" text-slate-500 text-sm line-clamp-1">
+                                                            {{ $item->date ?? null }}
+                                                        </h6>
+                                                        <h1 class="text-slate-700 text-lg font-normal line-clamp-2">
+                                                            <a wire:navigate
+                                                                href="{{ route('information.show', $item->slug ?? null) }}"
+                                                                class="hover:underline">
+                                                                {{ $item->title ?? null }}
+                                                            </a>
                                                         </h1>
-                                                    </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -503,7 +505,7 @@
                                     {{ $item->title ?? null }}
                                 </h1>
                                 <div class="mt-4 flex justify-start">
-                                    <a wire:navigate href=""
+                                    <a wire:navigate href="{{ route('document.show', $item->slug) }}"
                                         class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
                                         Selengkapnya
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -519,7 +521,7 @@
                 </section>
                 <footer class="flex items-center gap-4">
                     <div class="flex-grow border-b border-emerald-500"></div>
-                    <a wire:navigate href=""
+                    <a wire:navigate href="{{ route('document.index') }}"
                         class="inline-flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition">
                         Selengkapnya
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

@@ -11,9 +11,20 @@ Route::prefix('/')->controller(Public\HomeController::class)->group(function () 
     Route::get('/', 'index')->name('index');
 });
 
-Route::prefix('/news')->controller(Public\NewsController::class)->group(function () {
+Route::prefix('/berita')->controller(Public\NewsController::class)->group(function () {
     Route::get('/', 'index')->name('news.index');
     Route::get('/{id}', 'show')->name('news.show');
+});
+
+Route::prefix('/info-pengumuman')->controller(Public\InformationController::class)->group(function () {
+    Route::get('/', 'index')->name('information.index');
+    Route::get('/{id}', 'show')->name('information.show');
+});
+
+Route::prefix('/publikasi-dokumen')->controller(Public\DocumentController::class)->group(function () {
+    Route::get('/', 'index')->name('document.index');
+    Route::get('/{id}', 'show')->name('document.show');
+    Route::get('/download/{id}', 'download')->name('document.download');
 });
 
 Route::prefix('/user')->controller(Public\UserController::class)->group(function () {
