@@ -3,9 +3,9 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Http\Controllers\Public\InformationController;
+use App\Http\Controllers\Public\LinkController;
 
-class Information extends Component
+class Link extends Component
 {
     public $search = '';
     public $page = 1;
@@ -33,9 +33,9 @@ class Information extends Component
 
     public function fetchNews()
     {
-        $controller = new InformationController();
+        $controller = new LinkController();
         $result = $controller->fetchData($this->search, $this->page);
-        if ($result['error']):
+        if ($result['error']) :
             $this->error = $result['error'];
             return;
         endif;
@@ -53,7 +53,7 @@ class Information extends Component
 
     public function render()
     {
-        return view('livewire.information', [
+        return view('livewire.link', [
             'data' => $this->data,
             'error' => $this->error,
             'hasMore' => $this->page < $this->lastPage,

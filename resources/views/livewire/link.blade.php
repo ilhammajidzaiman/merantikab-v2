@@ -33,41 +33,44 @@
     <section id="news">
         <div class="w-full">
             <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
                     @forelse($data as $item)
-                        <div
-                            class="overflow-hidden flex items-center gap-4 shadow-md rounded-xl bg-white hover:shadow-md">
-                            <div
-                                class="w-32 h-full flex items-center justify-center overflow-hidden rounded-xl shrink-0 bg-slate-200">
-                                @if ($item->image === null)
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="size-10 text-emerald-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                                    </svg>
-                                @else
-                                    <img src="{{ env('API_ADMIN') . $item->image ?? null }}" alt="image"
-                                        class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
-                                @endif
-                            </div>
-                            <div class="p-4">
-                                <h3 class="text-slate-500 text-normal line-clamp-1">
-                                    {{ $item->date ?? null }}
-                                </h3>
-                                <h1 class="text-slate-500 text-lg font-medium line-clamp-3">
+                        <div class="flex flex-col justify-between h-full p-6 rounded-xl bg-slate-100">
+                            <div>
+                                <div
+                                    class="w-20 h-20 flex items-center justify-center rounded-xl bg-white border border-slate-200 mb-4">
+                                    @if ($item->image === null)
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="size-10 text-emerald-500">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+                                        </svg>
+                                    @else
+                                        <img src="{{ env('API_ADMIN') . $item->image ?? null }}" alt="Logo"
+                                            class="w-14 h-14 object-contain hover:scale-110 transition duration-300 ease-in-out" />
+                                    @endif
+                                </div>
+                                <h1 class="text-xl font-normal text-slate-800 mb-2 line-clamp-2 md:line-clamp-none">
                                     {{ $item->title ?? null }}
                                 </h1>
-                                <div class="mt-4 flex justify-start">
-                                    <a wire:navigate href="{{ route('information.show', $item->slug) }}"
-                                        class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
-                                        Selengkapnya
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="size-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"></path>
-                                        </svg>
-                                    </a>
+                                <h3 class="text-slate-500 text-normal line-clamp-3 md:line-clamp-none">
+                                    {{ $item->description ?? null }}
+                                </h3>
+                                <div class="text-normal break-all mt-4">
+                                    <span class="text-slate-500">link:</span>
+                                    <span class="text-emerald-600">{!! $item->link ?? null !!}</span>
                                 </div>
+                            </div>
+                            <div class="mt-4 flex justify-start">
+                                <a href="{!! $item->link ?? null !!}" target="_blank"
+                                    class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
+                                    Kunjungi
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="size-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"></path>
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     @empty

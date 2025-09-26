@@ -20,8 +20,8 @@
         ],
         (object) [
             'title' => 'Tautan Aplikasi',
-            'route' => null,
-            'isActive' => null,
+            'route' => route('link.index'),
+            'isActive' => request()->routeIs('link.*'),
             'children' => null,
         ],
         (object) [

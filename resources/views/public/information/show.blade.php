@@ -5,7 +5,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
                     @if ($record->slug)
                         <div class="col-span-full md:col-span-7">
-                            <div class="flex space-x-2 items-center text-lg text-slate-600 mb-4">
+                            <div class="flex space-x-2 items-center text-md text-slate-600 mb-4">
                                 <a wire:navigate href="{{ route('information.index') }}"class="hover:underline">
                                     Informasi
                                 </a>
@@ -15,14 +15,14 @@
                                         d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                                 <a wire:navigate
-                                    href="{{ route('information.index') }} "class="hover:underline font-normal text-xl text-emerald-500 line-clamp-1">
+                                    href="{{ route('information.index') }} "class="hover:underline font-normal text-emerald-500 line-clamp-1">
                                     {{ $record->title ?? null }}
                                 </a>
                             </div>
                             <h1 class="font-bold text-3xl text-slate-600 mb-4">
                                 {{ $record->title ?? null }}
                             </h1>
-                            <h6 class="font-normal text-xl text-slate-500 mb-4">
+                            <h6 class="font-normal text-md text-slate-500 mb-4">
                                 {{ $record->date ?? null }}
                             </h6>
                             <nav class="flex items-center gap-4 mb-4">

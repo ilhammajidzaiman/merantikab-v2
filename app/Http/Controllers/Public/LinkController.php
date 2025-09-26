@@ -9,38 +9,37 @@ use App\Traits\FormatDateTimeTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
-class InformationController extends Controller
+class LinkController extends Controller
 {
     use FormatDateTimeTrait;
 
     public function index()
     {
-        return view('public.information.index');
+        return view('public.link.index');
     }
 
     public function show(string $id)
     {
         $data['record'] = $this->fetchRecord($id);
-        $data['other'] = $this->fetchOther($data['record']->slug);
-        return view('public.information.show', $data);
+        return view('public.link.show', $data);
     }
 
     public function fetchData($search = null, $page = 1)
     {
         try {
             $url = ($search === null || $search === '')
-                ? env('API_INFOPENGUMUMAN_DATA')
-                : rtrim(env('API_INFOPENGUMUMAN_SEARCH'), '/') . '/' . rawurlencode($search);
+                ? env('API_LINK_DATA')
+                : rtrim(env('API_LINK_SEARCH'), '/') . '/' . rawurlencode($search);
             $response = Http::get($url, ['page' => $page,]);
             if ($response->failed()) :
                 return ['data' => collect(), 'error' => 'Gagal ambil data berita', 'last_page' => 1];
             endif;
             $json = $response->object();
             $data = collect($json->data ?? [])->map(fn($item) => (object) [
-                'title' => $item->title ?? null,
-                'slug' => $item->slug ?? null,
-                'content' => $item->content ?? null,
-                'image' => $item->image ?? null,
+                'title' => $item->title,
+                'link' => $item->link,
+                'image' => $item->image,
+                'description' => $item->description,
                 'date' => $this->formatDayDate($item->created_at ?? null),
             ]);
             return [
@@ -55,32 +54,14 @@ class InformationController extends Controller
 
     private function fetchRecord(?string $id): object
     {
-        $item = Http::get(env('API_INFOPENGUMUMAN_DETAIL') . $id)->object();
-
-        // dd($item);
+        $item = Http::get(env('API_LINK_DETAIL') . $id)->object();
         $data = (object) [
-            'title' => $item->title ?? null,
-            'slug' => $item->slug ?? null,
-            'content' => $item->content ?? null,
-            'image' => $item->image ?? null,
+            'title' => $item->title,
+            'link' => $item->link,
+            'image' => $item->image,
+            'description' => $item->description,
             'date' => $this->formatDayDate($item->created_at ?? null),
         ];
-        return $data;
-    }
-
-    private function fetchOther(?string $slug): Collection
-    {
-        $response = Http::get(env('API_INFOPENGUMUMAN_OTHER') . $slug)->object() ?? [];
-        $data = collect($response)
-            ->map(function ($item) {
-                return (object) [
-                    'title' => $item->title ?? null,
-                    'slug' => $item->slug ?? null,
-                    'content' => $item->content ?? null,
-                    'image' => $item->image ?? null,
-                    'date' => $this->formatDayDate($item->created_at ?? null),
-                ];
-            });
         return $data;
     }
 }

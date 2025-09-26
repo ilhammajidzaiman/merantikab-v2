@@ -21,6 +21,11 @@ Route::prefix('/info-pengumuman')->controller(Public\InformationController::clas
     Route::get('/{id}', 'show')->name('information.show');
 });
 
+Route::prefix('/tautan-aplikasi')->controller(Public\LinkController::class)->group(function () {
+    Route::get('/', 'index')->name('link.index');
+    Route::get('/{id}', 'show')->name('link.show');
+});
+
 Route::prefix('/publikasi-dokumen')->controller(Public\DocumentController::class)->group(function () {
     Route::get('/', 'index')->name('document.index');
     Route::get('/{id}', 'show')->name('document.show');

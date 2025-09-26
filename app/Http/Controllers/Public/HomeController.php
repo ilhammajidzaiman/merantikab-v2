@@ -120,9 +120,8 @@ class HomeController extends Controller
 
     private function getHeroShortcut(): Collection
     {
-        $response = Http::get(env('API_LINK'))->object()->data ?? [];
+        $response = Http::get(env('API_HEROICON'))->object()->data ?? [];
         $data = collect($response)
-            ->take(5)
             ->map(function ($item) {
                 return (object) [
                     'title' => $item->title,
