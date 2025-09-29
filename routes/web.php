@@ -32,6 +32,10 @@ Route::prefix('/publikasi-dokumen')->controller(Public\DocumentController::class
     Route::get('/download/{id}', 'download')->name('document.download');
 });
 
+Route::prefix('/galeri')->controller(Public\GaleryController::class)->group(function () {
+    Route::get('/', 'index')->name('galery.index');
+});
+
 Route::prefix('/user')->controller(Public\UserController::class)->group(function () {
     Route::get('/', 'index')->name('user.index');
 });

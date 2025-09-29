@@ -576,7 +576,7 @@
                 </div>
 
                 <footer class="w-full flex justify-center mt-4">
-                    <a wire:navigate href=""
+                    <a wire:navigate href="{{ route('galery.index') }}"
                         class="text-normal text-white flex items-center gap-2 bg-emerald-500  px-4 py-2 rounded-xl hover:bg-emerald-600">
                         Selengkapnya
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
