@@ -36,6 +36,14 @@ Route::prefix('/galeri')->controller(Public\GaleryController::class)->group(func
     Route::get('/', 'index')->name('galery.index');
 });
 
+Route::prefix('/selayang-pandang')->controller(Public\ProfileController::class)->group(function () {
+    Route::get('/', 'index')->name('profile.index');
+});
+
+Route::prefix('/kepemimpinan')->controller(Public\LeaderController::class)->group(function () {
+    Route::get('/', 'index')->name('leader.index');
+});
+
 Route::prefix('/user')->controller(Public\UserController::class)->group(function () {
     Route::get('/', 'index')->name('user.index');
 });
