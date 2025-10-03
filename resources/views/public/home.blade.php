@@ -551,8 +551,8 @@
                     </h1>
                 </section>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="md:col-span-2 lg:col-span-1">
+                <div class="grid grid-cols-12 gap-4">
+                    <div class="col-span-full md:col-span-6">
                         <div class="overflow-hidden rounded-xl">
                             <iframe class="aspect-square object-cover rounded-xl"
                                 src="https://www.youtube.com/embed/{{ $video->embed ?? null }}"
@@ -561,10 +561,10 @@
                                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                     </div>
-                    <div class="md:col-span-2 lg:col-span-1">
-                        <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                    <div class="col-span-full md:col-span-6">
+                        <div class="grid grid-cols-12 gap-4">
                             @foreach ($foto as $item)
-                                <div class="md:col-span-2 lg:col-span-1">
+                                <div class="col-span-6">
                                     <div class="overflow-hidden rounded-xl">
                                         <img src="{{ env('API_ADMIN') . $item->image ?? null }}"
                                             class="aspect-square object-cover rounded-xl transition duration-500 ease-in-out hover:scale-110">
