@@ -108,24 +108,24 @@
                                     <div class="flex-1 border-b border-emerald-500"></div>
                                 </header>
                                 <section class="grid grid-cols-1 gap-4">
-                                    @foreach ($newsOther as $item)
+                                    @foreach ($newsOther as $record)
                                         <div
                                             class="overflow-hidden flex items-center shadow-md rounded-xl bg-white hover:shadow-md">
                                             <div class="p-4">
                                                 <h3 class="text-slate-500 text-sm line-clamp-1">
-                                                    {{ $item->date ?? null }}
+                                                    {{ $record->date ?? null }}
                                                 </h3>
                                                 <h1 class="text-slate-700 text-lg font-medium line-clamp-3">
                                                     <a wire:navigate
-                                                        href="{{ route('news.show', $item->slug ?? null) }}"
+                                                        href="{{ route('news.show', $record->slug ?? null) }}"
                                                         class="hover:underline">
-                                                        {{ $item->title ?? null }}
+                                                        {{ $record->title ?? null }}
                                                     </a>
                                                 </h1>
                                             </div>
                                             <div
                                                 class="aspect-square w-36  flex items-center justify-center overflow-hidden rounded-xl shrink-0 bg-slate-200">
-                                                <img src="{{ env('API_SIPB') . $item->image ?? null }}"
+                                                <img src="{{ env('API_SIPB') . $record->image ?? null }}"
                                                     alt="image"
                                                     class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
                                             </div>
@@ -167,14 +167,14 @@
     @if ($record->slug)
         @push('metaTag')
             @if ($record)
-                <meta property="og:url" content="{{ route('news.show', $item->slug ?? null) }}">
-                <meta property="og:type" content="Berita">
+                <meta property="og:url" content="{{ route('news.show', $record->slug ?? null) }}">
+                <meta property="og:type" content="Baca Berita">
                 <meta property="og:title" content="{{ $record->title ?? null }}">
                 <meta property="og:description" content="{{ $record->title ?? null }}">
                 <meta property="og:image" content="{{ env('API_SIPB') . $record->image ?? null }}">
                 <meta name="twitter:card" content="summary_large_image">
-                <meta property="twitter:domain" content="{{ route('news.show', $item->slug ?? null) }}">
-                <meta property="twitter:url" content="{{ route('news.show', $item->slug ?? null) }}">
+                <meta property="twitter:domain" content="{{ route('news.show', $record->slug ?? null) }}">
+                <meta property="twitter:url" content="{{ route('news.show', $record->slug ?? null) }}">
                 <meta name="twitter:title" content="{{ $record->title ?? null }}">
                 <meta name="twitter:image" content="{{ env('API_SIPB') . $record->image ?? null }}">
             @endif
@@ -182,7 +182,7 @@
 
         @push('scripts')
             <script>
-                const url = "{{ route('news.show', $item->slug ?? null) }}";
+                const url = "{{ route('news.show', $record->slug ?? null) }}";
                 const message = "{{ $record->title ?? null }}";
 
                 document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
