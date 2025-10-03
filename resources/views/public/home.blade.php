@@ -553,8 +553,8 @@
 
                 <div class="grid grid-cols-12 gap-4">
                     <div class="col-span-full md:col-span-6">
-                        <div class="overflow-hidden rounded-xl">
-                            <iframe class="aspect-square object-cover rounded-xl"
+                        <div class="w-full overflow-hidden rounded-xl">
+                            <iframe class="w-full aspect-square object-cover rounded-xl"
                                 src="https://www.youtube.com/embed/{{ $video->embed ?? null }}"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
