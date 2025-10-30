@@ -21,5 +21,5 @@
         </div>
     </header>
 
-    <livewire:search-news />
+    <livewire:news />
 </x-public.layout.app-layout>

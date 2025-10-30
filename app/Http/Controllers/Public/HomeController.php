@@ -22,7 +22,7 @@ class HomeController extends Controller
         $data['appShortcut'] = $this->getAppShortcut();
         $data['video'] = $this->getVideo();
         $data['foto'] = $this->getFoto();
-        return view('public.home', $data);
+        return view('public.home.index', $data);
     }
 
     private function getCarouselFull(): Collection

@@ -1,0 +1,60 @@
+<section id="info">
+    <div class="w-full py-10">
+        <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3">
+            <div
+                class="bg-slate-200 bg-[url(/public/image/background/repeating-triangles.svg)] bg-center bg-fixed bg-repeat rounded-xl px-4 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                    <div class="md:col-span-6 lg:col-span-4">
+                        <div class="sticky top-[50%]">
+                            <h1
+                                class="font-bold text-3xl bg-linear-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
+                                Info dan Pengumuman
+                            </h1>
+                            <p
+                                class="mb-4 text-lg bg-linear-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
+                                Akses informasi terbaru dari pemerintah
+                            </p>
+                            <div class="flex justify-start">
+                                <a wire:navigate href="{{ route('information.index') }}"
+                                    class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
+                                    Selengkapnya
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="size-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-6 lg:col-span-8">
+                        <div class="w-full ">
+                            <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto">
+                                <div class="grid grid-cols-1 gap-4">
+                                    @foreach ($infoPengumuman as $item)
+                                        <div class="col-span-full">
+                                            <div class="flex items-center gap-4 shadow-xs rounded-xl bg-white">
+                                                <div class="p-4">
+                                                    <h6 class=" text-slate-500 text-sm line-clamp-1">
+                                                        {{ $item->date ?? null }}
+                                                    </h6>
+                                                    <h1 class="text-slate-700 text-lg font-normal line-clamp-2">
+                                                        <a wire:navigate
+                                                            href="{{ route('information.show', $item->slug ?? null) }}"
+                                                            class="hover:underline">
+                                                            {{ $item->title ?? null }}
+                                                        </a>
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
