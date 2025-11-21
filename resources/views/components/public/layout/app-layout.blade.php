@@ -23,7 +23,7 @@
     @livewireStyles
 </head>
 
-<body class="bg-slate-50">
+<body class="bg-slate-50 text-slate-700 text-base">
     <x-public.layout.navigation />
     {{-- @include('layouts.public.navigation') --}}
     {{ $slot }}

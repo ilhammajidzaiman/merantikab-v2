@@ -1,19 +1,18 @@
-<section id="info">
+<section id="announcement">
     <div class="w-full py-10">
         <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3">
             <div
                 class="bg-slate-200 bg-[url(/public/image/background/repeating-triangles.svg)] bg-center bg-fixed bg-repeat rounded-xl px-4 py-12">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
                     <div class="md:col-span-6 lg:col-span-4">
-                        <div class="sticky top-[50%]">
-                            <h1
-                                class="font-bold text-3xl bg-linear-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
-                                Info dan Pengumuman
+                        <div class="sticky top-[50%] space-y-2">
+                            <h1 class="text-3xl font-bold text-emerald-500">
+                                {{ Str::title(__('informasi')) }}
                             </h1>
-                            <p
-                                class="mb-4 text-lg bg-linear-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
-                                Akses informasi terbaru dari pemerintah
-                            </p>
+                            <h3 class="text-xl">
+                                {{ Str::title(__('informasi dan pengumuman terbaru dari pemerintah')) }}
+                            </h3>
+                            <div class="w-full h-0.5 bg-linear-to-r from-emerald-500 to-transparent"></div>
                             <div class="flex justify-start">
                                 <a wire:navigate href="{{ route('information.index') }}"
                                     class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
@@ -31,12 +30,12 @@
                         <div class="w-full ">
                             <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto">
                                 <div class="grid grid-cols-1 gap-4">
-                                    @foreach ($infoPengumuman as $item)
+                                    @foreach ($announcement as $item)
                                         <div class="col-span-full">
                                             <div class="flex items-center gap-4 shadow-xs rounded-xl bg-white">
                                                 <div class="p-4">
                                                     <h6 class=" text-slate-500 text-sm line-clamp-1">
-                                                        {{ $item->date ?? null }}
+                                                        {{ $item->created_at ? $item->formatDayDate($item->created_at) : null }}
                                                     </h6>
                                                     <h1 class="text-slate-700 text-lg font-normal line-clamp-2">
                                                         <a wire:navigate

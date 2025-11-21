@@ -1,17 +1,19 @@
 <section id="news">
     <div class="w-full py-10">
         <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3">
-            <header class="text-center py-10">
-                <h3 class="flex items-center justify-center tracking-wide">
-                    <span class="w-10 h-px bg-emerald-500"></span>
-                    <span class="bg-emerald-500 text-white px-3 py-px rounded-xl">Berita</span>
-                    <span class="w-10 h-px bg-emerald-500"></span>
-                </h3>
-                <h1
-                    class="font-bold text-3xl bg-linear-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent mt-4">
-                    Berita Kabupaten Kepulauan Meranti
-                </h1>
-            </header>
+            <div class="w-full flex justify-center">
+                <div class="space-y-2 text-center">
+                    <h1 class="text-3xl font-bold text-emerald-500">
+                        {{ Str::title(__('berita')) }}
+                    </h1>
+                    <h3 class="text-xl">
+                        {{ Str::title(__('berita kabupaten kepulauan meranti')) }}
+                    </h3>
+                    <div
+                        class="w-full md:w-xl h-0.5 mx-auto bg-gradient-to-r from-transparent via-emerald-500 to-transparent">
+                    </div>
+                </div>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
                 <div class="md:col-span-6 lg:col-span-1">
                     <div x-data="{
@@ -130,7 +132,7 @@
             </div>
             <footer class="flex items-center gap-4">
                 <div class="flex-grow border-b border-emerald-500"></div>
-                <a wire:navigate href="{{ route('news.index') }}"
+                <a
                     class="inline-flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition">
                     Selengkapnya
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

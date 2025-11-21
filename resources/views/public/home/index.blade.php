@@ -6,10 +6,11 @@
     @include('public.home.hero')
     @include('public.home.maps')
     @include('public.home.news')
-    @include('public.home.info')
-    @include('public.home.link')
-    @include('public.home.public')
+    @include('public.home.announcement')
+    @include('public.home.app')
+    @include('public.home.file')
     @include('public.home.galery')
+    @include('public.home.address')
 
     @push('metaTag')
         <meta property="og:url" content="{{ env('APP_URL') }}">

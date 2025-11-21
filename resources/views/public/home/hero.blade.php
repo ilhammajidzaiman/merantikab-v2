@@ -24,7 +24,7 @@
                         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                         x-transition:leave="transition-opacity duration-1000" x-transition:leave-start="opacity-100"
                         x-transition:leave-end="opacity-0" class="absolute inset-0">
-                        <img src="{{ env('API_ADMIN') . $item->image }}" class="w-full h-screen object-cover">
+                        <img src="{{ env('APP_URL_ASSET') . $item->file }}" class="w-full h-screen object-cover">
                         <div class="w-full">
                             <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto ">
                                 <div class="relative">
@@ -129,27 +129,27 @@
                             <div class="border border-white rounded-xl">
                                 <div id="scrollContainer"
                                     class="flex gap-4 overflow-x-auto mx-14 my-4 hide-scrollbar snap-x scroll-smooth">
-                                    @foreach ($heroShortcut as $item)
+                                    @foreach ($appShortcut as $item)
                                         <div
                                             class="flex-none w-28 md:w-56 rounded-xl overflow-hidden bg-white/20 backdrop-blur-sm hover:bg-slate-300 transition duration-300 ease-in-out snap-center">
                                             <div
                                                 class="flex flex-col items-center justify-center gap-2 rounded-xl p-4 ">
-                                                @if ($item->image === null)
+                                                @if ($item->appList->file === null)
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                         class="size-10 text-emerald-500 w-full h-16">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
                                                     @else
-                                                        <img src="{{ env('API_ADMIN') . $item->image ?? null }}"
+                                                        <img src="{{ env('APP_URL_ASSET') . $item->appList->file ?? null }}"
                                                             alt="Logo"
                                                             class="w-full h-16 object-contain hover:scale-110 transition duration-300 ease-in-out " />
                                                 @endif
                                                 <h1
                                                     class="text-lg font-medium text-white text-shadow-xs text-shadow-slate-500 text-center">
-                                                    <a href="{{ $item->link ?? null }}" target="_blank"
+                                                    <a href="{{ $item->appList->link->url ?? null }}" target="_blank"
                                                         class="hover:underline line-clamp-2 md:line-clamp-1">
-                                                        {{ $item->title ?? null }}
+                                                        {{ $item->appList->title ?? null }}
                                                     </a>
                                                 </h1>
                                             </div>

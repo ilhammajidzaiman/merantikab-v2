@@ -1,306 +1,188 @@
-<footer id="footer"
-    class="bg-emerald-500 bg-[url(/public/image/background/alternating-arrowhead.svg)] bg-center bg-fixed bg-repeat p-4 py-12">
-    <div class="w-full">
-        <div class="w-full sm:max-w-6xl md:max-w-6xl  mx-auto p-5">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-                <div class="md:col-span-6 lg:col-span-4">
-                    <div class="flex items-center justify-center md:justify-start gap-3 w-full">
-                        <img src="{{ asset('image/logo-meranti.png') }}" alt="Logo" class="w-14 h-14 object-contain" />
-                        <h1 class="text-2xl font-bold text-white leading-tight">
-                            KEPULAUAN <br> MERANTI
-                        </h1>
-                    </div>
-                    <div class="mt-4 flex items-start space-x-2">
-                        <div class="w-fit p-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                class="size-6 fill-white">
-                                <path fill-rule="evenodd" d=" m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975
-    16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0
-    3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6
-    3 3 0 0 0 0 6Z" clip-rule="evenodd" />
-                            </svg>
+<div class="w-full p-3 relative">
+    <div class="w-full relative bg-gradient-to-b from-emerald-500 to-transparent rounded-xl overflow-hidden">
+        {{-- <div
+        class="w-full rounded-xl overflow-hidden relative bg-emerald-500 bg-[url(/public/image/background/alternating-arrowhead.svg)] bg-center bg-fixed bg-repeat"> --}}
+        <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto">
+            <div class="absolute top-0 left-0 right-0 z-0 pointer-events-none select-none">
+                <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto">
+                    <div class="w-full max-w-full flex flex-col items-center px-4 text-9xl font-extrabold text-white/20">
+                        <div class=" leading-none break-words w-full">
+                            {{ Str::upper('kepulauan') }}
                         </div>
-                        <h3 class="text-white">Jalan Dorak, Kec. Tebing Tinggi, Selatpanjang - 24753</h3>
-                    </div>
-                    <div class="mt-4 flex items-start space-x-2">
-                        <div class="w-fit p-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                class="size-6 fill-white">
-                                <path fill-rule="evenodd"
-                                    d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
-                                    clip-rule="evenodd" />
-                            </svg>
+                        <div class=" leading-none break-words w-full">
+                            {{ Str::upper('meranti') }}
                         </div>
-                        <h3 class="text-white">+62 854 293849</h3>
-                    </div>
-                    <div class="mt-4 flex items-start space-x-2">
-                        <div class="w-fit p-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                class="size-6 fill-white">
-                                <path
-                                    d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
-                                <path
-                                    d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-white">diskominfotik@merantikab.go.id</h3>
-                    </div>
-                </div>
-
-                <div class="md:col-span-6 lg:col-span-4">
-                    <div>
-                        <div class="w-full flex items-center">
-                            <h3 class="text-xl font-semibold text-white whitespace-nowrap">
-                                Kecamatan
-                            </h3>
-                            <div class="flex-1 border-t border-white/50 ml-4"></div>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Tasik Putri Puyu
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Rangsang
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Rangsang Barat
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Rangsang Pesisir
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Merbau
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Pulau Merbau
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Tebing Tinggi
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Tebing Tinggi Barat
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Tebing Tinggi Timur
-                                </a>
-                            </h3>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="md:col-span-6 lg:col-span-4">
-                    <div>
-                        <div class="w-full flex items-center">
-                            <h3 class="text-xl font-semibold text-white whitespace-nowrap">
-                                Lainnya
-                            </h3>
-                            <div class="flex-1 border-t border-white/50 ml-4"></div>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Smart City
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Lapor
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Statistik
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    PPID
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Statistik
-                                </a>
-                            </h3>
-                        </div>
-                        <div class="mt-4 flex items-start space-x-2">
-                            <div class="w-fit p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="size-4 fill-white">
-                                    <path fill-rule="evenodd"
-                                        d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                            <h3 class="text-white">
-                                <a href="" class="hover:underline">
-                                    Desa Sialang Pasung
-                                </a>
-                            </h3>
-                        </div>
-
                     </div>
                 </div>
             </div>
-            <div
-                class="mt-16 flex w-full flex-col items-center justify-center space-x-2 border-t border-slate-100 py-2 md:flex-row text-white">
-                <p class="text-sm font-medium">Diskominfotik &copy; {{ date('Y') }}</p>
-                <p class="text-sm font-medium">Kabupaten Kepulauan Meranti</p>
+            <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto px-3 py-16 relative z-10">
+                <div class="grid grid-cols-12 gap-8">
+                    <div class="col-span-full md:col-span-6 lg:col-span-3">
+                        <div class="space-y-4">
+                            <div class="w-full flex items-center space-x-2">
+                                <h3 class="text-2xl font-bold">
+                                    Lainnya
+                                </h3>
+                                <div class="w-full h-0.5 bg-linear-to-r from-white to-transparent"></div>
+                            </div>
+                            <div class="space-y-2">
+                                @php
+                                    $data = [
+                                        (object) [
+                                            'title' => 'Smart City',
+                                            'link' => '#',
+                                        ],
+                                        (object) [
+                                            'title' => 'Lapor',
+                                            'link' => '#',
+                                        ],
+                                        (object) [
+                                            'title' => 'Statistik',
+                                            'link' => '#',
+                                        ],
+                                        (object) [
+                                            'title' => 'PPID',
+                                            'link' => '#',
+                                        ],
+                                        (object) [
+                                            'title' => 'Statistik',
+                                            'link' => '#',
+                                        ],
+                                        (object) [
+                                            'title' => 'Desa Sialang Pasung',
+                                            'link' => '#',
+                                        ],
+                                    ];
+                                @endphp
+                                @foreach ($data as $item)
+                                    <h3 class="text-slate-600">
+                                        <a href="" class="hover:underline">
+                                            {{ $item->title ?? null }}
+                                        </a>
+                                    </h3>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-full md:col-span-6 lg:col-span-3">
+                        <div class="space-y-4">
+                            <div class="w-full flex items-center space-x-2">
+                                <h3 class="text-2xl font-bold">
+                                    Lainnya
+                                </h3>
+                                <div class="w-full h-0.5 bg-linear-to-r from-white to-transparent"></div>
+                            </div>
+                            <div class="space-y-2">
+                                @foreach ($data as $item)
+                                    <h3 class="text-slate-600">
+                                        <a href="" class="hover:underline">
+                                            {{ $item->title ?? null }}
+                                        </a>
+                                    </h3>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-full md:col-span-6 lg:col-span-3">
+                        <div class="space-y-4">
+                            <div class="w-full flex items-center space-x-2">
+                                <h3 class="text-2xl font-bold">
+                                    Lainnya
+                                </h3>
+                                <div class="w-full h-0.5 bg-linear-to-r from-white to-transparent"></div>
+                            </div>
+                            <div class="space-y-2">
+                                @foreach ($data as $item)
+                                    <h3 class="text-slate-600">
+                                        <a href="" class="hover:underline">
+                                            {{ $item->title ?? null }}
+                                        </a>
+                                    </h3>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-full md:col-span-6 lg:col-span-3">
+                        <div class="space-y-4">
+                            <div class="w-full flex items-center space-x-2">
+                                <h3 class="text-2xl font-bold">
+                                    Lainnya
+                                </h3>
+                                <div class="w-full h-0.5 bg-linear-to-r from-white to-transparent"></div>
+                            </div>
+                            <div class="space-y-2">
+                                @foreach ($data as $item)
+                                    <h3 class="text-slate-600">
+                                        <a href="" class="hover:underline">
+                                            {{ $item->title ?? null }}
+                                        </a>
+                                    </h3>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3 relative z-10">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="flex flex-wrap justify-center md:justify-endtext-sm ">
+                        <div class="text-center md:text-left text-xs space-y-2">
+                            <div class="flex items-center justify-center md:justify-start gap-2 text-start w-full">
+                                <img src="{{ asset('image/logo-meranti.png') }}" alt="Logo"
+                                    class="w-14 h-14 object-contain" />
+                                <h1 class="text-2xl font-extrabold leading-tight">
+                                    KEPULAUAN <br> MERANTI
+                                </h1>
+                            </div>
+                            <div class="text-sm font-medium">
+                                <p>Diskominfotik &copy; {{ date('Y') }}</p>
+                                <p>Kabupaten Kepulauan Meranti</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center md:items-end space-y-2">
+                        <h1 class="text-sm">
+                            {{ Str::ucfirst(__('terhubung dengan kami')) }}
+                        </h1>
+                        <nav class="flex gap-4">
+                            @php
+                                $data = [
+                                    (object) [
+                                        'title' => 'youtube',
+                                        'link' => 'youtube',
+                                        'file' =>
+                                            '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube size-6" viewBox="0 0 16 16"> <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" /></svg>',
+                                    ],
+                                    (object) [
+                                        'title' => 'instagram',
+                                        'link' => 'instagram',
+                                        'file' =>
+                                            '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram size-6" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" /></svg>',
+                                    ],
+                                    (object) [
+                                        'title' => 'facebook',
+                                        'link' => 'facebook',
+                                        'file' =>
+                                            '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook size-6" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" /></svg>',
+                                    ],
+                                    (object) [
+                                        'title' => 'twitter x',
+                                        'link' => 'twitter x',
+                                        'file' => '
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x size-6" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" /></svg>',
+                                    ],
+                                ];
+                            @endphp
+                            @foreach ($data as $item)
+                                <a href="{{ $item->link ?? null }}" title="{{ $item->title }}" target="_blank"
+                                    class="w-10 aspect-square flex items-center justify-center overflow-hidden rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white">
+                                    {!! $item->file ?? null !!}
+                                </a>
+                            @endforeach
+                        </nav>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</footer>
+</div>

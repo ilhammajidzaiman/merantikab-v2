@@ -2,6 +2,13 @@
 
 namespace App\Http\Controllers\Public;
 
+use App\Models\File;
+use App\Models\Image;
+use App\Models\Video;
+use App\Models\AppList;
+use App\Models\Carousel;
+use App\Models\AppShortcut;
+use App\Models\Announcement;
 use Illuminate\Support\Collection;
 use App\Traits\FormatDateTimeTrait;
 use App\Http\Controllers\Controller;
@@ -13,29 +20,44 @@ class HomeController extends Controller
 
     public function index()
     {
-        $data['carouselFull'] = $this->getCarouselFull();
         $data['carouselNews'] = $this->getCarouselNews();
         $data['news'] = $this->getNews();
-        $data['infoPengumuman'] = $this->getInfoPengumuman();
-        $data['document'] = $this->getDocument();
-        $data['heroShortcut'] = $this->getHeroShortcut();
-        $data['appShortcut'] = $this->getAppShortcut();
-        $data['video'] = $this->getVideo();
-        $data['foto'] = $this->getFoto();
+        $data['carouselFull'] = Carousel::active()
+            ->latest()
+            ->take(10)
+            ->get();
+        $data['appShortcut'] = AppShortcut::active()
+            ->withOnly(['appList', 'appList.link'])
+            ->orderBy('order')
+            ->latest()
+            ->take(10)
+            ->get();
+        $data['announcement'] = Announcement::active()
+            ->orderByDesc('id')
+            ->latest()
+            ->take(6)
+            ->get();
+        $data['appList'] = AppList::active()
+            ->orderByDesc('id')
+            ->latest()
+            ->take(8)
+            ->get();
+        $data['file'] = File::active()
+            ->orderByDesc('id')
+            ->latest()
+            ->take(6)
+            ->get();
+        $data['image'] = Image::active()
+            ->orderByDesc('id')
+            ->latest()
+            ->take(4)
+            ->get();
+        $data['video'] = Video::active()
+            ->orderByDesc('id')
+            ->latest()
+            ->take(1)
+            ->get();
         return view('public.home.index', $data);
-    }
-
-    private function getCarouselFull(): Collection
-    {
-        $response = Http::get(env('API_CAROUSEL'))->object() ?? [];
-        return collect($response)
-            ->map(function ($item) {
-                return (object) [
-                    'title' => $item->title ?? null,
-                    'description' => $item->subtitle ?? null,
-                    'image' => $item->image ?? null,
-                ];
-            });
     }
 
     private function getNews(): Collection
@@ -76,105 +98,6 @@ class HomeController extends Controller
                     'user' => $item->user ?? null,
                 ];
             });
-        return $data;
-    }
-
-    private function getInfoPengumuman(): Collection
-    {
-        $response = Http::get(env('API_INFOPENGUMUMAN'))->object() ?? [];
-        $data = collect($response)
-            ->take(5)
-            ->map(function ($item) {
-                return (object) [
-                    'slug' => $item->slug ?? null,
-                    'title' => $item->title ?? null,
-                    'image' => $item->thumbnail ?? null,
-                    'thumbnail_alt' => $item->thumbnail_alt ?? null,
-                    'category' => $item->category ?? null,
-                    'categorySlug' => $item->categorySlug ?? null,
-                    'date' => $this->formatDayDate($item->date ?? null),
-                    'institute' => $item->institute ?? null,
-                    'user' => $item->user ?? null,
-                ];
-            });
-        return $data;
-    }
-
-    private function getDocument(): Collection
-    {
-        $response = Http::get(env('API_PUBLIKASIDOKUMEN'))->object() ?? [];
-        $data = collect($response)
-            ->take(6)
-            ->map(function ($item) {
-                return (object) [
-                    'title' => $item->name ?? null,
-                    'description' => $item->description ?? null,
-                    'file' => $item->file ?? null,
-                    'date' => $this->formatDayDate($item->created_at ?? null),
-                    'slug' => $item->slug ?? null,
-                    'image' => $item->cover ?? null,
-                ];
-            });
-        return $data;
-    }
-
-    private function getHeroShortcut(): Collection
-    {
-        $response = Http::get(env('API_HEROICON'))->object()->data ?? [];
-        $data = collect($response)
-            ->map(function ($item) {
-                return (object) [
-                    'title' => $item->title,
-                    'link' => $item->link,
-                    'image' => $item->image,
-                ];
-            });
-        return $data;
-    }
-
-    private function getAppShortcut(): Collection
-    {
-        $response = Http::get(env('API_LINK'))->object()->data ?? [];
-        $data = collect($response)
-            ->take(8)
-            ->map(function ($item) {
-                return (object) [
-                    'title' => $item->title,
-                    'link' => $item->link,
-                    'image' => $item->image,
-                    'description' => $item->description,
-                    'date' => $this->formatDayDate($item->created_at ?? null),
-                ];
-            });
-        return $data;
-    }
-
-    private function getFoto(): Collection
-    {
-        $response = Http::get(env('API_FOTO'))->object() ?? [];
-        $data = collect($response)
-            ->take(4)
-            ->map(function ($item) {
-                return (object) [
-                    'title' => $item->title ?? null,
-                    'description' => $item->description ?? null,
-                    'image' => $item->image ?? null,
-                    'date' => $this->formatDayDate($item->created_at ?? null),
-                ];
-            });
-        return $data;
-    }
-
-    private function getVideo(): object
-    {
-        $item = Http::get(env('API_VIDEO'))->object();
-        $data = (object) [
-            'title' => $item->title ?? null,
-            'url' => $item->url ?? null,
-            'embed' => $item->embed ?? null,
-            'is_active' => $item->is_active ?? null,
-            'date' => $this->formatDayDate($item->created_at ?? null),
-        ];
         return $data;
     }
 }
