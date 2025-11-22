@@ -12,7 +12,7 @@ class LeaderController extends Controller
     public function index()
     {
         $data['data'] = $this->fetchData();
-        return view('public.leader.index', $data);
+        return view('pages.leader.index', $data);
     }
     public function fetchData($search = null, $page = 1)
     {

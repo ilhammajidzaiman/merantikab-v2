@@ -15,14 +15,14 @@ class NewsController extends Controller
 
     public function index()
     {
-        return view('public.news.index');
+        return view('pages.news.index');
     }
 
     public function show(string $id)
     {
         $data['record'] = $this->getRecord($id);
         $data['newsOther'] = $this->getNewsOther($data['record']->categorySlug);
-        return view('public.news.show', $data);
+        return view('pages.news.show', $data);
     }
 
     public function getNews($search = null, $page = 1)

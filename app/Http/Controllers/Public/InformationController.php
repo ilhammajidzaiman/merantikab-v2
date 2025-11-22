@@ -15,14 +15,14 @@ class InformationController extends Controller
 
     public function index()
     {
-        return view('public.information.index');
+        return view('pages.information.index');
     }
 
     public function show(string $id)
     {
         $data['record'] = $this->fetchRecord($id);
         $data['other'] = $this->fetchOther($data['record']->slug);
-        return view('public.information.show', $data);
+        return view('pages.information.show', $data);
     }
 
     public function fetchData($search = null, $page = 1)

@@ -20,8 +20,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $data['carouselNews'] = $this->getCarouselNews();
-        $data['news'] = $this->getNews();
+        // $data['carouselNews'] = $this->getCarouselNews();
+        // $data['news'] = $this->getNews();
         $data['carouselFull'] = Carousel::active()
             ->latest()
             ->take(10)
@@ -57,7 +57,7 @@ class HomeController extends Controller
             ->latest()
             ->take(1)
             ->get();
-        return view('public.home.index', $data);
+        return view('pages.home.index', $data);
     }
 
     private function getNews(): Collection

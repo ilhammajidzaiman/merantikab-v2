@@ -1,6 +1,6 @@
-<section id="news">
-    <div class="w-full py-10">
-        <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3">
+<x-section id="news">
+    <x-wrapper class="py-12">
+        <x-container class="space-y-8">
             <div class="w-full flex justify-center">
                 <div class="space-y-2 text-center">
                     <h1 class="text-3xl font-bold text-emerald-500">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="md:col-span-6 lg:col-span-1">
                     <div x-data="{
                         active: 0,
@@ -94,7 +94,7 @@
                                 @endforeach
                             </div>
                         @else
-                            <x-public.empty />
+                            <x-empty />
                         @endif
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                                 </div>
                             @endforeach
                         @else
-                            <x-public.empty />
+                            <x-empty />
                         @endif
                     </div>
                 </div>
@@ -142,6 +142,6 @@
                     </svg>
                 </a>
             </footer>
-        </div>
-    </div>
-</section>
+        </x-container>
+    </x-wrapper>
+</x-section>

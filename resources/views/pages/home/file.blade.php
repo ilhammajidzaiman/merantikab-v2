@@ -1,6 +1,6 @@
-<section id="file">
-    <div class="w-full py-10">
-        <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3">
+<x-section id="file">
+    <x-wrapper class="py-12">
+        <x-container class="space-y-8">
             <div class="w-full flex justify-center">
                 <div class="space-y-2 text-center">
                     <h1 class="text-3xl font-bold text-emerald-500">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 @foreach ($file as $item)
                     <div class="overflow-hidden flex items-center gap-4 shadow-md rounded-xl bg-white hover:shadow-md">
                         <div
@@ -64,6 +64,6 @@
                     </svg>
                 </a>
             </footer>
-        </div>
-    </div>
-</section>
+        </x-container>
+    </x-wrapper>
+</x-section>

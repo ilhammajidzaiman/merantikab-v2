@@ -2,15 +2,15 @@
     use Carbon\Carbon;
 @endphp
 
-<x-public.layout.app-layout title="{{ Str::headline(__('beranda')) }}">
-    @include('public.home.hero')
-    @include('public.home.maps')
-    @include('public.home.news')
-    @include('public.home.announcement')
-    @include('public.home.app')
-    @include('public.home.file')
-    @include('public.home.galery')
-    @include('public.home.address')
+<x-layout.app title="{{ Str::headline(__('beranda')) }}">
+    @include('pages.home.hero')
+    @include('pages.home.maps')
+    {{-- @include('pages.home.news') --}}
+    @include('pages.home.announcement')
+    @include('pages.home.app')
+    @include('pages.home.file')
+    @include('pages.home.galery')
+    @include('pages.home.address')
 
     @push('metaTag')
         <meta property="og:url" content="{{ env('APP_URL') }}">
@@ -67,4 +67,4 @@
             }
         </script>
     @endpush
-</x-public.layout.app-layout>
+</x-layout.app>

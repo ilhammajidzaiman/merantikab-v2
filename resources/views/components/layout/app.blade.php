@@ -24,11 +24,11 @@
 </head>
 
 <body class="bg-slate-50 text-slate-700 text-base">
-    <x-public.layout.navigation />
-    {{-- @include('layouts.public.navigation') --}}
+    <x-layout.navigation />
+    {{-- @include('layouts.navigation') --}}
     {{ $slot }}
-    <x-public.layout.footer />
-    {{-- @include('layouts.public.footer') --}}
+    <x-layout.footer />
+    {{-- @include('layouts.footer') --}}
     @stack('scripts')
     @livewireScripts
 </body>

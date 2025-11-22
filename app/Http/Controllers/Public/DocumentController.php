@@ -15,13 +15,13 @@ class DocumentController extends Controller
 
     public function index()
     {
-        return view('public.document.index');
+        return view('pages.document.index');
     }
 
     public function show(string $id)
     {
         $data['record'] = $this->fetchRecord($id);
-        return view('public.document.show', $data);
+        return view('pages.document.show', $data);
     }
 
     public function download(string $slug)

@@ -15,13 +15,13 @@ class LinkController extends Controller
 
     public function index()
     {
-        return view('public.link.index');
+        return view('pages.link.index');
     }
 
     public function show(string $id)
     {
         $data['record'] = $this->fetchRecord($id);
-        return view('public.link.show', $data);
+        return view('pages.link.show', $data);
     }
 
     public function fetchData($search = null, $page = 1)

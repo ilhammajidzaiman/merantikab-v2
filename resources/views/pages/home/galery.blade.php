@@ -1,6 +1,6 @@
-<section id="galery">
-    <div class="w-full py-5">
-        <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto space-y-8 p-3">
+<x-section id="galery">
+    <x-wrapper class="py-12">
+        <x-container class="space-y-8">
             <div class="w-full flex justify-center">
                 <div class="space-y-2 text-center">
                     <h1 class="text-3xl font-bold text-emerald-500">
@@ -39,6 +39,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </x-container>
+    </x-wrapper>
+</x-section>

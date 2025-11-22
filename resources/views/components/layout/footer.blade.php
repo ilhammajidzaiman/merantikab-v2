@@ -1,11 +1,9 @@
-<div class="w-full p-3 relative">
-    <div class="w-full relative bg-gradient-to-b from-emerald-500 to-transparent rounded-xl overflow-hidden">
-        {{-- <div
-        class="w-full rounded-xl overflow-hidden relative bg-emerald-500 bg-[url(/public/image/background/alternating-arrowhead.svg)] bg-center bg-fixed bg-repeat"> --}}
-        <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto">
+<x-section id="footer" class="p-4 relative">
+    <x-wrapper class="relative bg-gradient-to-b from-emerald-500 to-transparent rounded-xl overflow-hidden">
+        <x-container class="space-y-16">
             <div class="absolute top-0 left-0 right-0 z-0 pointer-events-none select-none">
-                <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto">
-                    <div class="w-full max-w-full flex flex-col items-center px-4 text-9xl font-extrabold text-white/20">
+                <x-container>
+                    <div class="w-full max-w-full flex flex-col items-center text-9xl font-extrabold text-white/20">
                         <div class=" leading-none break-words w-full">
                             {{ Str::upper('kepulauan') }}
                         </div>
@@ -13,9 +11,10 @@
                             {{ Str::upper('meranti') }}
                         </div>
                     </div>
-                </div>
+                </x-container>
             </div>
-            <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto px-3 py-16 relative z-10">
+
+            <div class="relative z-10">
                 <div class="grid grid-cols-12 gap-8">
                     <div class="col-span-full md:col-span-6 lg:col-span-3">
                         <div class="space-y-4">
@@ -123,7 +122,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3 relative z-10">
+            <div class="relative z-10">
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div class="flex flex-wrap justify-center md:justify-endtext-sm ">
                         <div class="text-center md:text-left text-xs space-y-2">
@@ -183,6 +182,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+        </x-container>
+    </x-wrapper>
+</x-section>

@@ -15,14 +15,14 @@ class GaleryController extends Controller
 
     public function index()
     {
-        return view('public.galery.index');
+        return view('pages.galery.index');
     }
 
     public function show(string $id)
     {
         $data['record'] = $this->fetchRecord($id);
         $data['other'] = $this->fetchOther($data['record']->slug);
-        return view('public.galery.show', $data);
+        return view('pages.galery.show', $data);
     }
 
     // public function fetchData($search = null, $page = 1)
