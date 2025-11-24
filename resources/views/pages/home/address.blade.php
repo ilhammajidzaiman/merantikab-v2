@@ -1,4 +1,4 @@
-<x-section id="file">
+<x-section id="address">
     <x-wrapper class="py-12">
         <x-container class="space-y-8">
             <div class="w-full flex justify-center">

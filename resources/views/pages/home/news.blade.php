@@ -51,8 +51,8 @@
                                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
                                     class="absolute inset-0">
                                     <div class="overflow-hidden rounded-xl relative">
-                                        <img src="{{ env('API_SIPB') . ($item->image ?? null) }}"
-                                            alt="{{ $item->title ?? null }}" class="aspect-square object-cover w-full">
+                                        <img src="{{ $item->image ?? null }}" alt="{{ $item->title ?? null }}"
+                                            class="aspect-square object-cover w-full">
                                         <div
                                             class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4 flex flex-col justify-end space-y-2 pb-16">
                                             <a href="{{ url('news/' . ($item->slug ?? null)) }}">
@@ -105,7 +105,7 @@
                             @foreach ($news as $item)
                                 <div class="overflow-hidden flex items-center gap-4 shadow-xs rounded-xl bg-white m-4">
                                     <div class="w-34 h-34 overflow-hidden rounded-r-full shrink-0 bg-slate-200">
-                                        <img src="{{ env('API_SIPB') . $item->image ?? null }}" alt="image"
+                                        <img src="{{ $item->image ?? null }}" alt="image"
                                             class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
                                     </div>
                                     <div class="p-4">

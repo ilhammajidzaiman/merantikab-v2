@@ -68,21 +68,23 @@
                 <x-container class="space-y-8 relative z-10">
                     <div class="grid grid-cols-6 gap-4">
                         <div class="col-span-full md:col-start-1 md:col-end-4">
-                            <div class="text-white text-shadow-md text-shadow-slate-600 space-y-4">
-                                <h3 class="font-light text-xl">
-                                    Situs Resmi Pemerintahan Daerah
-                                </h3>
-                                <h1 class="text-6xl font-bold">
-                                    Kabupaten
-                                </h1>
-                                <h1 class="text-6xl font-bold">
-                                    Kepulauan Meranti
-                                </h1>
-                                <h3 class="font-light text-xl">
-                                    Cari Informasi Tentang Kabupaten Kepulauan Meranti
-                                </h3>
-
-                                <form action="/search" method="GET" class="relative w-full md:w-72">
+                            <div class="space-y-4">
+                                <div class="text-white text-shadow-md text-shadow-slate-600 space-y-4">
+                                    <h3 class="font-light text-xl">
+                                        Situs Resmi Pemerintahan Daerah
+                                    </h3>
+                                    <h1 class="text-6xl font-bold">
+                                        Kabupaten
+                                    </h1>
+                                    <h1 class="text-6xl font-bold">
+                                        Kepulauan Meranti
+                                    </h1>
+                                    <h3 class="font-light text-xl">
+                                        Cari Informasi Tentang Kabupaten Kepulauan Meranti
+                                    </h3>
+                                </div>
+                                <livewire:search-global />
+                                {{-- <form action="/search" method="GET" class="relative w-full md:w-72">
                                     <label for="search" class="sr-only">Search</label>
                                     <input type="text" name="search" id="search" placeholder="Cari..."
                                         class="w-full border border-white rounded-lg pl-10 pr-3 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-500 bg-white/20 backdrop-blur-sm text-white placeholder-white/80">
@@ -94,7 +96,7 @@
                                                 d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                                         </svg>
                                     </button>
-                                </form>
+                                </form> --}}
                             </div>
                         </div>
 

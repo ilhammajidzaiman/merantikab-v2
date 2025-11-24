@@ -4,7 +4,7 @@
 @endphp
 <x-section id="footer" class="p-4 relative">
     <x-wrapper class="relative bg-gradient-to-b from-emerald-500 to-transparent rounded-xl overflow-hidden">
-        <x-container class="space-y-16">
+        <x-container class="space-y-16 md:pt-8">
             <div class="absolute top-0 left-0 right-0 z-0 pointer-events-none select-none">
                 <x-container>
                     <div class="w-full max-w-full flex flex-col items-center text-9xl font-extrabold text-white/20">
@@ -59,8 +59,7 @@
                                 </h1>
                             </div>
                             <div class="text-sm font-medium">
-                                <p>Diskominfotik &copy; {{ date('Y') }}</p>
-                                <p>Kabupaten Kepulauan Meranti</p>
+                                <p>{{ Str::upper(__('diskominfotik')) }} &copy; {{ date('Y') }}</p>
                             </div>
                         </div>
                     </div>
@@ -104,6 +103,34 @@
                                 </a>
                             @endforeach
                         </nav>
+                        {{-- <h1 class="text-sm">
+                            {{ Str::ucfirst(__('statistik pengunjung')) }}
+                        </h1>
+                        <nav class="flex gap-4 text-white">
+                            @php
+                                $data = [
+                                    (object) [
+                                        'title' => 'Total Penjunjung',
+                                        'total' => '12345',
+                                    ],
+                                    (object) [
+                                        'title' => 'hari ini',
+                                        'total' => '123',
+                                    ],
+                                    (object) [
+                                        'title' => 'online',
+                                        'total' => '1',
+                                    ],
+                                ];
+                            @endphp
+                            @foreach ($data as $item)
+                                <div class="text-sm rounded-xl bg-emerald-500 px-2 py-1">
+                                    {{ Str::ucfirst(__($item->title ?? null)) }}
+                                    :
+                                    {{ Str::ucfirst(__($item->total ?? null)) }}
+                                </div>
+                            @endforeach
+                        </nav> --}}
                     </div>
                 </div>
             </div>

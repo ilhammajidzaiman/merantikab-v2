@@ -9,19 +9,19 @@ use App\Models\AppList;
 use App\Models\Carousel;
 use App\Models\AppShortcut;
 use App\Models\Announcement;
-use Illuminate\Support\Collection;
+use App\Services\NewsService;
 use App\Traits\FormatDateTimeTrait;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
     use FormatDateTimeTrait;
+    public function __construct(private NewsService $newsService) {}
 
     public function index()
     {
-        // $data['carouselNews'] = $this->getCarouselNews();
-        // $data['news'] = $this->getNews();
+        $data['carouselNews'] = $this->newsService->getNewsCarousel();
+        $data['news'] = $this->newsService->getNews();
         $data['carouselFull'] = Carousel::active()
             ->latest()
             ->take(10)
@@ -58,46 +58,5 @@ class HomeController extends Controller
             ->take(1)
             ->get();
         return view('pages.home.index', $data);
-    }
-
-    private function getNews(): Collection
-    {
-        $response = Http::get(env('API_NEWS'))->object()->data ?? [];
-        $data = collect($response)
-            ->map(function ($item) {
-                return (object) [
-                    'slug' => $item->slug ?? null,
-                    'title' => $item->title ?? null,
-                    'category' => $item->category ?? null,
-                    'categorySlug' => $item->categorySlug ?? null,
-                    'date' => $this->formatDayDate($item->date ?? null),
-                    'institute' => $item->institute ?? null,
-                    'user' => $item->user ?? null,
-                    'thumbnail_alt' => $item->thumbnail_alt ?? null,
-                    'image' => $item->thumbnail ?? null,
-                ];
-            });
-        return $data;
-    }
-
-    private function getCarouselNews(): Collection
-    {
-        $response = Http::get(env('API_NEWS'))->object()->data ?? [];
-        $data = collect($response)
-            ->take(5)
-            ->map(function ($item) {
-                return (object) [
-                    'slug' => $item->slug ?? null,
-                    'title' => $item->title ?? null,
-                    'image' => $item->thumbnail ?? null,
-                    'thumbnail_alt' => $item->thumbnail_alt ?? null,
-                    'category' => $item->category ?? null,
-                    'categorySlug' => $item->categorySlug ?? null,
-                    'date' => $this->formatDayDate($item->date ?? null),
-                    'institute' => $item->institute ?? null,
-                    'user' => $item->user ?? null,
-                ];
-            });
-        return $data;
     }
 }

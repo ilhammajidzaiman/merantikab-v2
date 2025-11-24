@@ -4,13 +4,14 @@
 
 <x-layouts.app title="{{ Str::headline(__('beranda')) }}">
     @include('pages.home.hero')
-    @include('pages.home.maps')
-    {{-- @include('pages.home.news') --}}
+    {{-- @include('pages.home.maps') --}}
+    @include('pages.home.news')
     @include('pages.home.announcement')
     @include('pages.home.app')
     @include('pages.home.file')
     @include('pages.home.galery')
     @include('pages.home.address')
+    @include('pages.home.region')
 
     @push('metaTag')
         <meta property="og:url" content="{{ env('APP_URL') }}">

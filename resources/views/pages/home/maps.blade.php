@@ -1,8 +1,8 @@
-<x-section id="announcement">
+<x-section id="maps">
     <x-wrapper class="py-12">
         <x-container
             class="space-y-8 bg-slate-200 bg-[url(/public/image/background/square-versatiles.svg)] bg-center bg-fixed bg-repeat rounded-xl p-4">
-            <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-8">
                 <div class="md:col-span-3 lg:col-span-4">
                     <svg class="group h-full w-full object-contain  fill-slate-500" viewBox="30 12 240 190"
                         xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -117,20 +117,16 @@
                         </g>
                     </svg>
                 </div>
-                <div class="md:col-span-3 lg:col-span-2">
-                    <header>
-                        <h3
-                            class="text-lg bg-linear-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
-                            Peta Kabupaten
+                <div class="md:col-span-3 lg:col-span-2 space-y-8">
+                    <div class="space-y-2">
+                        <h1 class="text-3xl font-bold text-emerald-500">
+                            {{ Str::title(__('peta')) }}
+                        </h1>
+                        <h3 class="text-xl">
+                            {{ Str::title(__('kabupaten kepulauan meranti')) }}
                         </h3>
-                        <div class="flex items-center gap-4 mb-4">
-                            <h1
-                                class="font-bold text-3xl bg-linear-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
-                                Kepulauan Meranti
-                            </h1>
-                            <div class="flex-1 border-b border-emerald-500"></div>
-                        </div>
-                    </header>
+                        <div class="w-full h-0.5 bg-linear-to-r from-emerald-500 to-transparent"></div>
+                    </div>
                     <ul
                         class="list-decimal list-inside bg-white rounded-xl text-slate-600 font-medium text-xl shadow-xs p-4">
                         <li class="rounded-xl px-4 py-2 hover:text-emerald-500">Tebing Tinggi</li>

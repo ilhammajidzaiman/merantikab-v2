@@ -1,11 +1,11 @@
-<x-section id="news" class="p-4">
+<x-section id="service" class="p-4">
     <x-wrapper
         class="bg-emerald-500 bg-[url(/public/image/background/subtle-prism.svg)] bg-center bg-fixed bg-repeat rounded-xl py-12">
         <x-container class="space-y-8">
             <div class="w-full flex justify-center">
                 <div class="space-y-2 text-center">
                     <h1 class="text-3xl font-bold text-white">
-                        {{ Str::title(__('aplikasi layanan')) }}
+                        {{ Str::title(__('layanan')) }}
                     </h1>
                     <h3 class="text-xl">
                         {{ Str::title(__('kurasi tautan situs web aplikasi pemerintah daerah dan aplikasi layanan masyarakat')) }}

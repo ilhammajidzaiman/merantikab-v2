@@ -3,9 +3,9 @@
     use App\Models\Page;
 @endphp
 <nav id="navbar">
-    <div class="fixed top-0 left-0 w-full z-50">
-        <div class="w-full ">
-            <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3">
+    <x-section class="fixed top-0 left-0 w-full z-50">
+        <x-wrapper>
+            <x-container class="space-y-8">
                 <div class="rounded-xl shadow-md  bg-white/50 backdrop-blur-xs">
                     <nav aria-label="Global" class="mx-auto flex w-full items-center justify-between px-4 py-3  ">
                         <div class="flex lg:flex-1">
@@ -182,7 +182,7 @@
                         </dialog>
                     </el-dialog>
                 </div>
-            </div>
-        </div>
-    </div>
+            </x-container>
+        </x-wrapper>
+    </x-section>
 </nav>
