@@ -10,13 +10,12 @@ use Illuminate\Support\Str;
 use App\Models\Announcement;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use SolutionForest\FilamentTree\Concern\ModelTree;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class NavigationMenu extends Model
 {
-    use SoftDeletes, ModelTree;
+    use SoftDeletes;
 
     protected $fillable = [
         'is_active',

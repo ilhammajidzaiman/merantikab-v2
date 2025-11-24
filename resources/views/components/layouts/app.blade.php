@@ -24,10 +24,10 @@
 </head>
 
 <body class="bg-slate-50 text-slate-700 text-base">
-    <x-layout.navigation />
+    <x-layouts.navigation />
     {{-- @include('layouts.navigation') --}}
     {{ $slot }}
-    <x-layout.footer />
+    <x-layouts.footer />
     {{-- @include('layouts.footer') --}}
     @stack('scripts')
     @livewireScripts

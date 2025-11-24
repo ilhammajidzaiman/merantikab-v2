@@ -1,14 +1,15 @@
+@php
+    use App\Models\Link;
+    use App\Models\Page;
+@endphp
 <x-section id="footer" class="p-4 relative">
     <x-wrapper class="relative bg-gradient-to-b from-emerald-500 to-transparent rounded-xl overflow-hidden">
         <x-container class="space-y-16">
             <div class="absolute top-0 left-0 right-0 z-0 pointer-events-none select-none">
                 <x-container>
                     <div class="w-full max-w-full flex flex-col items-center text-9xl font-extrabold text-white/20">
-                        <div class=" leading-none break-words w-full">
-                            {{ Str::upper('kepulauan') }}
-                        </div>
-                        <div class=" leading-none break-words w-full">
-                            {{ Str::upper('meranti') }}
+                        <div class="leading-none break-words w-full">
+                            {{ Str::upper('kepulauan meranti') }}
                         </div>
                     </div>
                 </x-container>
@@ -16,110 +17,34 @@
 
             <div class="relative z-10">
                 <div class="grid grid-cols-12 gap-8">
-                    <div class="col-span-full md:col-span-6 lg:col-span-3">
-                        <div class="space-y-4">
-                            <div class="w-full flex items-center space-x-2">
-                                <h3 class="text-2xl font-bold">
-                                    Lainnya
-                                </h3>
-                                <div class="w-full h-0.5 bg-linear-to-r from-white to-transparent"></div>
-                            </div>
-                            <div class="space-y-2">
-                                @php
-                                    $data = [
-                                        (object) [
-                                            'title' => 'Smart City',
-                                            'link' => '#',
-                                        ],
-                                        (object) [
-                                            'title' => 'Lapor',
-                                            'link' => '#',
-                                        ],
-                                        (object) [
-                                            'title' => 'Statistik',
-                                            'link' => '#',
-                                        ],
-                                        (object) [
-                                            'title' => 'PPID',
-                                            'link' => '#',
-                                        ],
-                                        (object) [
-                                            'title' => 'Statistik',
-                                            'link' => '#',
-                                        ],
-                                        (object) [
-                                            'title' => 'Desa Sialang Pasung',
-                                            'link' => '#',
-                                        ],
-                                    ];
-                                @endphp
-                                @foreach ($data as $item)
-                                    <h3 class="text-slate-600">
-                                        <a href="" class="hover:underline">
-                                            {{ $item->title ?? null }}
-                                        </a>
+                    @foreach ($footer as $parent)
+                        <div class="col-span-full md:col-span-6 lg:col-span-3">
+                            <div class="space-y-4">
+                                <div class="w-full flex items-center space-x-2">
+                                    <h3 class="text-2xl font-bold">
+                                        {{ $parent->title ?? null }}
                                     </h3>
-                                @endforeach
+                                    <div class="w-full h-0.5 bg-linear-to-r from-white to-transparent"></div>
+                                </div>
+                                <div class="space-y-2">
+                                    @foreach ($parent->children as $child)
+                                        @php
+                                            if ($child->modelable_type === Page::class):
+                                                $urlChild = $child->page->slug;
+                                            elseif ($child->modelable_type === Link::class):
+                                                $urlChild = $child->link->url;
+                                            endif;
+                                        @endphp
+                                        <h3 class="text-slate-600 font-medium">
+                                            <a wire:navigate href="{{ $urlChild ?? null }}" class="hover:underline">
+                                                {{ $child->title ?? null }}
+                                            </a>
+                                        </h3>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-span-full md:col-span-6 lg:col-span-3">
-                        <div class="space-y-4">
-                            <div class="w-full flex items-center space-x-2">
-                                <h3 class="text-2xl font-bold">
-                                    Lainnya
-                                </h3>
-                                <div class="w-full h-0.5 bg-linear-to-r from-white to-transparent"></div>
-                            </div>
-                            <div class="space-y-2">
-                                @foreach ($data as $item)
-                                    <h3 class="text-slate-600">
-                                        <a href="" class="hover:underline">
-                                            {{ $item->title ?? null }}
-                                        </a>
-                                    </h3>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-full md:col-span-6 lg:col-span-3">
-                        <div class="space-y-4">
-                            <div class="w-full flex items-center space-x-2">
-                                <h3 class="text-2xl font-bold">
-                                    Lainnya
-                                </h3>
-                                <div class="w-full h-0.5 bg-linear-to-r from-white to-transparent"></div>
-                            </div>
-                            <div class="space-y-2">
-                                @foreach ($data as $item)
-                                    <h3 class="text-slate-600">
-                                        <a href="" class="hover:underline">
-                                            {{ $item->title ?? null }}
-                                        </a>
-                                    </h3>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-span-full md:col-span-6 lg:col-span-3">
-                        <div class="space-y-4">
-                            <div class="w-full flex items-center space-x-2">
-                                <h3 class="text-2xl font-bold">
-                                    Lainnya
-                                </h3>
-                                <div class="w-full h-0.5 bg-linear-to-r from-white to-transparent"></div>
-                            </div>
-                            <div class="space-y-2">
-                                @foreach ($data as $item)
-                                    <h3 class="text-slate-600">
-                                        <a href="" class="hover:underline">
-                                            {{ $item->title ?? null }}
-                                        </a>
-                                    </h3>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="relative z-10">

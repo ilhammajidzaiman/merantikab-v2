@@ -1,11 +1,3 @@
-{{--
-<x-section id="announcement">
-    <x-wrapper class="py-12">
-        <x-container class="space-y-8 p-4">
-        </x-container>
-    </x-wrapper>
-</x-section>
---}}
 <section id="hero">
     <div class="relative w-full h-screen">
         <div x-data="{
@@ -33,47 +25,36 @@
                         x-transition:leave="transition-opacity duration-1000" x-transition:leave-start="opacity-100"
                         x-transition:leave-end="opacity-0" class="absolute inset-0">
                         <img src="{{ env('APP_URL_ASSET') . $item->file }}" class="w-full h-screen object-cover">
-                        <x-container>
-                            <div class="relative">
-                                <div class="absolute inset-x-0 bottom-0">
-                                    <div
-                                        class="text-white rounded-xl bg-slate-800/25 backdrop-blur-xs text-shadow-md text-center m-3 p-4">
-                                        <h3 class="font-medium text-xl ">{{ $item->title ?? null }}</h3>
-                                        <p class="font-light text-md ">{{ $item->description ?? null }}</p>
+                        <x-section>
+                            <x-wrapper>
+                                <x-container class="relative">
+                                    <div class="absolute inset-x-0 bottom-8">
+                                        <div
+                                            class="text-white rounded-xl bg-slate-900/20 backdrop-blur-xs text-shadow-md text-center p-4">
+                                            <h3 class="font-medium text-xl">{{ $item->title ?? null }}</h3>
+                                            <p class="font-light text-md ">{{ $item->description ?? null }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </x-container>
+                                </x-container>
+                            </x-wrapper>
+                        </x-section>
                     </div>
                 @endforeach
             @else
                 <div class="absolute inset-0 opacity-100 bg-slate-500">
                     <img src="{{ asset('/image/carousel/lamr-bupati.jpg') }}" class="w-full h-screen object-cover">
-                    <div class="w-full">
-                        <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto ">
-                            <div class="relative">
-                                <div class="absolute inset-x-0 bottom-0">
-                                    <div
-                                        class="text-white rounded-xl bg-slate-800/25 backdrop-blur-xs text-shadow-md text-center m-3 p-4">
-                                        <h3 class="font-medium text-xl ">Error 503</h3>
-                                        <p class="font-light text-md ">Gagal memuat data, silakan coba lagi nanti.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             @endif
             <div class="hidden md:block">
                 <button @click="previous"
-                    class="absolute top-1/2 left-6 -translate-y-1/2 bg-white/20 text-white p-3 rounded-xl hover:bg-white/50 z-20">
+                    class="absolute top-1/2 left-6 -translate-y-1/2 bg-white/25 text-white p-4 rounded-xl hover:bg-white/50 z-10">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                     </svg>
                 </button>
                 <button @click="next"
-                    class="absolute top-1/2 right-6 -translate-y-1/2 bg-white/20 text-white p-3 rounded-xl hover:bg-white/50 z-20">
+                    class="absolute top-1/2 right-6 -translate-y-1/2 bg-white/25 text-white p-4 rounded-xl hover:bg-white/50 z-10">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -82,8 +63,7 @@
             </div>
         </div>
 
-
-        <x-section id="announcement" class="absolute inset-0 flex items-center">
+        <x-section id="heroContent" class="absolute inset-0 flex items-center">
             <x-wrapper>
                 <x-container class="space-y-8 relative z-10">
                     <div class="grid grid-cols-6 gap-4">
@@ -179,8 +159,7 @@
                                                     {{-- Logo --}}
                                                     @if ($item->appList->file === null)
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5"
-                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                             class="size-10 text-emerald-500 w-full h-16">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
@@ -312,7 +291,7 @@
                             </div>
                         </div>
                         <button id="scrollLeft"
-                            class="absolute left-0 top-1/2 -translate-y-1/2 text-white hover:text-slate-800  hover:bg-white/70 mx-2 p-2 rounded-xl z-10">
+                            class="absolute left-0 top-1/2 -translate-y-1/2 text-white hover:text-slate-900  hover:bg-white/70 mx-2 p-2 rounded-xl z-10">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-6 border">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -320,7 +299,7 @@
                             </svg>
                         </button>
                         <button id="scrollRight"
-                            class="absolute right-0 top-1/2 -translate-y-1/2 text-white hover:text-slate-800  hover:bg-white/70 mx-2 p-2 rounded-xl z-10">
+                            class="absolute right-0 top-1/2 -translate-y-1/2 text-white hover:text-slate-900  hover:bg-white/70 mx-2 p-2 rounded-xl z-10">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-6 border">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />

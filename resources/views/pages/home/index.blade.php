@@ -2,7 +2,7 @@
     use Carbon\Carbon;
 @endphp
 
-<x-layout.app title="{{ Str::headline(__('beranda')) }}">
+<x-layouts.app title="{{ Str::headline(__('beranda')) }}">
     @include('pages.home.hero')
     @include('pages.home.maps')
     {{-- @include('pages.home.news') --}}
@@ -67,4 +67,4 @@
             }
         </script>
     @endpush
-</x-layout.app>
+</x-layouts.app>
