@@ -1,11 +1,20 @@
-<div class="w-full aspect-square flex flex-col items-center justify-center gap-3 text-slate-500">
+<div class="aspect-video w-full h-auto flex flex-col items-center justify-center space-y-4">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-        class="size-12">
+        class="size-32 text-emerald-500">
         <path stroke-linecap="round" stroke-linejoin="round"
-            d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z" />
+            d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Zm3.75 11.625a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
     </svg>
-    <div class="text-center">
-        <p class="text-xl font-medium">Server sedang sibuk</p>
-        <p>Silakan coba lagi.</p>
-    </div>
+    <p>
+        {{ Str::title(__('data tidak ditemukan')) }}
+    </p>
+    <p>
+        {{ Str::title(__('silahkan kembali ke')) }}
+        <a href="{{ route('index') }}" class="text-emerald-500 hover:underline inline-flex items-center gap-1">
+            {{ Str::title(__('beranda')) }}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+            </svg>
+        </a>
+    </p>
 </div>

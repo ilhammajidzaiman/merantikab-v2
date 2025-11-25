@@ -1,11 +1,11 @@
-<x-public.layout.app-layout title="{{ $record->title ?? null }}">
-    <section id="news" class="mt-20">
-        <div class="w-full py-10">
-            <div class="w-full sm:max-w-6xl md:max-w-6xl mx-auto p-3">
+<x-layouts.app title="{{ $record->title ?? null }}">
+    <x-section id="news" class="pt-16">
+        <x-wrapper class="py-12">
+            <x-container class="space-y-8">
                 @if ($record->slug)
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-                        <div class="md:col-span-full lg:col-span-7">
-                            <div class="flex space-x-2 items-center font-normal text-md text-slate-600 mb-4">
+                        <div class="md:col-span-full lg:col-span-7 space-y-4">
+                            <div class="flex space-x-2 items-center font-normal text-slate-600">
                                 <a wire:navigate href="{{ route('news.index') }}"class="hover:underline">
                                     Berita
                                 </a>
@@ -19,16 +19,16 @@
                                     {{ $record->category ?? null }}
                                 </a>
                             </div>
-                            <h1 class="font-bold text-3xl text-slate-600 mb-4">
+                            <h1 class="font-bold text-3xl text-slate-600">
                                 {{ $record->title ?? null }}
                             </h1>
-                            <h6 class="font-normal text-md text-slate-500 mb-4">
+                            <h6 class="font-normal text-slate-500">
                                 {{ $record->date ?? null }}
                                 .
                                 Waktu baca
                                 {{ $record->read_time ?? null }}
                             </h6>
-                            <nav class="flex items-center gap-4 mb-4">
+                            <nav class="flex items-center gap-4">
                                 <button onclick="whatsapp()" type="button" data-bs-toggle="tooltip" title="Whatsapp"
                                     class="w-10 aspect-square flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -77,12 +77,12 @@
                                 </div>
                             @endif
                             @if ($record->thumbnail_alt)
-                                <h6 class="font-normal text-base text-slate-500 mb-4">
+                                <h6 class="font-normal text-base text-slate-500">
                                     {{ $record->thumbnail_alt ?? null }}
                                 </h6>
                             @endif
                             @if ($record->images)
-                                <div class="border border-slate-300 bg-slate-200 rounded-xl mb-4">
+                                <div class="border border-slate-300 bg-slate-200 rounded-xl">
                                     <div
                                         class="flex gap-4 overflow-x-auto mx-4 my-4 hide-scrollbar snap-x scroll-smooth">
                                         @foreach ($record->images as $img)
@@ -94,28 +94,26 @@
                                     </div>
                                 </div>
                             @endif
-                            <div class="content font-normal text-lg text-slate-600 mb-4">
+                            <div class="content">
                                 {!! $record->content ?? null !!}
                             </div>
                         </div>
                         <div class="md:col-span-full lg:col-span-5">
-                            <div class="sticky top-[10%]">
-                                <header class="flex items-center gap-4 mb-4">
-                                    <h1
-                                        class="font-bold text-3xl bg-linear-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
-                                        Berita Lainnya
+                            <div class="space-y-4">
+                                <div class="space-y-2">
+                                    <h1 class="text-3xl font-bold text-emerald-500">
+                                        {{ Str::title(__('berita lainnya')) }}
                                     </h1>
-                                    <div class="flex-1 border-b border-emerald-500"></div>
-                                </header>
+                                    <div class="w-full h-0.5 bg-linear-to-r from-emerald-500 to-transparent"></div>
+                                </div>
                                 <section class="grid grid-cols-1 gap-4">
                                     @foreach ($newsOther as $record)
-                                        <div
-                                            class="overflow-hidden flex items-center shadow-md rounded-xl bg-white hover:shadow-md">
+                                        <div class="overflow-hidden flex items-center shadow rounded-xl bg-white">
                                             <div class="p-4">
                                                 <h3 class="text-slate-500 text-sm line-clamp-1">
                                                     {{ $record->date ?? null }}
                                                 </h3>
-                                                <h1 class="text-slate-700 text-lg font-medium line-clamp-3">
+                                                <h1 class="line-clamp-3">
                                                     <a wire:navigate
                                                         href="{{ route('news.show', $record->slug ?? null) }}"
                                                         class="hover:underline">
@@ -124,7 +122,7 @@
                                                 </h1>
                                             </div>
                                             <div
-                                                class="aspect-square w-36  flex items-center justify-center overflow-hidden rounded-xl shrink-0 bg-slate-200">
+                                                class="aspect-square w-32  flex items-center justify-center overflow-hidden rounded-xl shrink-0 bg-slate-200">
                                                 <img src="{{ env('API_SIPB') . $record->image ?? null }}"
                                                     alt="image"
                                                     class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
@@ -160,9 +158,9 @@
                         </div>
                     </div>
                 @endif
-            </div>
-        </div>
-    </section>
+            </x-container>
+        </x-wrapper>
+    </x-section>
 
     @if ($record->slug)
         @push('metaTag')
@@ -223,4 +221,4 @@
             </script>
         @endpush
     @endif
-</x-public.layout.app-layout>
+</x-layouts.app>

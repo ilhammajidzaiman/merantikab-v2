@@ -29,7 +29,7 @@
     }
 
     .content p {
-        @apply mb-4 text-xl font-normal;
+        @apply mb-4 font-normal;
     }
 
     .content a {

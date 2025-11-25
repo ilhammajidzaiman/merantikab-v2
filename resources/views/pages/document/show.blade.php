@@ -126,7 +126,7 @@
                                         Data tidak ditemukan
                                     </p>
                                     <div class="mt-4 flex justify-start">
-                                        <a wire:navigate href="{{ route('information.index') }}"
+                                        <a wire:navigate href="{{ route('announcement.index') }}"
                                             class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-white bg-emerald-500 hover:bg-emerald-600 transition duration-300 ease-in-out">
                                             Kembali ke Info Pemngumuman
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"

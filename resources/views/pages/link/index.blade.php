@@ -1,4 +1,4 @@
-<x-public.layout.app-layout title="{{ Str::headline(__('informasi dan pengumuman')) }}">
+<x-layouts.app title="{{ Str::headline(__('informasi dan pengumuman')) }}">
 
     <header id="header" class="mt-28">
         <div class="w-full">
@@ -17,4 +17,4 @@
         </div>
     </header>
     <livewire:link />
-</x-public.layout.app-layout>
+</x-layouts.app>

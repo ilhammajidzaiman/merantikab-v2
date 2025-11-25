@@ -31,10 +31,10 @@
                             @endif
                         </div>
                         <div class="p-4">
-                            <h3 class="text-slate-500 text-normal line-clamp-1">
+                            <h3 class="line-clamp-1">
                                 {{ $item->date ?? null }}
                             </h3>
-                            <h1 class="text-slate-500 text-lg font-medium line-clamp-3">
+                            <h1 class="line-clamp-3">
                                 {{ $item->title ?? null }}
                             </h1>
                             <div class="mt-4 flex justify-start">

@@ -6,7 +6,7 @@
                     @if ($record->slug)
                         <div class="col-span-full md:col-span-7">
                             <div class="flex space-x-2 items-center text-md text-slate-600 mb-4">
-                                <a wire:navigate href="{{ route('information.index') }}"class="hover:underline">
+                                <a wire:navigate href="{{ route('announcement.index') }}"class="hover:underline">
                                     Informasi
                                 </a>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -15,7 +15,7 @@
                                         d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                                 </svg>
                                 <a wire:navigate
-                                    href="{{ route('information.index') }} "class="hover:underline font-normal text-emerald-500 line-clamp-1">
+                                    href="{{ route('announcement.index') }} "class="hover:underline font-normal text-emerald-500 line-clamp-1">
                                     {{ $record->title ?? null }}
                                 </a>
                             </div>
@@ -98,7 +98,7 @@
                                                 </h3>
                                                 <h1 class="text-slate-700 text-lg font-medium line-clamp-3">
                                                     <a wire:navigate
-                                                        href="{{ route('information.show', $item->slug ?? null) }}"
+                                                        href="{{ route('announcement.show', $item->slug ?? null) }}"
                                                         class="hover:underline">
                                                         {{ $item->title ?? null }}
                                                     </a>
@@ -137,7 +137,7 @@
                                         Data tidak ditemukan
                                     </p>
                                     <div class="mt-4 flex justify-start">
-                                        <a wire:navigate href="{{ route('information.index') }}"
+                                        <a wire:navigate href="{{ route('announcement.index') }}"
                                             class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-white bg-emerald-500 hover:bg-emerald-600 transition duration-300 ease-in-out">
                                             Kembali ke Info Pemngumuman
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -159,14 +159,14 @@
     @if ($record->slug)
         @push('metaTag')
             @if ($record)
-                <meta property="og:url" content="{{ route('information.show', $item->slug ?? null) }}">
+                <meta property="og:url" content="{{ route('announcement.show', $item->slug ?? null) }}">
                 <meta property="og:type" content="Info Pengummuman">
                 <meta property="og:title" content="{{ $record->title ?? null }}">
                 <meta property="og:description" content="{{ $record->title ?? null }}">
                 <meta property="og:image" content="{{ env('API_ADMIN') . $record->image ?? null }}">
                 <meta name="twitter:card" content="summary_large_image">
-                <meta property="twitter:domain" content="{{ route('information.show', $item->slug ?? null) }}">
-                <meta property="twitter:url" content="{{ route('information.show', $item->slug ?? null) }}">
+                <meta property="twitter:domain" content="{{ route('announcement.show', $item->slug ?? null) }}">
+                <meta property="twitter:url" content="{{ route('announcement.show', $item->slug ?? null) }}">
                 <meta name="twitter:title" content="{{ $record->title ?? null }}">
                 <meta name="twitter:image" content="{{ env('API_ADMIN') . $record->image ?? null }}">
             @endif
@@ -174,7 +174,7 @@
 
         @push('scripts')
             <script>
-                const url = "{{ route('information.show', $item->slug ?? null) }}";
+                const url = "{{ route('announcement.show', $item->slug ?? null) }}";
                 const message = "{{ $record->title ?? null }}";
 
                 document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {

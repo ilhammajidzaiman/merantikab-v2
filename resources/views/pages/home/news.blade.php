@@ -132,7 +132,7 @@
             </div>
             <footer class="flex items-center gap-4">
                 <div class="flex-grow border-b border-emerald-500"></div>
-                <a
+                <a href="{{ route('news.index') }}"
                     class="inline-flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition">
                     Selengkapnya
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

@@ -10,4 +10,9 @@ trait FormatDateTimeTrait
     {
         return Carbon::parse($data)->translatedFormat('l, j F Y');
     }
+
+    public function formatDayDateTime($data)
+    {
+        return Carbon::parse($data)->translatedFormat('l, j F Y, H:i');
+    }
 }
