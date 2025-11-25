@@ -6,13 +6,14 @@ use App\Models\Link;
 use App\Models\User;
 use App\Models\AppCategory;
 use Illuminate\Support\Str;
+use App\Traits\FormatDateTimeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AppList extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, FormatDateTimeTrait;
 
     protected $fillable =
     [

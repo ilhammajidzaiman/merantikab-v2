@@ -21,9 +21,8 @@ Route::prefix('/info-pengumuman')->controller(Controllers\AnnouncementController
     Route::get('/{id}', 'show')->name('announcement.show');
 });
 
-Route::prefix('/tautan-aplikasi')->controller(Controllers\LinkController::class)->group(function () {
-    Route::get('/', 'index')->name('link.index');
-    Route::get('/{id}', 'show')->name('link.show');
+Route::prefix('/tautan-aplikasi')->controller(Controllers\AppListController::class)->group(function () {
+    Route::get('/', 'index')->name('app-list.index');
 });
 
 Route::prefix('/publikasi-dokumen')->controller(Controllers\DocumentController::class)->group(function () {

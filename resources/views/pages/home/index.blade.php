@@ -7,7 +7,7 @@
     {{-- @include('pages.home.maps') --}}
     @include('pages.home.news')
     @include('pages.home.announcement')
-    @include('pages.home.app')
+    @include('pages.home.app-list')
     @include('pages.home.file')
     @include('pages.home.galery')
     @include('pages.home.address')

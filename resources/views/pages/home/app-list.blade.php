@@ -5,10 +5,10 @@
             <div class="w-full flex justify-center">
                 <div class="space-y-2 text-center">
                     <h1 class="text-3xl font-bold text-white">
-                        {{ Str::title(__('layanan')) }}
+                        {{ Str::title(__('aplikasi layanan')) }}
                     </h1>
                     <h3 class="text-xl">
-                        {{ Str::title(__('kurasi tautan situs web aplikasi pemerintah daerah dan aplikasi layanan masyarakat')) }}
+                        {{ Str::title(__('kurasi tautan daftar situs aplikasi layanan pemerintah')) }}
                     </h3>
                     <div class="w-full md:w-xl h-0.5 mx-auto bg-gradient-to-r from-transparent via-white to-transparent">
                     </div>
@@ -16,8 +16,8 @@
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
                 @foreach ($appList as $item)
-                    <div class="flex flex-col justify-between h-full p-6 rounded-xl bg-slate-100">
-                        <div>
+                    <div class="flex flex-col justify-between h-full p-6 rounded-xl bg-slate-100 shadow">
+                        <div class="space-y-2">
                             <div
                                 class="w-20 h-20 flex items-center justify-center rounded-xl bg-white border border-slate-200 mb-4">
                                 @if ($item->file === null)
@@ -31,17 +31,17 @@
                                         class="w-14 h-14 object-contain hover:scale-110 transition duration-300 ease-in-out" />
                                 @endif
                             </div>
-                            <h1 class="text-xl font-bold text-slate-800 mb-2 line-clamp-1">
+                            <h1 class="text-xl font-bold">
                                 {{ $item->title ?? null }}
                             </h1>
-                            <h3 class="text-slate-500 text-normal line-clamp-2">
+                            <h3 class="text-slate-500">
                                 {{ $item->description ?? null }}
                             </h3>
                         </div>
                         <div class="mt-4 flex justify-start">
-                            <a href="{!! $item->link ?? null !!}" target="_blank"
+                            <a href="{!! $item->link->url ?? null !!}" target="_blank"
                                 class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
-                                Kunjungi
+                                {{ Str::title(__('kunjungi')) }}
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-4">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -54,9 +54,9 @@
             </div>
             <div class="flex items-center gap-4">
                 <div class="flex-grow border-b border-white"></div>
-                <a wire:navigate href="{{ route('link.index') }}"
+                <a wire:navigate href="{{ route('app-list.index') }}"
                     class="inline-flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
-                    Selengkapnya
+                    {{ Str::title(__('selengkapnya')) }}
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-4">
                         <path stroke-linecap="round" stroke-linejoin="round"
