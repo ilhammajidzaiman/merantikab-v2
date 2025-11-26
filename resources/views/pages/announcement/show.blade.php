@@ -7,7 +7,7 @@
                         @if ($record)
                             <div class="flex space-x-2 items-center text-md text-slate-600 mb-4">
                                 <a wire:navigate href="{{ route('announcement.index') }}"class="hover:underline">
-                                    Informasi
+                                    {{ Str::title('pengumuman') }}
                                 </a>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
