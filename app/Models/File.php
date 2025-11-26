@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\FileCategory;
 use App\Models\NavigationMenu;
 use App\Models\NavigationFooter;
+use App\Traits\FormatDateTimeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class File extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, FormatDateTimeTrait;
 
     protected $fillable =
     [

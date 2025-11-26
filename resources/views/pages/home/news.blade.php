@@ -55,7 +55,7 @@
                                             class="aspect-square object-cover w-full">
                                         <div
                                             class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4 flex flex-col justify-end space-y-2 pb-16">
-                                            <a href="{{ url('news/' . ($item->slug ?? null)) }}">
+                                            <a wire:navigate href="{{ route('news.show', $item->slug ?? null) }}">
                                                 <h2
                                                     class="text-xl md:text-2xl font-normal text-white line-clamp-2 hover:underline">
                                                     {{ $item->title ?? null }}
@@ -100,19 +100,19 @@
                 </div>
                 <div class="md:col-span-6 lg:col-span-1">
                     <div
-                        class="w-full aspect-square overflow-y-auto bg-slate-100 rounded-xl border border-slate-200 hide-scrollbar">
+                        class="w-full aspect-square overflow-y-auto bg-slate-100 rounded-xl border border-slate-200 hide-scrollbar space-y-4 p-4">
                         @if ($news->isNotEmpty())
                             @foreach ($news as $item)
-                                <div class="overflow-hidden flex items-center gap-4 shadow-xs rounded-xl bg-white m-4">
-                                    <div class="w-34 h-34 overflow-hidden rounded-r-full shrink-0 bg-slate-200">
+                                <div class="overflow-hidden flex items-center gap-4 shadow rounded-xl bg-white">
+                                    <div class="aspect-square h-34 overflow-hidden rounded-xl shrink-0 bg-slate-200">
                                         <img src="{{ $item->image ?? null }}" alt="image"
                                             class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
                                     </div>
-                                    <div class="p-4">
+                                    <div class="space-y-1">
                                         <h3 class="text-emerald-500 text-normal line-clamp-1">
                                             {{ $item->category ?? null }}
                                         </h3>
-                                        <h1 class="text-slate-700 text-lg font-medium line-clamp-2">
+                                        <h1 class="text-lg  line-clamp-2">
                                             <a wire:navigate href="{{ route('news.show', $item->slug ?? null) }}"
                                                 class="hover:underline">
                                                 {{ $item->title ?? null }}

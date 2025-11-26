@@ -3,15 +3,13 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Image as Model1;
-use App\Models\Video as Model2;
+use App\Models\File as Model;
 
-class Galery extends Component
+class File extends Component
 {
     public $search = '';
-    public $type = 1;
     public $page = 1;
-    public $perPage = 9;
+    public $perPage = 12;
     public $lastPage = 1;
     public $more = false;
     public $data;
@@ -24,29 +22,25 @@ class Galery extends Component
 
     public function updatedSearch()
     {
-        $this->resetList();
-    }
-
-    public function updatedType()
-    {
-        $this->resetList();
-    }
-
-    public function resetList()
-    {
         $this->data = collect();
-        $this->page = 1;
+        $this->resetPage();
         $this->fetchData();
+    }
+
+    public function resetPage()
+    {
+        $this->page = 1;
     }
 
     public function fetchData()
     {
-        $model = $this->type == 1 ? Model1::class : Model2::class;
-        $query = $model::active()
+        $query = Model::active()
             ->orderByDesc('created_at')
+            ->latest()
             ->when($this->search, function ($q) {
                 $q->where('title', 'ilike', '%' . $this->search . '%');
             });
+
         $paginator = $query->paginate($this->perPage, ['*'], 'page', $this->page);
         $this->lastPage = $paginator->lastPage();
         $this->more = $this->page < $this->lastPage;
@@ -55,14 +49,14 @@ class Galery extends Component
 
     public function loadMore()
     {
-        if ($this->page < $this->lastPage) {
+        if ($this->page < $this->lastPage) :
             $this->page++;
             $this->fetchData();
-        }
+        endif;
     }
 
     public function render()
     {
-        return view('livewire.galery');
+        return view('livewire.file');
     }
 }

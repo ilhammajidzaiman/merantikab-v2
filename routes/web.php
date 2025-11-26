@@ -25,10 +25,10 @@ Route::prefix('/tautan-aplikasi')->controller(Controllers\AppListController::cla
     Route::get('/', 'index')->name('app-list.index');
 });
 
-Route::prefix('/publikasi-dokumen')->controller(Controllers\DocumentController::class)->group(function () {
-    Route::get('/', 'index')->name('document.index');
-    Route::get('/{id}', 'show')->name('document.show');
-    Route::get('/download/{id}', 'download')->name('document.download');
+Route::prefix('/publikasi-dokumen')->controller(Controllers\FileController::class)->group(function () {
+    Route::get('/', 'index')->name('file.index');
+    Route::get('/{id}', 'show')->name('file.show');
+    Route::get('/download/{id}', 'download')->name('file.download');
 });
 
 Route::prefix('/galeri')->controller(Controllers\GaleryController::class)->group(function () {

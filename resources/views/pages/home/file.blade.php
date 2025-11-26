@@ -38,7 +38,7 @@
                                 {{ $item->title ?? null }}
                             </h1>
                             <div class="mt-4 flex justify-start">
-                                <a wire:navigate href="{{ route('document.show', $item->slug) }}"
+                                <a wire:navigate href="{{ route('file.show', $item->slug) }}"
                                     class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
                                     Selengkapnya
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -54,7 +54,7 @@
             </section>
             <footer class="flex items-center gap-4">
                 <div class="flex-grow border-b border-emerald-500"></div>
-                <a wire:navigate href="{{ route('document.index') }}"
+                <a wire:navigate href="{{ route('file.index') }}"
                     class="inline-flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition">
                     Selengkapnya
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
