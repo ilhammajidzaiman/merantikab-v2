@@ -35,7 +35,7 @@ class AppList extends Component
     public function fetchData()
     {
         $query = Model::active()
-            ->orderByDesc('created_at')
+            ->orderByDesc('id')
             ->latest()
             ->when($this->search, function ($q) {
                 $q->where('title', 'ilike', '%' . $this->search . '%');

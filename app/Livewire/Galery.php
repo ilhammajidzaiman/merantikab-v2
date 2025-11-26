@@ -43,7 +43,7 @@ class Galery extends Component
     {
         $model = $this->type == 1 ? Model1::class : Model2::class;
         $query = $model::active()
-            ->orderByDesc('created_at')
+            ->orderByDesc('id')
             ->when($this->search, function ($q) {
                 $q->where('title', 'ilike', '%' . $this->search . '%');
             });

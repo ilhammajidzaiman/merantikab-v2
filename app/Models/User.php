@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Models;
+
+use App\Models\Profile;
+use Illuminate\Support\Str;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+
+{
+    use Notifiable, SoftDeletes;
+
+    protected $fillable = [
+        'name',
+        'username',
+        'email',
+        'email_verified_at',
+        'password',
+    ];
+
+    protected $hidden = [
+        'uuid',
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->uuid = Str::uuid();
+        });
+    }
+
+    public function profile(): HasOne
+    {
+        return $this->hasOne(Profile::class, 'user_id', 'id');
+    }
+}

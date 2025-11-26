@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Http\Controllers\Public\NewsController;
+use App\Http\Controllers\NewsController;
 
 class News extends Component
 {

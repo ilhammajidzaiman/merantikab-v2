@@ -24,14 +24,17 @@ class SearchGlobal extends Component
         $this->news = [];
         if (strlen($this->keyword) > 2) {
             $this->announcement = Announcement::where('title', 'ilike', '%' . $this->keyword . '%')
+                ->orderByDesc('id')
                 ->latest()
                 ->take(10)
                 ->get();
             $this->file = File::where('title', 'ilike', '%' . $this->keyword . '%')
+                ->orderByDesc('id')
                 ->latest()
                 ->take(10)
                 ->get();
             $this->appList = AppList::where('title', 'ilike', '%' . $this->keyword . '%')
+                ->orderByDesc('id')
                 ->latest()
                 ->take(10)
                 ->get();

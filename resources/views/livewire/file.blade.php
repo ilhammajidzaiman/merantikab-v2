@@ -24,9 +24,9 @@
                         {{ $item->title ?? null }}
                     </h1>
                     <div class="flex justify-start">
-                        <a wire:navigate href="{{ route('announcement.show', $item->slug) }}"
+                        <a wire:navigate href="{{ route('file.show', $item->slug) }}"
                             class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
-                            Selengkapnya
+                            {{ Str::title(__('selengkapnya')) }}
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-4">
                                 <path stroke-linecap="round" stroke-linejoin="round"

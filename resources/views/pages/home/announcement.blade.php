@@ -32,11 +32,11 @@
                                 @foreach ($announcement as $item)
                                     <div class="col-span-full">
                                         <div class="flex items-center gap-4 shadow-xs rounded-xl bg-white">
-                                            <div class="p-4">
+                                            <div class="space-y-2 p-4">
                                                 <h6 class=" text-slate-500 text-sm line-clamp-1">
                                                     {{ $item->created_at ? $item->formatDayDate($item->created_at) : null }}
                                                 </h6>
-                                                <h1 class="text-slate-700 text-lg font-normal line-clamp-2">
+                                                <h1 class="line-clamp-2">
                                                     <a wire:navigate
                                                         href="{{ route('announcement.show', $item->slug ?? null) }}"
                                                         class="hover:underline">

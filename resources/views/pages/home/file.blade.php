@@ -16,7 +16,7 @@
             </div>
             <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 @foreach ($file as $item)
-                    <div class="overflow-hidden flex items-center gap-4 shadow-md rounded-xl bg-white hover:shadow-md">
+                    <div class="overflow-hidden flex items-center gap-4 shadow rounded-xl bg-white hover:shadow-md">
                         <div
                             class="aspect-3/4 w-32 h-full flex items-center justify-center overflow-hidden rounded-xl shrink-0 bg-slate-200">
                             @if ($item->file === null)
@@ -30,14 +30,14 @@
                                     class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
                             @endif
                         </div>
-                        <div class="p-4">
-                            <h3 class="line-clamp-1">
-                                {{ $item->date ?? null }}
+                        <div class="p-4 space-y-2">
+                            <h3 class="text-sm text-slate-500 line-clamp-1">
+                                {{ $item->created_at ? $item->formatDayDate($item->created_at) : null }}
                             </h3>
                             <h1 class="line-clamp-3">
                                 {{ $item->title ?? null }}
                             </h1>
-                            <div class="mt-4 flex justify-start">
+                            <div class="flex justify-start">
                                 <a wire:navigate href="{{ route('file.show', $item->slug) }}"
                                     class="inline-flex items-center gap-2 px-3 py-1 border border-slate-200 rounded-xl text-slate-700 bg-white hover:bg-emerald-500 hover:text-white transition">
                                     Selengkapnya
