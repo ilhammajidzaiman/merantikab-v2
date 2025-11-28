@@ -178,7 +178,7 @@
                                                     class="font-medium text-white text-shadow-xs text-shadow-slate-500 text-center">
                                                     <a href="{{ $item->appList->link->url }}" target="_blank"
                                                         title="{{ $item->appList->title }}"
-                                                        class="hover:underline line-clamp-1 ">
+                                                        class="hover:underline line-clamp-1">
                                                         {{ $item->appList->title }}
                                                     </a>
                                                 </h1>

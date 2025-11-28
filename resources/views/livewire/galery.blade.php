@@ -58,7 +58,7 @@
                         </svg>
                     @else
                         <div class="overflow-hidden rounded-xl">
-                            <img src="{{ env('APP_URL_ASSET') . $item->file ?? null }}"
+                            <img src="{{ $item->file ? env('APP_URL_ASSET') . $item->file : asset('/image/default-img.svg') }}"
                                 class="aspect-video object-cover rounded-xl transition duration-300 ease-in-out hover:scale-105">
                         </div>
                         <h1 class="text-lg font-normal text-slate-600 line-clamp-3">

@@ -21,7 +21,8 @@
                             <div
                                 class="w-20 h-20 flex items-center justify-center rounded-xl bg-white border border-slate-200 mb-4">
                                 @if ($item->file)
-                                    <img src="{{ env('APP_URL_ASSET') . $item->file ?? null }}" alt="Logo"
+                                    <img src="{{ $item->file ? env('APP_URL_ASSET') . $item->file : asset('/image/default-img.svg') }}"
+                                        alt="Logo"
                                         class="w-14 h-14 object-contain hover:scale-110 transition duration-300 ease-in-out" />
                                 @else
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

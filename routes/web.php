@@ -16,6 +16,11 @@ Route::prefix('/berita')->controller(Controllers\NewsController::class)->group(f
     Route::get('/{id}', 'show')->name('news.show');
 });
 
+Route::prefix('/halaman')->controller(Controllers\PageController::class)->group(function () {
+    Route::get('/', 'index')->name('page.index');
+    Route::get('/{id}', 'show')->name('page.show');
+});
+
 Route::prefix('/info-pengumuman')->controller(Controllers\AnnouncementController::class)->group(function () {
     Route::get('/', 'index')->name('announcement.index');
     Route::get('/{id}', 'show')->name('announcement.show');

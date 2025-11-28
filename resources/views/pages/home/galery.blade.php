@@ -31,7 +31,7 @@
                         @foreach ($image as $item)
                             <div class="col-span-6">
                                 <div class="overflow-hidden rounded-xl">
-                                    <img src="{{ env('APP_URL_ASSET') . $item->file ?? null }}"
+                                    <img src="{{ $item->file ? env('APP_URL_ASSET') . $item->file : asset('/image/default-img.svg') }}"
                                         class="aspect-square object-cover rounded-xl transition duration-500 ease-in-out hover:scale-110">
                                 </div>
                             </div>

@@ -20,7 +20,8 @@
                         <div
                             class="aspect-3/4 w-32 h-full flex items-center justify-center overflow-hidden rounded-xl shrink-0 bg-slate-200">
                             @if ($item->file)
-                                <img src="{{ env('APP_URL_ASSET') . $item->file ?? null }}" alt="image"
+                                <img src="{{ $item->file ? env('APP_URL_ASSET') . $item->file : asset('/image/default-img.svg') }}"
+                                    alt="image"
                                     class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
                             @else
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

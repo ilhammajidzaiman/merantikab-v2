@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use App\Models\NavigationMenu;
 use App\Models\NavigationFooter;
+use App\Traits\FormatDateTimeTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Page extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, FormatDateTimeTrait;
 
     protected $fillable = [
         'is_active',

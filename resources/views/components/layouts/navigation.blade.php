@@ -40,7 +40,7 @@
                             @foreach ($menu as $parent)
                                 @php
                                     if ($parent->modelable_type === Page::class):
-                                        $urlParent = $parent->page->slug;
+                                        $urlParent = route('page.show', $parent->page->slug);
                                     elseif ($child->modelable_type === Link::class):
                                         $urlParent = $parent->page->slug;
                                     endif;
@@ -67,14 +67,14 @@
                                             @foreach ($parent->children as $child)
                                                 @php
                                                     if ($child->modelable_type === Page::class):
-                                                        $urlChild = $child->page->slug;
+                                                        $urlChild = route('page.show', $child->page->slug);
                                                     elseif ($child->modelable_type === Link::class):
                                                         $urlChild = $child->link->url;
                                                     endif;
                                                 @endphp
                                                 <div
                                                     class="relative flex items-center gap-4 hover:bg-gray-100 px-4 py-2 ">
-                                                    <a wire:navigate href=""
+                                                    <a wire:navigate href="{{ $urlChild ?? null }}"
                                                         class="block text-slate-600 hover:text-emerald-600">
                                                         {{ $child->title ?? null }}
                                                     </a>
@@ -83,11 +83,12 @@
                                         </el-popover>
                                     </div>
                                 @else
-                                    <a wire:navigate href=""
+                                    <a wire:navigate href="{{ $urlParent ?? null }}"
                                         class="text-slate-700 relative text-normal font-medium rounded-xl transition duration-200 ease-in-out hover:text-emerald-700 group">
                                         {{ $parent->title ?? null }}
                                         <span
-                                            class="absolute left-1/2 -bottom-1 w-10 h-1 bg-emerald-700 rounded-full -translate-x-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"></span>
+                                            class="absolute left-1/2 -bottom-1 w-10 h-1 bg-emerald-700 rounded-full -translate-x-1/2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center">
+                                        </span>
                                     </a>
                                 @endif
                             @endforeach
