@@ -20,12 +20,21 @@ class FileController extends Controller
         return view('pages.file.show', $data);
     }
 
-    public function download(string $slug)
+    public function download($file)
     {
-        $record = $this->fetchRecord($slug);
-        $fileUrl = env('API_ADMIN') . $record->attachment;
-        $tempFile = tempnam(sys_get_temp_dir(), 'doc');
-        file_put_contents($tempFile, file_get_contents($fileUrl));
-        return response()->download($tempFile, $record->slug . '.' . pathinfo($fileUrl, PATHINFO_EXTENSION));
+        $url = env('APP_URL_ASSET') . $file;
+        $content = @file_get_contents($url);
+        if (!$content) :
+            abort(404, 'File tidak ditemukan.');
+        endif;
+        $filename = basename($file);
+        $tempPath = storage_path('app/tmp_' . $filename);
+        file_put_contents($tempPath, $content);
+        return response()
+            ->download($tempPath, $filename, [
+                'Content-Type' => 'application/octet-stream',
+                'Content-Disposition' => 'attachment; filename="' . $filename . '"'
+            ])
+            ->deleteFileAfterSend(true);
     }
 }

@@ -33,7 +33,7 @@ Route::prefix('/tautan-aplikasi')->controller(Controllers\AppListController::cla
 Route::prefix('/publikasi-dokumen')->controller(Controllers\FileController::class)->group(function () {
     Route::get('/', 'index')->name('file.index');
     Route::get('/{id}', 'show')->name('file.show');
-    Route::get('/download/{id}', 'download')->name('file.download');
+    Route::get('/download/{file}', 'download')->name('file.download')->where('file', '.*');
 });
 
 Route::prefix('/galeri')->controller(Controllers\GaleryController::class)->group(function () {
