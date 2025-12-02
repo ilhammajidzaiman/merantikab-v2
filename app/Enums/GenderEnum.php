@@ -2,9 +2,7 @@
 
 namespace App\Enums;
 
-use Filament\Support\Contracts\HasLabel;
-
-enum GenderEnum: string implements HasLabel
+enum GenderEnum: string
 {
     case Male = 'male';
     case Female = 'female';
