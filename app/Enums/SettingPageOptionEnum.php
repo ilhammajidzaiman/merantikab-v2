@@ -2,9 +2,7 @@
 
 namespace App\Enums;
 
-use Filament\Support\Contracts\HasLabel;
-
-enum SettingPageOptionEnum: string implements HasLabel
+enum SettingPageOptionEnum: string
 {
     case Carousel = 'carousel';
     case Headline = 'headline';

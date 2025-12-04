@@ -51,12 +51,18 @@
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div class="flex flex-wrap justify-center md:justify-endtext-sm ">
                         <div class="text-center md:text-left text-xs space-y-2">
-                            <div class="flex items-center justify-center md:justify-start gap-2 text-start w-full">
+                            <div class="flex items-center justify-center md:justify-start w-full gap-2">
                                 <img src="{{ asset('image/logo-meranti.png') }}" alt="Logo"
-                                    class="w-14 h-14 object-contain" />
-                                <h1 class="text-2xl font-extrabold leading-tight">
-                                    KEPULAUAN <br> MERANTI
-                                </h1>
+                                    class="w-12 h-12 object-contain" />
+                                <div
+                                    class="flex flex-col leading-tight text-shadow-xs text-shadow-slate-50 text-slate-800">
+                                    <h1 class="text-xs font-medium">
+                                        {{ $siteInformation->tagline ?? null }}
+                                    </h1>
+                                    <h1 class="text-lg md:text-xl font-extrabold">
+                                        {{ $siteInformation->name ?? null }}
+                                    </h1>
+                                </div>
                             </div>
                             <div class="text-sm font-medium">
                                 <p>{{ Str::upper(__('diskominfotik')) }} &copy; {{ date('Y') }}</p>

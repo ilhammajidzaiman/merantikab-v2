@@ -2,9 +2,7 @@
 
 namespace App\Enums;
 
-use Filament\Support\Contracts\HasLabel;
-
-enum SettingSiteTypeEnum: string implements HasLabel
+enum SettingSiteTypeEnum: string
 {
     case Text = 'text';
     case File = 'file';

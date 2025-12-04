@@ -2,9 +2,7 @@
 
 namespace App\Enums;
 
-use Filament\Support\Contracts\HasLabel;
-
-enum SettingPageSectionEnum: string implements HasLabel
+enum SettingPageSectionEnum: string
 {
     case SectionHome = 'section-home';
     case SectionPage = 'section-page';

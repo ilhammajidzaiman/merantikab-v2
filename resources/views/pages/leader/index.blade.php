@@ -39,7 +39,9 @@
                                                     {{ $item->position?->getLabel() }}
                                                 </h3>
                                                 <h1 class="text-2xl font-bold">
-                                                    {{ $item->leader?->name ?? 'Tanpa Nama' }}
+                                                    <a href="{{ route('leader.show', $item->leader?->id) }}">
+                                                        {{ $item->leader->name ?? null }}
+                                                    </a>
                                                 </h1>
                                                 <div class="text-slate-500 line-clamp-6">
                                                     {!! $item->description ?? null !!}

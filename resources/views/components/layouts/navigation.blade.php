@@ -15,11 +15,11 @@
                                         class="w-12 h-12 object-contain" />
                                     <div
                                         class="flex flex-col leading-tight text-shadow-xs text-shadow-slate-50 text-slate-800">
-                                        <h1 class="text-xs font-bold">
-                                            Website Resmi Kabupaten
+                                        <h1 class="text-xs font-medium">
+                                            {{ $siteInformation->tagline ?? null }}
                                         </h1>
                                         <h1 class="text-lg md:text-xl font-extrabold">
-                                            KEPULAUAN MERANTI
+                                            {{ $siteInformation->name ?? null }}
                                         </h1>
                                     </div>
                                 </div>
@@ -106,12 +106,12 @@
                                                     class="w-12 h-12 object-contain" />
                                                 <div class="flex flex-col leading-tight">
                                                     <h1
-                                                        class="text-xs font-bold text-slate-800 text-shadow-xs text-shadow-slate-50">
-                                                        Website Resmi Kabupaten
+                                                        class="text-xs font-medium text-slate-800 text-shadow-xs text-shadow-slate-50">
+                                                        {{ $siteInformation->tagline ?? null }}
                                                     </h1>
                                                     <h1
                                                         class="text-lg md:text-xl font-extrabold text-slate-800 text-shadow-xs text-shadow-slate-50">
-                                                        KEPULAUAN MERANTI
+                                                        {{ $siteInformation->name ?? null }}
                                                     </h1>
                                                 </div>
                                             </div>
@@ -142,7 +142,7 @@
                                                             <button type="button" command="--toggle"
                                                                 commandfor="products"
                                                                 class="flex w-full items-center justify-between rounded-xl py-2 pr-3.5 pl-3 text-normal/7 font-semibold text-gray-900 hover:bg-gray-50">
-                                                                {{ $item->title ?? null }}
+                                                                {{ $paprent->title ?? null }}
                                                                 <svg viewBox="0 0 20 20" fill="currentColor"
                                                                     data-slot="icon" aria-hidden="true"
                                                                     class="size-5 flex-none in-aria-expanded:rotate-180">

@@ -2,9 +2,7 @@
 
 namespace App\Enums;
 
-use Filament\Support\Contracts\HasLabel;
-
-enum SettingSiteOptionEnum: string implements HasLabel
+enum SettingSiteOptionEnum: string
 {
     case SiteName = 'site-name';
     case SiteFavicon = 'site-favicon';

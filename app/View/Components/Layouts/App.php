@@ -41,8 +41,8 @@ class App extends Component
 
     public function render(): View|Closure|string
     {
-        return view('components.layouts.app', [
-            // 'siteSetting' => $this->data,
-        ]);
+        return view('components.layouts.app');
+        // return view('components.layouts.app')
+        //     ->with('siteSetting', $this->data);
     }
 }

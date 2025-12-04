@@ -25,10 +25,8 @@
 
 <body class="bg-slate-50 text-slate-700 text-base">
     <x-layouts.navigation />
-    {{-- @include('layouts.navigation') --}}
     {{ $slot }}
     <x-layouts.footer />
-    {{-- @include('layouts.footer') --}}
     @stack('scripts')
     @livewireScripts
 </body>

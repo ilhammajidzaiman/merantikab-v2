@@ -46,4 +46,5 @@ Route::prefix('/selayang-pandang')->controller(Controllers\ProfileController::cl
 
 Route::prefix('/kepemimpinan')->controller(Controllers\LeaderController::class)->group(function () {
     Route::get('/', 'index')->name('leader.index');
+    Route::get('/{id}', 'show')->name('leader.show');
 });
