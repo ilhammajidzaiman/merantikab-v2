@@ -148,7 +148,7 @@
                                     </h6>
                                 </div>
                                 <div class="flex-none">
-                                    <div class="aspect-square h-20 overflow-hidden">
+                                    <div class="aspect-square h-20 overflow-hidden rounded-xl">
                                         @if ($item->file)
                                             <img src="{{ $item->file ? env('APP_URL_ASSET') . $item->file : asset('/image/default-img.svg') }}"
                                                 alt="image" class="w-full h-full object-cover">

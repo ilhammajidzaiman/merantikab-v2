@@ -98,8 +98,9 @@
                         <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
                             <div tabindex="0" class="fixed inset-0 focus:outline-none">
                                 <el-dialog-panel
-                                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                                    <div class="flex items-center justify-between">
+                                    class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-4">
+                                    <div
+                                        class="flex items-center justify-between shadow rounded-xl overflow-hidden px-4 py-3">
                                         <a href="{{ route('index') }}">
                                             <div class="flex items-center justify-center md:justify-start w-full gap-2">
                                                 <img src="{{ asset('image/logo-meranti.png') }}" alt="Logo"
@@ -138,11 +139,11 @@
                                                         endif;
                                                     @endphp
                                                     @if (count($parent->children) > 0)
-                                                        <div class="-mx-3">
+                                                        <div class="">
                                                             <button type="button" command="--toggle"
-                                                                commandfor="products"
-                                                                class="flex w-full items-center justify-between rounded-xl py-2 pr-3.5 pl-3 text-normal/7 font-semibold text-gray-900 hover:bg-gray-50">
-                                                                {{ $paprent->title ?? null }}
+                                                                commandfor="mobile-menu-{{ $parent->id ?? null }}"
+                                                                class="flex w-full items-center justify-between rounded-xl py-2 font-semibold">
+                                                                {{ $parent->title ?? null }}
                                                                 <svg viewBox="0 0 20 20" fill="currentColor"
                                                                     data-slot="icon" aria-hidden="true"
                                                                     class="size-5 flex-none in-aria-expanded:rotate-180">
@@ -151,21 +152,54 @@
                                                                         clip-rule="evenodd" fill-rule="evenodd" />
                                                                 </svg>
                                                             </button>
-                                                            <el-disclosure id="products" hidden
-                                                                class="mt-2 block space-y-2">
-                                                                @foreach ($parent->children as $child)
-                                                                    @php
-                                                                        if ($child->modelable_type === Page::class):
-                                                                            $urlChild = $child->page->slug;
-                                                                        elseif ($child->modelable_type === Link::class):
-                                                                            $urlChild = $child->link->url;
-                                                                        endif;
-                                                                    @endphp
-                                                                    <a wire:navigate href=""
-                                                                        class="block rounded-xl py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50">
-                                                                        {{ $child->title ?? null }}
-                                                                    </a>
-                                                                @endforeach
+                                                            <el-disclosure id="mobile-menu-{{ $parent->id ?? null }}"
+                                                                hidden class="space-y-2">
+                                                                <div
+                                                                    class="bg-slate-50 divide-y divide-slate-200 rounded-xl">
+                                                                    @foreach ($parent->children as $child)
+                                                                        @php
+                                                                            if (
+                                                                                $child->modelable_type ===
+                                                                                BlogCategory::class
+                                                                            ):
+                                                                                $urlChild = route(
+                                                                                    'category.show',
+                                                                                    $child->category->slug,
+                                                                                );
+                                                                            elseif (
+                                                                                $child->modelable_type ===
+                                                                                BlogArticle::class
+                                                                            ):
+                                                                                $urlChild = route(
+                                                                                    'article.show',
+                                                                                    $chil->article->slug,
+                                                                                );
+                                                                            elseif (
+                                                                                $child->modelable_type === Page::class
+                                                                            ):
+                                                                                $urlChild = route(
+                                                                                    'page.show',
+                                                                                    $child->page->slug,
+                                                                                );
+                                                                            endif;
+                                                                        @endphp
+                                                                        <div class="flex items-center pl-4">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                fill="none" viewBox="0 0 24 24"
+                                                                                stroke-width="1.5"
+                                                                                stroke="currentColor" class="size-4">
+                                                                                <path stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                                                                            </svg>
+                                                                            <a wire:navigate
+                                                                                href="{{ $urlChild ?? null }}"
+                                                                                class="block px-4 py-2 hover:underline">
+                                                                                {{ $child->title ?? null }}
+                                                                            </a>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
                                                             </el-disclosure>
                                                         </div>
                                                     @else
