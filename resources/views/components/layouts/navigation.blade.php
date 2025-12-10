@@ -1,6 +1,8 @@
 @php
     use App\Models\Link;
     use App\Models\Page;
+    use App\Models\File;
+    use App\Models\Announcement;
 @endphp
 <nav id="navbar">
     <x-section class="fixed top-0 left-0 w-full z-50">
@@ -43,6 +45,10 @@
                                         $urlParent = route('page.show', $parent->page->slug);
                                     elseif ($parent->modelable_type === Link::class):
                                         $urlParent = $parent->link->url;
+                                    elseif ($parent->modelable_type === File::class):
+                                        $urlParent = route('file.show', $parent->file->slug);
+                                    elseif ($parent->modelable_type === Announcement::class):
+                                        $urlParent = route('announcement.show', $parent->announcement->slug);
                                     endif;
                                 @endphp
                                 @if (count($parent->children) > 0)
@@ -70,6 +76,13 @@
                                                         $urlChild = route('page.show', $child->page->slug);
                                                     elseif ($child->modelable_type === Link::class):
                                                         $urlChild = $child->link->url;
+                                                    elseif ($child->modelable_type === File::class):
+                                                        $urlChild = route('file.show', $child->file->slug);
+                                                    elseif ($child->modelable_type === Announcement::class):
+                                                        $urlChild = route(
+                                                            'announcement.show',
+                                                            $child->announcement->slug,
+                                                        );
                                                     endif;
                                                 @endphp
                                                 <div
@@ -136,6 +149,13 @@
                                                             $urlParent = $parent->page->slug;
                                                         elseif ($parent->modelable_type === Link::class):
                                                             $urlParent = $parent->link->url;
+                                                        elseif ($parent->modelable_type === File::class):
+                                                            $urlParent = route('file.show', $parent->file->slug);
+                                                        elseif ($parent->modelable_type === Announcement::class):
+                                                            $urlParent = route(
+                                                                'announcement.show',
+                                                                $parent->announcement->slug,
+                                                            );
                                                         endif;
                                                     @endphp
                                                     @if (count($parent->children) > 0)
@@ -167,6 +187,21 @@
                                                                                 $child->modelable_type === Link::class
                                                                             ):
                                                                                 $urlChild = $child->link->url;
+                                                                            elseif (
+                                                                                $child->modelable_type === File::class
+                                                                            ):
+                                                                                $urlChild = route(
+                                                                                    'file.show',
+                                                                                    $child->file->slug,
+                                                                                );
+                                                                            elseif (
+                                                                                $child->modelable_type ===
+                                                                                Announcement::class
+                                                                            ):
+                                                                                $urlChild = route(
+                                                                                    'announcement.show',
+                                                                                    $child->announcement->slug,
+                                                                                );
                                                                             endif;
                                                                         @endphp
                                                                         <div class="flex items-center pl-4">

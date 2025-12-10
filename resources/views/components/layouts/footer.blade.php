@@ -1,6 +1,8 @@
 @php
     use App\Models\Link;
     use App\Models\Page;
+    use App\Models\File;
+    use App\Models\Announcement;
 @endphp
 <x-section id="footer" class="p-4 relative">
     <x-wrapper class="relative bg-gradient-to-b from-emerald-500 to-transparent rounded-xl overflow-hidden">
@@ -32,6 +34,10 @@
                                                 $urlChild = route('page.show', $child->page->slug);
                                             elseif ($child->modelable_type === Link::class):
                                                 $urlChild = $child->link->url;
+                                            elseif ($child->modelable_type === File::class):
+                                                $urlChild = route('file.show', $child->file->slug);
+                                            elseif ($child->modelable_type === Announcement::class):
+                                                $urlChild = route('announcement.show', $child->announcement->slug);
                                             endif;
                                         @endphp
                                         <h3 class="text-slate-600 font-medium">
