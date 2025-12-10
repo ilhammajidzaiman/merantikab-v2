@@ -41,8 +41,8 @@
                                 @php
                                     if ($parent->modelable_type === Page::class):
                                         $urlParent = route('page.show', $parent->page->slug);
-                                    elseif ($child->modelable_type === Link::class):
-                                        $urlParent = $parent->page->slug;
+                                    elseif ($parent->modelable_type === Link::class):
+                                        $urlParent = $parent->link->url;
                                     endif;
                                 @endphp
                                 @if (count($parent->children) > 0)
@@ -134,8 +134,8 @@
                                                     @php
                                                         if ($parent->modelable_type === Page::class):
                                                             $urlParent = $parent->page->slug;
-                                                        elseif ($child->modelable_type === Link::class):
-                                                            $urlParent = $parent->page->slug;
+                                                        elseif ($parent->modelable_type === Link::class):
+                                                            $urlParent = $parent->link->url;
                                                         endif;
                                                     @endphp
                                                     @if (count($parent->children) > 0)
@@ -158,29 +158,15 @@
                                                                     class="bg-slate-50 divide-y divide-slate-200 rounded-xl">
                                                                     @foreach ($parent->children as $child)
                                                                         @php
-                                                                            if (
-                                                                                $child->modelable_type ===
-                                                                                BlogCategory::class
-                                                                            ):
-                                                                                $urlChild = route(
-                                                                                    'category.show',
-                                                                                    $child->category->slug,
-                                                                                );
-                                                                            elseif (
-                                                                                $child->modelable_type ===
-                                                                                BlogArticle::class
-                                                                            ):
-                                                                                $urlChild = route(
-                                                                                    'article.show',
-                                                                                    $chil->article->slug,
-                                                                                );
-                                                                            elseif (
-                                                                                $child->modelable_type === Page::class
-                                                                            ):
+                                                                            if ($child->modelable_type === Page::class):
                                                                                 $urlChild = route(
                                                                                     'page.show',
                                                                                     $child->page->slug,
                                                                                 );
+                                                                            elseif (
+                                                                                $child->modelable_type === Link::class
+                                                                            ):
+                                                                                $urlChild = $child->link->url;
                                                                             endif;
                                                                         @endphp
                                                                         <div class="flex items-center pl-4">
@@ -203,7 +189,7 @@
                                                             </el-disclosure>
                                                         </div>
                                                     @else
-                                                        <a wire:navigate href="{{ route('index') }}"
+                                                        <a wire:navigate href="{{ $urlParent ?? null }}"
                                                             class="-mx-3 block rounded-xl px-3 py-2 text-normal/7 font-semibold text-gray-900 hover:bg-gray-50">
                                                             {{ $parent->title ?? null }}
                                                         </a>
