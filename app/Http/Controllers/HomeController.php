@@ -23,6 +23,7 @@ class HomeController extends Controller
         $data['carouselNews'] = $this->newsService->getNewsCarousel();
         $data['news'] = $this->newsService->getNews();
         $data['carouselFull'] = Carousel::active()
+            ->orderByDesc('id')
             ->latest()
             ->take(10)
             ->get();
