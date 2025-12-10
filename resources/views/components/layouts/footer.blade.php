@@ -29,7 +29,7 @@
                                     @foreach ($parent->children as $child)
                                         @php
                                             if ($child->modelable_type === Page::class):
-                                                $urlChild = $child->page->slug;
+                                                $urlChild = route('page.show', $child->page->slug);
                                             elseif ($child->modelable_type === Link::class):
                                                 $urlChild = $child->link->url;
                                             endif;
@@ -76,7 +76,7 @@
                             @if ($sosmed->isNotEmpty())
                                 @foreach ($sosmed as $item)
                                     <a href="{{ $item->link ?? null }}" title="{{ $item->title }}" target="_blank"
-                                        class="w-10 aspect-square flex items-center justify-center overflow-hidden rounded-xl bg-sky-500 hover:bg-sky-600 text-white">
+                                        class="w-10 aspect-square flex items-center justify-center overflow-hidden rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white">
                                         <img src="{{ $item->file ? env('APP_URL_ASSET') . $item->file : asset('/image/default-img.svg') }}"
                                             class="w-auto h-auto">
                                     </a>
@@ -113,7 +113,7 @@
                                 @foreach ($sosmed as $item)
                                     <a href="{{ $item->link ?? null }}" title="{{ $item->title ?? nul }}"
                                         target="_blank"
-                                        class="w-10 aspect-square flex items-center justify-center overflow-hidden rounded-xl bg-sky-500 hover:bg-sky-600 text-white">
+                                        class="w-10 aspect-square flex items-center justify-center overflow-hidden rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white">
                                         {!! $item->file ?? null !!}
                                     </a>
                                 @endforeach
