@@ -39,7 +39,8 @@
                                                     {{ $item->position?->getLabel() }}
                                                 </h3>
                                                 <h1 class="text-2xl font-bold">
-                                                    <a href="{{ route('leader.show', $item->leader?->id) }}">
+                                                    <a wire:navigate
+                                                        href="{{ route('leader.show', $item->leader?->id) }}">
                                                         {{ $item->leader->name ?? null }}
                                                     </a>
                                                 </h1>
