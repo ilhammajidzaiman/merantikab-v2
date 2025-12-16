@@ -31,17 +31,22 @@
                                     @foreach ($parent->children as $child)
                                         @php
                                             if ($child->modelable_type === Page::class):
+                                                $hasLink = true;
                                                 $urlChild = route('page.show', $child->page->slug);
                                             elseif ($child->modelable_type === Link::class):
+                                                $hasLink = false;
                                                 $urlChild = $child->link->url;
                                             elseif ($child->modelable_type === File::class):
+                                                $hasLink = true;
                                                 $urlChild = route('file.show', $child->file->slug);
                                             elseif ($child->modelable_type === Announcement::class):
+                                                $hasLink = true;
                                                 $urlChild = route('announcement.show', $child->announcement->slug);
                                             endif;
                                         @endphp
                                         <h3 class="text-slate-600 font-medium">
-                                            <a wire:navigate href="{{ $urlChild ?? null }}" class="hover:underline">
+                                            <a {{ $hasLink ? 'wire:navigate' : 'target="_blank" rel="noopener noreferrer"' }}
+                                                href="{{ $urlChild ?? null }}" class="hover:underline">
                                                 {{ $child->title ?? null }}
                                             </a>
                                         </h3>

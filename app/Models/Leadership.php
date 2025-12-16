@@ -52,18 +52,6 @@ class Leadership extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    // public function leader(): BelongsTo
-    // {
-    //     return $this->belongsTo(Leader::class, 'leader_id', 'id');
-    // }
-
-    // public function period(): BelongsTo
-    // {
-    //     return $this->belongsTo(LeadershipPeriod::class, 'leadership_period_id', 'id');
-    // }
-
-
-
     public function period()
     {
         return $this->belongsTo(LeadershipPeriod::class, 'leadership_period_id');
@@ -71,6 +59,6 @@ class Leadership extends Model
 
     public function leader()
     {
-        return $this->belongsTo(Leader::class);
+        return $this->belongsTo(Leader::class, 'leader_id', 'id');
     }
 }
