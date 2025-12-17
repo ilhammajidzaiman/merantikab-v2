@@ -66,24 +66,23 @@
                                     <div class="w-full h-0.5 bg-linear-to-r from-emerald-500 to-transparent"></div>
                                 </div>
                                 <section class="grid grid-cols-1 gap-4">
-                                    @foreach ($newsOther as $record)
+                                    @foreach ($newsOther as $item)
                                         <div class="overflow-hidden flex items-center shadow rounded-xl bg-white">
                                             <div class="p-4">
                                                 <h3 class="text-slate-500 text-sm line-clamp-1">
-                                                    {{ $record->date ?? null }}
+                                                    {{ $item->date ?? null }}
                                                 </h3>
                                                 <h1 class="line-clamp-3">
                                                     <a wire:navigate
-                                                        href="{{ route('news.show', $record->slug ?? null) }}"
+                                                        href="{{ route('news.show', $item->slug ?? null) }}"
                                                         class="hover:underline">
-                                                        {{ $record->title ?? null }}
+                                                        {{ $item->title ?? null }}
                                                     </a>
                                                 </h1>
                                             </div>
                                             <div
                                                 class="aspect-square w-32  flex items-center justify-center overflow-hidden rounded-xl shrink-0 bg-slate-200">
-                                                <img src="{{ env('API_SIPB') . $record->image ?? null }}"
-                                                    alt="image"
+                                                <img src="{{ env('API_SIPB') . $item->image ?? null }}" alt="image"
                                                     class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
                                             </div>
                                         </div>
@@ -120,7 +119,6 @@
             </x-container>
         </x-wrapper>
     </x-section>
-
     @if ($record)
         @push('metaTag')
             <meta property="og:url" content="{{ route('news.show', $record->slug ?? null) }}">
