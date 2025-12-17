@@ -45,31 +45,33 @@
     </x-section>
     @if ($record)
         @push('metaTag')
-            @if ($record)
-                <meta property="og:url" content="{{ route('page.show', $record->slug ?? null) }}">
-                <meta property="og:type" content="Info Pengummuman">
-                <meta property="og:title" content="{{ $record->title ?? null }}">
-                <meta property="og:description" content="{{ $record->title ?? null }}">
-                <meta property="og:image" content="{{ env('APP_URL_ASSET') . $record->image ?? null }}">
-                <meta name="twitter:card" content="summary_large_image">
-                <meta property="twitter:domain" content="{{ route('page.show', $record->slug ?? null) }}">
-                <meta property="twitter:url" content="{{ route('page.show', $record->slug ?? null) }}">
-                <meta name="twitter:title" content="{{ $record->title ?? null }}">
-                <meta name="twitter:image" content="{{ env('APP_URL_ASSET') . $record->image ?? null }}">
-            @endif
+            <meta property="og:url" content="{{ route('page.show', $record->slug ?? null) }}">
+            <meta property="og:type" content="{{ Str::title(__('halaman')) }}">
+            <meta property="og:title" content="{{ $record->title ?? null }}">
+            <meta property="og:description" content="{{ $record->title ?? null }}">
+            <meta property="og:image"
+                content="{{ $record->file ? env('APP_URL_ASSET') . $record->file : asset('/image/logo-meranti.png') }}">
+            <meta name="twitter:card" content="summary_large_image">
+            <meta property="twitter:domain" content="{{ route('page.show', $record->slug ?? null) }}">
+            <meta property="twitter:url" content="{{ route('page.show', $record->slug ?? null) }}">
+            <meta name="twitter:title" content="{{ $record->title ?? null }}">
+            <meta name="twitter:image"
+                content="{{ $record->file ? env('APP_URL_ASSET') . $record->file : asset('/image/logo-meranti.png') }}">
         @endpush
+
         @push('scripts')
             <script>
                 const url = "{{ route('page.show', $record->slug ?? null) }}";
                 const message = "{{ $record->title ?? null }}";
-                document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
-                    new bootstrap.Tooltip(el);
-                });
 
                 function whatsapp() {
                     const api = `https://wa.me/?text=${encodeURIComponent(url + "\n\n" + message)}`;
                     window.open(api, "_blank");
                 }
+
+                document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+                    new bootstrap.Tooltip(el);
+                });
 
                 function facebook() {
                     const api = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
