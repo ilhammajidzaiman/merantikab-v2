@@ -32,7 +32,8 @@
                                         <div
                                             class="text-white rounded-xl bg-slate-900/20 backdrop-blur-xs text-shadow-md text-center p-4">
                                             <h3 class="font-medium text-xl">{{ $item->title ?? null }}</h3>
-                                            <p class="font-light text-md ">{{ $item->description ?? null }}</p>
+                                            <p class="font-light text-md hidden md:block">
+                                                {{ $item->description ?? null }}</p>
                                         </div>
                                     </div>
                                 </x-container>
@@ -84,19 +85,6 @@
                                     </h3>
                                 </div>
                                 <livewire:search-global />
-                                {{-- <form action="/search" method="GET" class="relative w-full md:w-72">
-                                    <label for="search" class="sr-only">Search</label>
-                                    <input type="text" name="search" id="search" placeholder="Cari..."
-                                        class="w-full border border-white rounded-lg pl-10 pr-3 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-500 bg-white/20 backdrop-blur-sm text-white placeholder-white/80">
-                                    <button type="submit"
-                                        class="absolute inset-y-0 left-0 flex items-center pl-3 text-emerald-300 hover:text-emerald-500">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                                        </svg>
-                                    </button>
-                                </form> --}}
                             </div>
                         </div>
 
@@ -117,48 +105,13 @@
 
                         <div class="relative col-span-full">
                             <div class="border border-white rounded-xl">
-                                {{-- <div id="scrollContainer"
-                                    class="flex gap-4 overflow-x-auto mx-10 my-4 hide-scrollbar snap-x scroll-smooth">
-                                    @foreach ($appShortcut as $item)
-                                        <div
-                                            class="flex-none aspect-square w-28 md:w-44 rounded-xl items-center justify-center gap-2 overflow-hidden bg-white/30 backdrop-blur-xs hover:bg-white/50 transition duration-300 ease-in-out snap-center p-4 border">
-                                            <div
-                                                class="flex flex-col items-center justify-between gap-2 rounded-xl border">
-                                                @if ($item->appList->file === null)
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="size-10 text-emerald-500 w-full h-16">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-                                                    @else
-                                                        <img src="{{ env('APP_URL_ASSET') . $item->appList->file ?? null }}"
-                                                            alt="Logo"
-                                                            class="w-full h-16 object-contain hover:scale-110 transition duration-300 ease-in-out " />
-                                                @endif
-                                                <h1
-                                                    class="text-lg font-medium text-white text-shadow-xs text-shadow-slate-500 text-center">
-                                                    <a href="{{ $item->appList->link->url ?? null }}" target="_blank"
-                                                        class="hover:underline line-clamp-2 md:line-clamp-1">
-                                                        {{ $item->appList->title ?? null }}
-                                                        {{ $item->appList->title ?? null }}
-                                                        {{ $item->appList->title ?? null }}
-                                                    </a>
-                                                </h1>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div> --}}
                                 <div id="scrollContainer"
                                     class="flex gap-4 overflow-x-auto mx-10 my-4 hide-scrollbar snap-x scroll-smooth">
-
                                     @foreach ($appShortcut as $item)
                                         <div
                                             class="flex-none aspect-square w-28 md:w-40 h-full rounded-xl overflow-hidden bg-white/30 backdrop-blur-xs hover:bg-white/50 snap-center p-4">
-
                                             <div class="flex flex-col items-center justify-between h-full rounded-xl">
                                                 <div class="flex flex-col items-center justify-center h-full">
-
-                                                    {{-- Logo --}}
                                                     @if ($item->appList->file)
                                                         <img src="{{ env('APP_URL_ASSET') . $item->appList->file }}"
                                                             alt="Logo"
@@ -173,7 +126,6 @@
                                                     @endif
                                                 </div>
 
-                                                {{-- Title --}}
                                                 <h1
                                                     class="font-medium text-white text-shadow-xs text-shadow-slate-500 text-center">
                                                     <a href="{{ $item->appList->link->url }}" target="_blank"
@@ -182,13 +134,10 @@
                                                         {{ $item->appList->title }}
                                                     </a>
                                                 </h1>
-
                                             </div>
                                         </div>
                                     @endforeach
-
                                 </div>
-
                             </div>
                             <button id="scrollLeft"
                                 class="absolute left-0 top-1/2 -translate-y-1/2 text-white hover:text-emerald-300 h-full rounded-xl z-10 p-2">
@@ -211,105 +160,5 @@
                 </x-container>
             </x-wrapper>
         </x-section>
-
-        {{-- <div class="absolute inset-0 flex items-center border">
-            <x-container class="space-y-8 p-4 relative z-10 border">
-                <div class="grid grid-cols-6 gap-4 border">
-                    <div class="col-span-full md:col-start-1 md:col-end-4">
-                        <div class="text-white text-shadow-md text-shadow-slate-600 space-y-4">
-                            <h3 class="font-light text-xl">
-                                Situs Resmi Pemerintahan Daerah
-                            </h3>
-                            <h1 class="text-6xl font-bold">
-                                Kabupaten
-                            </h1>
-                            <h1 class="text-6xl font-bold">
-                                Kepulauan Meranti
-                            </h1>
-                            <h3 class="font-light text-xl">
-                                Cari Informasi Tentang Kabupaten Kepulauan Meranti
-                            </h3>
-
-                            <form action="/search" method="GET" class="relative w-full md:w-72">
-                                <label for="search" class="sr-only">Search</label>
-                                <input type="text" name="search" id="search" placeholder="Cari..."
-                                    class="w-full border border-white rounded-lg pl-10 pr-3 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-500 bg-white/20 backdrop-blur-sm text-white placeholder-white/80">
-                                <button type="submit"
-                                    class="absolute inset-y-0 left-0 flex items-center pl-3 text-emerald-300 hover:text-emerald-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="col-span-full md:col-start-5 md:col-end-7 hidden md:block">
-                        <div class="bg-slate-900/20 backdrop-blur-xs rounded-xl text-white p-4 space-y-2">
-                            <h3 class="font-light text-lg">
-                                Hari Ini:
-                            </h3>
-                            <h1 class="font-medium text-2xl">
-                                {{ now()->translatedFormat('l, d F Y') }}
-                            </h1>
-                            <h3 class="font-light text-lg">
-                                jam:
-                            </h3>
-                            <h1 id="clock" class="font-medium text-2xl"></h1>
-                        </div>
-                    </div>
-
-                    <div class="relative col-span-full border">
-                        <div class="border border-white rounded-xl">
-                            <div id="scrollContainer"
-                                class="flex gap-4 overflow-x-auto mx-14 my-4 hide-scrollbar snap-x scroll-smooth border">
-                                @foreach ($appShortcut as $item)
-                                    <div
-                                        class="flex-none w-28 md:w-56 rounded-xl overflow-hidden bg-white/20 backdrop-blur-sm hover:bg-slate-300 transition duration-300 ease-in-out snap-center">
-                                        <div class="flex flex-col items-center justify-center gap-2 rounded-xl p-4 ">
-                                            @if ($item->appList->file === null)
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                    class="size-10 text-emerald-500 w-full h-16">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
-                                                @else
-                                                    <img src="{{ env('APP_URL_ASSET') . $item->appList->file ?? null }}"
-                                                        alt="Logo"
-                                                        class="w-full h-16 object-contain hover:scale-110 transition duration-300 ease-in-out " />
-                                            @endif
-                                            <h1
-                                                class="text-lg font-medium text-white text-shadow-xs text-shadow-slate-500 text-center">
-                                                <a href="{{ $item->appList->link->url ?? null }}" target="_blank"
-                                                    class="hover:underline line-clamp-2 md:line-clamp-1">
-                                                    {{ $item->appList->title ?? null }}
-                                                </a>
-                                            </h1>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        <button id="scrollLeft"
-                            class="absolute left-0 top-1/2 -translate-y-1/2 text-white hover:text-slate-900  hover:bg-white/70 mx-2 p-2 rounded-xl z-10">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-6 border">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15.75 19.5 8.25 12l7.5-7.5" />
-                            </svg>
-                        </button>
-                        <button id="scrollRight"
-                            class="absolute right-0 top-1/2 -translate-y-1/2 text-white hover:text-slate-900  hover:bg-white/70 mx-2 p-2 rounded-xl z-10">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="size-6 border">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </x-container>
-        </div> --}}
     </div>
 </section>
