@@ -2,7 +2,7 @@
     <x-section id="news" class="pt-16">
         <x-wrapper class="py-12">
             <x-container class="space-y-8">
-                @if ($record->slug)
+                @if ($record)
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
                         <div class="md:col-span-full lg:col-span-7 space-y-4">
                             <div class="flex space-x-2 items-center font-normal text-slate-600">
@@ -162,20 +162,18 @@
         </x-wrapper>
     </x-section>
 
-    @if ($record->slug)
+    @if ($record)
         @push('metaTag')
-            @if ($record)
-                <meta property="og:url" content="{{ route('news.show', $record->slug ?? null) }}">
-                <meta property="og:type" content="Baca Berita">
-                <meta property="og:title" content="{{ $record->title ?? null }}">
-                <meta property="og:description" content="{{ $record->title ?? null }}">
-                <meta property="og:image" content="{{ env('API_SIPB') . $record->image ?? null }}">
-                <meta name="twitter:card" content="summary_large_image">
-                <meta property="twitter:domain" content="{{ route('news.show', $record->slug ?? null) }}">
-                <meta property="twitter:url" content="{{ route('news.show', $record->slug ?? null) }}">
-                <meta name="twitter:title" content="{{ $record->title ?? null }}">
-                <meta name="twitter:image" content="{{ env('API_SIPB') . $record->image ?? null }}">
-            @endif
+            <meta property="og:url" content="{{ route('news.show', $record->slug ?? null) }}">
+            <meta property="og:type" content="Baca Berita">
+            <meta property="og:title" content="{{ $record->title ?? null }}">
+            <meta property="og:description" content="{{ $record->title ?? null }}">
+            <meta property="og:image" content="{{ env('API_SIPB') . $record->image ?? null }}">
+            <meta name="twitter:card" content="summary_large_image">
+            <meta property="twitter:domain" content="{{ route('news.show', $record->slug ?? null) }}">
+            <meta property="twitter:url" content="{{ route('news.show', $record->slug ?? null) }}">
+            <meta name="twitter:title" content="{{ $record->title ?? null }}">
+            <meta name="twitter:image" content="{{ env('API_SIPB') . $record->image ?? null }}">
         @endpush
 
         @push('scripts')
@@ -183,14 +181,14 @@
                 const url = "{{ route('news.show', $record->slug ?? null) }}";
                 const message = "{{ $record->title ?? null }}";
 
-                document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
-                    new bootstrap.Tooltip(el);
-                });
-
                 function whatsapp() {
                     const api = `https://wa.me/?text=${encodeURIComponent(url + "\n\n" + message)}`;
                     window.open(api, "_blank");
                 }
+
+                document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+                    new bootstrap.Tooltip(el);
+                });
 
                 function facebook() {
                     const api = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
