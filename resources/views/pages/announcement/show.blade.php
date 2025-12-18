@@ -62,44 +62,53 @@
 
         @push('scripts')
             <script>
-                const url = "{{ route('announcement.show', $record->slug ?? null) }}";
-                const message = "{{ $record->title ?? null }}";
-
-                function whatsapp() {
-                    const api = `https://wa.me/?text=${encodeURIComponent(url + "\n\n" + message)}`;
-                    window.open(api, "_blank");
+                function getShareData() {
+                    return {
+                        url: window.location.href,
+                        message: document.querySelector('meta[property="og:title"]')?.content ||
+                            document.title
+                    };
                 }
 
-                document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
-                    new bootstrap.Tooltip(el);
+                function share(type) {
+                    const {
+                        url,
+                        message
+                    } = getShareData();
+                    let api = '';
+                    switch (type) {
+                        case 'whatsapp':
+                            api = `https://wa.me/?text=${encodeURIComponent(url + "\n\n" + message)}`;
+                            break;
+                        case 'facebook':
+                            api = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                            break;
+                        case 'twitter':
+                            api =
+                                `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodeURIComponent(url)}`;
+                            break;
+                        case 'telegram':
+                            api = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
+                            break;
+                        case 'copy':
+                            navigator.clipboard.writeText(url).then(() => {
+                                alert(`${message}\n\nTautan berhasil disalin`);
+                            });
+                            return;
+                    }
+                    window.open(api, '_blank');
+                }
+                document.addEventListener('click', function(e) {
+                    const btn = e.target.closest('[data-share]');
+                    if (!btn) return;
+                    e.preventDefault();
+                    share(btn.dataset.share);
                 });
-
-                function facebook() {
-                    const api = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-                    window.open(api, "_blank");
-                }
-
-                function twitter() {
-                    const api =
-                        `https://twitter.com/intent/tweet?text=${encodeURIComponent(message + "\n\n" + url)}`;
-                    window.open(api, "_blank");
-                }
-
-                function telegram() {
-                    const api =
-                        `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent("\n" + message)}`;
-                    window.open(api, "_blank");
-                }
-
-                function copyLink() {
-                    const textarea = document.createElement('textarea');
-                    textarea.value = url;
-                    document.body.appendChild(textarea);
-                    textarea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textarea);
-                    alert(`${message}\n\nTautan berhasil disalin.`);
-                }
+                document.addEventListener('livewire:navigated', () => {
+                    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+                        new bootstrap.Tooltip(el);
+                    });
+                });
             </script>
         @endpush
     @endif
