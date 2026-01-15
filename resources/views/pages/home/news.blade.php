@@ -16,7 +16,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="md:col-span-6 lg:col-span-1">
-                    <div x-data="{
+                    <div {{-- x-data="{
                         active: 0,
                         total: {{ $carouselNews->count() }},
                         timer: null,
@@ -40,9 +40,9 @@
                             this.timer = setInterval(() => this.next(), 4000)
                         }
                     }" x-init="init()" @mouseenter="clearInterval(timer)"
-                        @mouseleave="restart"
+                        @mouseleave="restart" --}}
                         class="relative w-full max-w-6xl mx-auto aspect-square overflow-hidden rounded-xl">
-                        @if ($carouselNews->isNotEmpty())
+                        {{-- @if ($carouselNews->isNotEmpty())
                             @foreach ($carouselNews as $index => $item)
                                 <div x-show="active === {{ $index }}" x-cloak
                                     x-transition:enter="transition-opacity duration-700 ease-in"
@@ -93,15 +93,15 @@
                                             'bg-white/60 hover:bg-white'"></button>
                                 @endforeach
                             </div>
-                        @else
-                            <x-empty />
-                        @endif
+                        @else --}}
+                        <x-empty />
+                        {{-- @endif --}}
                     </div>
                 </div>
                 <div class="md:col-span-6 lg:col-span-1">
                     <div
                         class="w-full aspect-square overflow-y-auto bg-slate-100 rounded-xl border border-slate-200 hide-scrollbar space-y-4 p-4">
-                        @if ($news->isNotEmpty())
+                        {{-- @if ($news->isNotEmpty())
                             @foreach ($news as $item)
                                 <div class="overflow-hidden flex items-center gap-4 shadow rounded-xl bg-white">
                                     <div class="aspect-square h-34 overflow-hidden rounded-xl shrink-0 bg-slate-200">
@@ -124,9 +124,9 @@
                                     </div>
                                 </div>
                             @endforeach
-                        @else
-                            <x-empty />
-                        @endif
+                        @else --}}
+                        <x-empty />
+                        {{-- @endif --}}
                     </div>
                 </div>
             </div>
