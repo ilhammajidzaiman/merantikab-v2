@@ -9,7 +9,6 @@ use App\Models\AppList;
 use App\Models\Carousel;
 use App\Models\AppShortcut;
 use App\Models\Announcement;
-use App\Services\NewsService;
 use App\Traits\FormatDateTimeTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
@@ -17,7 +16,6 @@ use Illuminate\Support\Facades\Http;
 class HomeController extends Controller
 {
     use FormatDateTimeTrait;
-    public function __construct(private NewsService $newsService) {}
 
     public function index()
     {
