@@ -74,7 +74,7 @@
                                                 </h3>
                                                 <h1 class="line-clamp-3">
                                                     <a wire:navigate
-                                                        href="{{ !empty($record['slug']) ? route('news.show', $record['slug']) : route('index') }}"
+                                                        href="{{ !empty($item['slug']) ? route('news.show', $item['slug']) : route('index') }}"
                                                         class="hover:underline">
                                                         {{ $item['title'] ?? null }}
                                                     </a>
