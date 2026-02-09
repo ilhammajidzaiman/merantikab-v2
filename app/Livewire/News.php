@@ -3,60 +3,65 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Http\Controllers\NewsController;
+use Illuminate\Support\Facades\Http;
 
 class News extends Component
 {
-    public $search = '';
+    public $data = [];
     public $page = 1;
-    public $lastPage = 1;
-    public $error = null;
-    public $data;
+    public $perPage = 8;
+    public $more = true;
+    public $search = null;
 
     public function mount()
     {
-        $this->data = collect();
-        $this->fetchNews();
+        $this->fetchData();
     }
 
     public function updatedSearch()
     {
-        $this->resetPage();
-        $this->data = collect();
-        $this->fetchNews();
+        $this->resetData();
+        $this->fetchData();
     }
 
-    public function resetPage()
+    public function resetData()
     {
+        $this->data = [];
         $this->page = 1;
+        $this->more = true;
     }
 
-    public function fetchNews()
+    public function fetchData()
     {
-        $controller = new NewsController();
-        $result = $controller->getNews($this->search, $this->page);
-        if ($result['error']) :
-            $this->error = $result['error'];
-            return;
-        endif;
-        $this->data = $this->data->merge($result['data']);
-        $this->lastPage = $result['last_page'];
+        $url = $this->search
+            ? env('API_NEWS_SEARCH') . $this->search
+            : env('API_NEWS');
+
+        $response = Http::timeout(5)->get($url, [
+            'page' => $this->page,
+            'per_page' => $this->perPage,
+        ])->json();
+
+        $items = collect($response['data'] ?? []);
+
+        $this->data = collect($this->data)
+            ->merge($items)
+            ->values()
+            ->toArray();
+
+        if ($items->count() < $this->perPage) {
+            $this->more = false;
+        }
     }
 
     public function loadMore()
     {
-        if ($this->page < $this->lastPage) :
-            $this->page++;
-            $this->fetchNews();
-        endif;
+        $this->page++;
+        $this->fetchData();
     }
 
     public function render()
     {
-        return view('livewire.news', [
-            'data' => $this->data,
-            'error' => $this->error,
-            'hasMore' => $this->page < $this->lastPage,
-        ]);
+        return view('livewire.news');
     }
 }

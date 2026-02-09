@@ -12,6 +12,7 @@ use App\Models\Announcement;
 use App\Services\NewsService;
 use App\Traits\FormatDateTimeTrait;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -20,8 +21,9 @@ class HomeController extends Controller
 
     public function index()
     {
-        $data['carouselNews'] = $this->newsService->getNewsCarousel();
-        $data['news'] = $this->newsService->getNews();
+        $response = Http::get(env('API_NEWS'))->json();
+        $data['carouselNews'] = collect($response['data'])->take(5);
+        $data['news'] = collect($response['data']);
         $data['carouselFull'] = Carousel::active()
             ->orderByDesc('id')
             ->latest()

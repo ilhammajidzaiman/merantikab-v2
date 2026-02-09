@@ -51,18 +51,18 @@
                                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
                                     class="absolute inset-0">
                                     <div class="overflow-hidden rounded-xl relative">
-                                        <img src="{{ $item->image ?? null }}" alt="{{ $item->title ?? null }}"
+                                        <img src="{{ $item['file'] ?? null }}" alt="{{ $item['title'] ?? null }}"
                                             class="aspect-square object-cover w-full">
                                         <div
                                             class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4 flex flex-col justify-end space-y-2 pb-16">
-                                            <a wire:navigate href="{{ route('news.show', $item->slug ?? null) }}">
+                                            <a wire:navigate href="{{ route('news.show', $item['slug'] ?? null) }}">
                                                 <h2
                                                     class="text-xl md:text-2xl font-normal text-white line-clamp-2 hover:underline">
-                                                    {{ $item->title ?? null }}
+                                                    {{ $item['title'] ?? null }}
                                                 </h2>
                                             </a>
                                             <p class="text-xs md:text-sm text-gray-200">
-                                                {{ $item->date ?? null }} | {{ $item->category ?? null }}
+                                                {{ $item['date'] ?? null }} | {{ $item['category'] ?? null }}
                                             </p>
                                         </div>
                                     </div>
@@ -94,7 +94,7 @@
                                 @endforeach
                             </div>
                         @else
-                            <x-empty />
+                            <x-error-server />
                         @endif
                     </div>
                 </div>
@@ -105,27 +105,27 @@
                             @foreach ($news as $item)
                                 <div class="overflow-hidden flex items-center gap-4 shadow rounded-xl bg-white">
                                     <div class="aspect-square h-34 overflow-hidden rounded-xl shrink-0 bg-slate-200">
-                                        <img src="{{ $item->image ?? null }}" alt="image"
+                                        <img src="{{ $item['file'] ?? null }}" alt="image"
                                             class="w-full h-full object-cover transition duration-300 ease-in-out hover:scale-110">
                                     </div>
                                     <div class="space-y-1">
                                         <h3 class="text-emerald-500 text-normal line-clamp-1">
-                                            {{ $item->category ?? null }}
+                                            {{ $item['category'] ?? null }}
                                         </h3>
                                         <h1 class="text-lg  line-clamp-2">
-                                            <a wire:navigate href="{{ route('news.show', $item->slug ?? null) }}"
+                                            <a wire:navigate href="{{ route('news.show', $item['slug'] ?? null) }}"
                                                 class="hover:underline">
-                                                {{ $item->title ?? null }}
+                                                {{ $item['title'] ?? null }}
                                             </a>
                                         </h1>
                                         <h6 class=" text-slate-500 text-sm line-clamp-1">
-                                            {{ $item->date ?? null }}
+                                            {{ $item['date'] ?? null }}
                                         </h6>
                                     </div>
                                 </div>
                             @endforeach
                         @else
-                            <x-empty />
+                            <x-error-server />
                         @endif
                     </div>
                 </div>
